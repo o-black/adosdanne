@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Dos D'Anne - Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="path-to-your-logo.png" alt="À Dos D'Anne Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#a-propos">À propos</a></li>
+                <li><a href="#design-graphique">Design Graphique</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Contact</h1>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p>Pour vos projets ou pour toutes autres questions, veuillez remplir le formulaire ci-joint et vous serez contacté d'ici 24 à 48 heures. Au plaisir !</p>
+                <p>Restons en contact!</p>
+            </div>
+            <form id="contact-form" class="contact-form">
+                <div class="form-row">
+                    <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
+                    <input type="text" id="nom" name="nom" placeholder="Nom" required>
+                </div>
+                <input type="email" id="courriel" name="courriel" placeholder="Courriel" required>
+                <input type="text" id="sujet" name="sujet" placeholder="Sujet" required>
+                <textarea id="message" name="message" placeholder="Message" required></textarea>
+                <button type="submit">SOUMETTRE</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

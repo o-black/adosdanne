@@ -3,109 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Header</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        .nav-links li {
-            margin-left: 1rem;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-        }
-        .burger {
-            display: none;
-            cursor: pointer;
-        }
-        .burger div {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 5px;
-            transition: all 0.3s ease;
-        }
-        @media screen and (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                right: 0px;
-                height: 92vh;
-                top: 8vh;
-                background-color: #333;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 50%;
-                transform: translateX(100%);
-                transition: transform 0.5s ease-in;
-            }
-            .nav-links li {
-                opacity: 0;
-            }
-            .burger {
-                display: block;
-            }
-        }
-        .nav-active {
-            transform: translateX(0%);
-        }
-        @keyframes navLinkFade {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0px);
-            }
-        }
-        .toggle .line1 {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .toggle .line2 {
-            opacity: 0;
-        }
-        .toggle .line3 {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-    </style>
+    <title>À Dos D'Anne</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <h4>Your Logo</h4>
-            </div>
+            <div class="logo">À Dos D'Anne</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#carousel">Carousel</a></li>
+                <li><a href="#peinture">Peinture</a></li>
+                <li><a href="#design">Design Graphique</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#apropos">A Propos</a></li>
+                <li><a href="/contact.html">Contact</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -115,28 +25,25 @@
         </nav>
     </header>
 
-    <script>
-        const navSlide = () => {
-            const burger = document.querySelector('.burger');
-            const nav = document.querySelector('.nav-links');
-            const navLinks = document.querySelectorAll('.nav-links li');
+    <main>
+        <div class="social-icons">
+            <a href="#" class="behance">Be</a>
+            <a href="#" class="instagram">Ig</a>
+        </div>
 
-            burger.addEventListener('click', () => {
-                nav.classList.toggle('nav-active');
+        <div class="logo-container">
+            <div class="triangle">
+                <div class="eye"></div>
+            </div>
+            <h1>À DOS D'ANNE</h1>
+        </div>
 
-                navLinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = '';
-                    } else {
-                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                    }
-                });
+        <div class="buttons">
+            <a href="#peinture" class="btn">PEINTURE</a>
+            <a href="#design" class="btn">DESIGN GRAPHIQUE</a>
+        </div>
+    </main>
 
-                burger.classList.toggle('toggle');
-            });
-        }
-
-        navSlide();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
