@@ -255,6 +255,7 @@ main {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100vw;
 }
 
 h1 {
@@ -359,5 +360,170 @@ button {
     to {
         opacity: 1;
         transform: translateX(0px);
+    }
+}
+
+/************************************************************************/
+
+/* styles.css */
+:root {
+    --green: #336600;
+    --light-green: #99CC66;
+    --peach: #FFDAB9;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+header {
+    background-color: var(--white);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: var(--black);
+    text-decoration: none;
+}
+
+.nav-links a[href="#design-graphique"] {
+    color: var(--green);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+#intro {
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.image-logo{
+    width: 10em;
+    height: 10em;
+    background-color: grey;
+}
+.container-service{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.logo-large {
+    margin-bottom: 2rem;
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+}
+
+#histoire {
+    display: flex;
+    background-color: var(--peach);
+    padding: 2rem;
+    margin-bottom: 4rem;
+    width: 100vw;
+}
+
+.histoire-content {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.histoire-image {
+    flex: 1;
+}
+
+button {
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+#services {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    
+}
+.contactUs-button{
+    margin: auto;
+}
+.service {
+    margin-bottom: 2rem;
+}
+
+#portfolio {
+    background-color: var(--peach);
+    padding: 2rem;
+    width: 100vw;
+}
+
+.portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.portfolio-item {
+    flex: 1 1 200px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide nav links on mobile, you might want to implement a burger menu */
+    }
+
+    #histoire {
+        flex-direction: column;
+    }
+
+    .histoire-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .portfolio-items {
+        justify-content: center;
+    }
+    .container-service{
+        flex-direction: column;
     }
 }
