@@ -527,3 +527,43 @@ button {
         flex-direction: column;
     }
 }
+
+/******************************************************************/
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.container-propos{
+    width: 100vw;
+}
+.content {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+}
+.text {
+    flex: 1;
+}
+.image-placeholder {
+    margin-top: 3em;
+    background-color: #ccc;
+    width: 20em;
+    height: 30em;
+}
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+    .image-placeholder {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 1em;
+    }
+    .proposTitle{
+        margin-left: 0.5em;
+    }
+}
