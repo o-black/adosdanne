@@ -63,28 +63,386 @@
             <button class="contactUs-button">CONTACTEZ-NOUS !</button>
         </section>
 
-        <section id="portfolio">
-            <h2>Portfolio</h2>
-            <h3>Identité visuelle</h3>
-            <div class="portfolio-items">
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/200/200" alt="Typomorphose Logo">
-                    <p>Logo Typomorphose</p>
+        <!-- HTML Structure -->
+<!-- HTML Structure -->
+<!-- HTML Structure remains largely the same -->
+<section id="portfolio">
+    <h2>Portfolio</h2>
+    <h3>Identité visuelle</h3>
+    <div class="carousel-container">
+        <button class="carousel-button prev" aria-label="Previous slide">&#10094;</button>
+        <div class="carousel-wrapper">
+            <div class="carousel-items">
+                <div class="carousel-item">
+                    <div class="portfolio-card">
+                        <div class="card-image">
+                            <img src="/api/placeholder/200/200" alt="Typomorphose Logo">
+                        </div>
+                        <div class="card-content">
+                            <h4>Logo Typomorphose</h4>
+                            <p class="card-description">Création d'une identité visuelle unique et mémorable</p>
+                            <a href="#" class="card-button">Voir plus</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/200/200" alt="Livre de comptines">
-                    <p>Illustration Livre de comptines</p>
+                <div class="carousel-item">
+                    <div class="portfolio-card">
+                        <div class="card-image">
+                            <img src="/api/placeholder/200/200" alt="Livre de comptines">
+                        </div>
+                        <div class="card-content">
+                            <h4>Livre de comptines</h4>
+                            <p class="card-description">Illustrations ludiques pour livre jeunesse</p>
+                            <a href="#" class="card-button">Voir plus</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/200/200" alt="Les fables de La Fontaine">
-                    <p>Illustration Les fables de La Fontaine</p>
+                <div class="carousel-item">
+                    <div class="portfolio-card">
+                        <div class="card-image">
+                            <img src="/api/placeholder/200/200" alt="Les fables de La Fontaine">
+                        </div>
+                        <div class="card-content">
+                            <h4>Les fables de La Fontaine</h4>
+                            <p class="card-description">Illustrations classiques revisitées</p>
+                            <a href="#" class="card-button">Voir plus</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/200/200" alt="Couronne de co Logo">
-                    <p>Logo Couronne de co</p>
+                <div class="carousel-item">
+                    <div class="portfolio-card">
+                        <div class="card-image">
+                            <img src="/api/placeholder/200/200" alt="Couronne de co Logo">
+                        </div>
+                        <div class="card-content">
+                            <h4>Logo Couronne de co</h4>
+                            <p class="card-description">Design moderne et élégant pour une marque premium</p>
+                            <a href="#" class="card-button">Voir plus</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+        <button class="carousel-button next" aria-label="Next slide">&#10095;</button>
+        <div class="carousel-dots"></div>
+    </div>
+</section>
+
+<!-- Updated CSS -->
+<style>
+    h2,h3,p{
+        padding-left: 1em;
+    }
+ #portfolio {
+            padding: 2rem 0;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 400px; /* Increased height to show full cards */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible; /* Changed to visible to show full cards */
+            margin: 2rem 0; /* Added margin to prevent overlap with dots */
+        }
+
+        .carousel-items {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            max-width: 400px;
+            height: auto; /* Changed to auto to maintain aspect ratio */
+            left: 50%;
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+            pointer-events: none;
+            visibility: hidden;
+            transform-origin: center center;
+        }
+
+        .carousel-item.active,
+        .carousel-item.prev,
+        .carousel-item.next {
+            visibility: visible;
+        }
+
+        .carousel-item.active {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+            z-index: 5;
+            pointer-events: auto;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-image {
+            position: relative;
+            width: 100%;
+            padding-top: 75%;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            background: white;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content h4 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+            font-size: 1.125rem;
+        }
+
+        .card-description {
+            color: #666;
+            margin: 0 0 1rem 0;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            align-self: flex-start;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 6;
+            padding: 1rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #6366f1;
+            transform: scale(1.2);
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 6;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-button.prev {
+            left: 1rem;
+        }
+
+        .carousel-button.next {
+            right: 1rem;
+        }
+
+        /* Tablet styles (768px and up) */
+        @media (min-width: 768px) {
+            .carousel-wrapper {
+                min-height: 650px; /* Adjusted for tablet */
+            }
+
+            .carousel-item {
+                width: 80%;
+            }
+
+            .carousel-item.prev {
+                transform: translateX(-110%) scale(0.85);
+                opacity: 0.7;
+                z-index: 4;
+            }
+
+            .carousel-item.next {
+                transform: translateX(10%) scale(0.85);
+                opacity: 0.7;
+                z-index: 4;
+            }
+        }
+
+        /* Desktop styles (1024px and up) */
+        @media (min-width: 1024px) {
+            .carousel-wrapper {
+                min-height: 500px; /* Adjusted for desktop */
+                bottom: 10em;
+            }
+
+            .carousel-item {
+                width: 60%;
+            }
+
+            .carousel-item.prev {
+                transform: translateX(-120%) scale(0.9);
+            }
+
+            .carousel-item.next {
+                transform: translateX(20%) scale(0.9);
+            }
+
+            .carousel-button.prev {
+                left: 2rem;
+            }
+
+            .carousel-button.next {
+                right: 2rem;
+            }
+        }
+
+</style>
+
+<!-- Updated JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.carousel-items');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+        const dotsContainer = document.querySelector('.carousel-dots');
+        
+        let currentIndex = 0;
+        const totalItems = items.length;
+
+        // Create dots
+        items.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        function updateDots() {
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function updateCards() {
+            items.forEach((item, index) => {
+                item.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
+                
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                } else if (index === (currentIndex - 1 + totalItems) % totalItems) {
+                    item.classList.add('prev');
+                } else if (index === (currentIndex + 1) % totalItems) {
+                    item.classList.add('next');
+                } else if (index === (currentIndex - 2 + totalItems) % totalItems) {
+                    item.classList.add('far-prev');
+                } else if (index === (currentIndex + 2) % totalItems) {
+                    item.classList.add('far-next');
+                }
+            });
+            updateDots();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCards();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCards();
+        }
+
+        // Event listeners
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+        
+        // Initial setup
+        updateCards();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Touch support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                nextSlide();
+            } else if (touchEndX - touchStartX > 50) {
+                prevSlide();
+            }
+        });
+    });
+</script>
     </main>
 
     <footer>

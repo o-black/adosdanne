@@ -33,3 +33,44 @@ const navSlide = () => {
 
 
 navSlide();
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const popup = document.getElementById('popup');
+    const popupTitle = document.getElementById('popup-title');
+    const popupImage = document.getElementById('popup-image');
+    const popupDescription = document.getElementById('popup-description');
+    const popupButton = document.getElementById('popup-button');
+    const closePopup = document.querySelector('.close-popup');
+
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const title = this.getAttribute('data-title');
+            const description = this.getAttribute('data-description');
+            const imgSrc = this.querySelector('img').src;
+
+            popupTitle.textContent = title;
+            popupImage.src = imgSrc;
+            popupImage.alt = title;
+            popupDescription.textContent = description;
+
+            popup.style.display = 'block';
+        });
+    });
+
+    closePopup.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+    popupButton.addEventListener('click', function() {
+        alert('This button can be customized to perform any action you want!');
+    });
+
+    // Close the popup if clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+});
