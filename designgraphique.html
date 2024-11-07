@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À Dos D'Anne</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="designgraphique.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <h4>Your Logo</h4>
-            </div>
+            <a class="logo" href="/index.html"><img src="/assets/New logo revised.png" height="60"></a>
             <ul class="nav-links">
                 <li><a href="/index.html">Accueil</a></li>
-                <li><a href="#gallery">Galerie</a></li>
                 <li><a href="/propos.html">A Propos</a></li>
                 <li><a href="/contact.html">Contact</a></li>
                 <li><a href="/designgraphique.html">Design Graphique</a></li>
@@ -26,11 +24,222 @@
             </div>
         </nav>
     </header>
+ <!-- The HTML remains the same -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-grid">
+            <div class="modal-image">
+                <img src="" alt="Project Image">
+            </div>
+            <div class="modal-text">
+                <h3></h3>
+                <p></p>
+                <a href="#" class="modal-button">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+</div>
 
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show {
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 1000px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                opacity 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close:hover {
+    color: #000;
+    transform: rotate(90deg);
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease 0.2s, 
+                transform 0.3s ease 0.2s;
+}
+
+.modal.show .modal-image img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease 0.3s, 
+                transform 0.3s ease 0.3s;
+}
+
+.modal.show .modal-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-text h3 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.modal-text p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.modal-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, 
+                transform 0.3s ease;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.modal-button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+    .modal-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        padding: 30px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modal');
+    const modalImage = modal.querySelector('.modal-image img');
+    const modalTitle = modal.querySelector('.modal-text h3');
+    const modalDescription = modal.querySelector('.modal-text p');
+    const closeButton = modal.querySelector('.close');
+    
+    // Function to open modal
+    function openModal(card) {
+        const cardImage = card.querySelector('.card-image img');
+        const cardTitle = card.querySelector('h4');
+        const cardDescription = card.querySelector('.card-description');
+        
+        modalImage.src = cardImage.src;
+        modalImage.alt = cardImage.alt;
+        modalTitle.textContent = cardTitle.textContent;
+        modalDescription.textContent = cardDescription.textContent;
+        
+        modal.style.display = 'block';
+        // Trigger reflow to ensure transition works
+        modal.offsetHeight;
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Function to close modal with animation
+    function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300); // Match this with the transition duration
+    }
+    
+    // Add click event to all portfolio cards
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+    });
+    
+    // Close modal when clicking the X button
+    closeButton.addEventListener('click', closeModal);
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+});
+</script>
     <main>
         <section id="intro">
             <div class="logo-large">
-                <div class="image-logo"></div>
+                <img src="/assets/R logo avec slogan 0524.png" alt="" height="200">
             </div>
             <h1>À DOS D'ANNE</h1>
             <p>Avec notre approche 'hands-on', nous sculptons des illustrations vibrantes, concevons des logos mémorables et créons des identités visuelles qui racontent votre histoire.</p>
@@ -38,25 +247,29 @@
         </section>
 
         <section id="histoire">
-            <div class="histoire-content">
-                <h2>Histoire d'À dos d'Anne</h2>
+            <div class="bg-img"></div>
+         <div class="histoire-content">
+            <div class="histoire-text">
+                <h2>Notre Histoire</h2>
                 <p>On sait tous à quel point les ânes sont connus pour leur tête dure cependant il est intéressant de souligner qu'ils font plutôt preuve de précaution, de vigilance et de prévenance. Ils éviteront les risques inutiles et prendra soin de vous savoir en sécurité. Anne étant le 2ieme prénom de notre directrice, voici d'où vient le jeu de mot qui est à l'origine de notre nom, soyez sûre que nous prenons vos projets à cœur et que nous les mènerons selon vos termes.</p>
-                <button>PORTFOLIO</button>
+                
             </div>
             <div class="histoire-image">
                 <img src="/api/placeholder/400/300" alt="À Dos D'Anne Team">
             </div>
+        </div>
+            <a href="#portfolio">PORTFOLIO</a>
         </section>
 
         <section id="services">
             <h2>Nos Service Creatifs</h2>
             <div class="container-service">
                 <div class="service">
-                    <h3>Identité visuelle : Habiller votre marque, pas dans une camisole de force</h3>
+                    <h3>Identité visuelle</h3>
                     <p>Prêt à relooker votre marque en disant : « Je suis fabuleux et je le sais » ? Notre service d'identité visuelle est comme un défilé de mode pour votre marque. Nous créerons un look qui fera tourner les têtes et fera sourciller – dans le bon sens. Oubliez les costumes rigides ; notre objectif est de mettre le «amusant» au niveau fonctionnel. Car qui a dit qu'une tenue professionnelle ne pouvait pas avoir le sens de l'humour ?</p>
                 </div>
                 <div class="service">
-                    <h3>Illustration : Transformer vos rêves en réalité</h3>
+                    <h3>Illustration</h3>
                     <p>Nous sommes entièrement dédiés à la collaboration et à la communication pour donner vie à votre vision. De la phase de brainstorming aux ajustements finaux, nous travaillons en étroite collaboration avec vous, garantissant votre satisfaction à chaque étape du processus. Que ce soit pour le branding, les illustrations de livres ou les portraits personnalisés, notre objectif est de dépasser vos attentes. Faisons briller vos idées – contactez-nous dès aujourd'hui !</p>
                 </div>
             </div>
@@ -64,11 +277,9 @@
         </section>
 
         <!-- HTML Structure -->
-<!-- HTML Structure -->
 <!-- HTML Structure remains largely the same -->
 <section id="portfolio">
     <h2>Portfolio</h2>
-    <h3>Identité visuelle</h3>
     <div class="carousel-container">
         <button class="carousel-button prev" aria-label="Previous slide">&#10094;</button>
         <div class="carousel-wrapper">
@@ -81,7 +292,7 @@
                         <div class="card-content">
                             <h4>Logo Typomorphose</h4>
                             <p class="card-description">Création d'une identité visuelle unique et mémorable</p>
-                            <a href="#" class="card-button">Voir plus</a>
+                            <a  class="card-button">Voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -93,7 +304,7 @@
                         <div class="card-content">
                             <h4>Livre de comptines</h4>
                             <p class="card-description">Illustrations ludiques pour livre jeunesse</p>
-                            <a href="#" class="card-button">Voir plus</a>
+                            <a href="" class="card-button">Voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +316,7 @@
                         <div class="card-content">
                             <h4>Les fables de La Fontaine</h4>
                             <p class="card-description">Illustrations classiques revisitées</p>
-                            <a href="#" class="card-button">Voir plus</a>
+                            <a href="" class="card-button">Voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +328,7 @@
                         <div class="card-content">
                             <h4>Logo Couronne de co</h4>
                             <p class="card-description">Design moderne et élégant pour une marque premium</p>
-                            <a href="#" class="card-button">Voir plus</a>
+                            <a href="" class="card-button">Voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -127,234 +338,6 @@
         <div class="carousel-dots"></div>
     </div>
 </section>
-
-<!-- Updated CSS -->
-<style>
-    h2,h3,p{
-        padding-left: 1em;
-    }
- #portfolio {
-            padding: 2rem 0;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
-        .carousel-wrapper {
-            position: relative;
-            width: 100%;
-            min-height: 400px; /* Increased height to show full cards */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: visible; /* Changed to visible to show full cards */
-            margin: 2rem 0; /* Added margin to prevent overlap with dots */
-        }
-
-        .carousel-items {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .carousel-item {
-            position: absolute;
-            width: 100%;
-            max-width: 400px;
-            height: auto; /* Changed to auto to maintain aspect ratio */
-            left: 50%;
-            opacity: 0;
-            transition: all 0.5s ease-in-out;
-            pointer-events: none;
-            visibility: hidden;
-            transform-origin: center center;
-        }
-
-        .carousel-item.active,
-        .carousel-item.prev,
-        .carousel-item.next {
-            visibility: visible;
-        }
-
-        .carousel-item.active {
-            transform: translateX(-50%) scale(1);
-            opacity: 1;
-            z-index: 5;
-            pointer-events: auto;
-        }
-
-        .portfolio-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-image {
-            position: relative;
-            width: 100%;
-            padding-top: 75%;
-            overflow: hidden;
-        }
-
-        .card-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-            background: white;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card-content h4 {
-            margin: 0 0 0.5rem 0;
-            color: #333;
-            font-size: 1.125rem;
-        }
-
-        .card-description {
-            color: #666;
-            margin: 0 0 1rem 0;
-            font-size: 0.875rem;
-            line-height: 1.4;
-        }
-
-        .card-button {
-            display: inline-block;
-            padding: 0.5rem 1.25rem;
-            background-color: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.875rem;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            align-self: flex-start;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            position: relative;
-            z-index: 6;
-            padding: 1rem;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ccc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: #6366f1;
-            transform: scale(1.2);
-        }
-
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 6;
-            font-size: 1.125rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .carousel-button.prev {
-            left: 1rem;
-        }
-
-        .carousel-button.next {
-            right: 1rem;
-        }
-
-        /* Tablet styles (768px and up) */
-        @media (min-width: 768px) {
-            .carousel-wrapper {
-                min-height: 650px; /* Adjusted for tablet */
-            }
-
-            .carousel-item {
-                width: 80%;
-            }
-
-            .carousel-item.prev {
-                transform: translateX(-110%) scale(0.85);
-                opacity: 0.7;
-                z-index: 4;
-            }
-
-            .carousel-item.next {
-                transform: translateX(10%) scale(0.85);
-                opacity: 0.7;
-                z-index: 4;
-            }
-        }
-
-        /* Desktop styles (1024px and up) */
-        @media (min-width: 1024px) {
-            .carousel-wrapper {
-                min-height: 500px; /* Adjusted for desktop */
-                bottom: 10em;
-            }
-
-            .carousel-item {
-                width: 60%;
-            }
-
-            .carousel-item.prev {
-                transform: translateX(-120%) scale(0.9);
-            }
-
-            .carousel-item.next {
-                transform: translateX(20%) scale(0.9);
-            }
-
-            .carousel-button.prev {
-                left: 2rem;
-            }
-
-            .carousel-button.next {
-                right: 2rem;
-            }
-        }
-
-</style>
 
 <!-- Updated JavaScript -->
 <script>

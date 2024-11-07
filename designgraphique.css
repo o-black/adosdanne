@@ -1,0 +1,312 @@
+#intro{
+    img{
+        margin-left: 10em;
+    }
+}
+h2,h3,p{
+    padding-left: 1em;
+}
+.bg-img{
+    width: 100vw;
+    min-height: 24em;
+    z-index: 1;
+    opacity: 0.8;
+    position: absolute;
+    background-image: url('/assets/declinaison\ 1\ 0524\ .png');
+    background-size: 50%; /* This was already set to 50% */
+    background-position: right bottom; /* Added to position the background image */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    background-blend-mode: screen;
+}
+#histoire {
+    display: flex;
+    background-color: var(--peach);
+    padding: 2rem;
+    margin-bottom: 4rem;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+
+
+    a{
+        margin: 1em auto;
+        background-color: var(--green);
+        font-weight: bold;
+        color: white;
+        padding: 0.5em;
+        text-decoration: none;
+        z-index: 2;
+    }
+
+    .histoire-content{
+        width: 94%;
+        display: flex;
+        z-index: 2;
+        .histoire-image {
+            width: 50%;
+        }
+    }
+    .histoire-text {
+        width: 50%;
+        padding-right: 1rem;
+        padding-bottom: 2rem;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        background-color: whitesmoke;
+        
+        h2{
+            padding-left: 0.6em;
+        }
+        button{
+            margin-left: 1em;
+        }
+    }
+    
+}
+
+
+
+#services {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    h2{
+        font-size: 32px;
+        margin-left: auto;
+        
+    }
+}
+#portfolio {
+    padding: 2rem 0;
+    width: 100vw;
+    overflow: hidden;
+    background-image: url('/assets/declinaison\ 1\ 0524\ .png');
+    background-size: 73%; /* This was already set to 50% */
+   background-repeat: no-repeat; 
+        h2{
+           font-size: 32px;
+           margin-left: 1.7em;
+        }
+        h3{
+            margin-left: 4em;
+        }
+        
+    }
+
+    .carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 1275px;
+        margin: 0 auto;
+    }
+
+    .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        min-height: 400px; /* Increased height to show full cards */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible; /* Changed to visible to show full cards */
+        margin: 2rem 0; /* Added margin to prevent overlap with dots */
+    }
+
+    .carousel-items {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-item {
+        position: absolute;
+        width: 100%;
+        max-width: 400px;
+        height: auto; /* Changed to auto to maintain aspect ratio */
+        left: 50%;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        pointer-events: none;
+        visibility: hidden;
+        transform-origin: center center;
+    }
+
+    .carousel-item.active,
+    .carousel-item.prev,
+    .carousel-item.next {
+        visibility: visible;
+    }
+
+    .carousel-item.active {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+        z-index: 5;
+        pointer-events: auto;
+    }
+
+    .portfolio-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-image {
+        position: relative;
+        width: 100%;
+        padding-top: 75%;
+        overflow: hidden;
+    }
+
+    .card-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+        background: white;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-content h4 {
+        margin: 0 0 0.5rem 0;
+        color: #333;
+        font-size: 1.125rem;
+    }
+
+    .card-description {
+        color: #666;
+        margin: 0 0 1rem 0;
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+
+    .card-button {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        background-color: #333;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 0.875rem;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        align-self: flex-start;
+    }
+
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        position: relative;
+        z-index: 6;
+        padding: 5rem;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ccc;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .dot.active {
+        background: #6366f1;
+        transform: scale(1.2);
+    }
+
+    .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+        border: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 6;
+        font-size: 1.125rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-button.prev {
+        left: 1rem;
+    }
+
+    .carousel-button.next {
+        right: 1rem;
+    }
+
+    /* Tablet styles (768px and up) */
+    @media (min-width: 768px) {
+        .carousel-wrapper {
+            min-height: 650px; /* Adjusted for tablet */
+        }
+
+        .carousel-item {
+            width: 80%;
+        }
+
+        .carousel-item.prev {
+            transform: translateX(-110%) scale(0.85);
+            opacity: 0.9;
+            z-index: 4;
+        }
+
+        .carousel-item.next {
+            transform: translateX(10%) scale(0.85);
+            opacity: 0.9;
+            z-index: 4;
+        }
+    }
+
+    /* Desktop styles (1024px and up) */
+    @media (min-width: 1024px) {
+        .carousel-wrapper {
+            min-height: 500px; /* Adjusted for desktop */
+            bottom: 10em;
+        }
+
+        .carousel-item {
+            width: 60%;
+        }
+
+        .carousel-item.prev {
+            transform: translateX(-120%) scale(0.9);
+        }
+
+        .carousel-item.next {
+            transform: translateX(20%) scale(0.9);
+        }
+
+        .carousel-button.prev {
+            left: 2rem;
+        }
+
+        .carousel-button.next {
+            right: 2rem;
+        }
+    }
