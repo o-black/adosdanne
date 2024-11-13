@@ -2,104 +2,115 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    position: relative;
 }
-
+.image-placeholder{
+    background-image: url('/assets/A\ propos.png');
+    background-size: cover;
+}
 .content {
-    position: relative;
-    margin-top: 2rem;
-    height: 30em;
-    img{
-     position: relative;
-     right: 10em;
-     top: 25em;
-     z-index: 1;
-    }
+    display: flex;
+   
+    gap: 2rem;
 }
+@media screen and (min-width:1025px){
+    .text{
+        margin-left: -6em;
+        margin-right: 3em
+    };
+}
+/* Desktop breakpoint */
+@media screen and (min-width: 1024px) {
 
-.text {
-    top: -3em;
-    background-color: white;
-    padding: 3rem;
-    max-width: 70%;
-    position: relative;
-    z-index: 1;
-    /* border: 1px solid var(--black); */
-    margin-right: 2rem;
-    height: 32em;
-
-    p {
-        margin-bottom: 1.5rem;
-        line-height: 1.8;
+    .container-propos {
+        position: relative;
+    }
+    
+    .content {
+        position: relative;
+        flex-direction: row;
+        margin-top: 2rem;
+        height: 30em;
+        img{
+         position: relative;
+         top: 25em;
+         z-index: 1;
+        }
+    }
+    
+    .text {
+        top: -3em;
+        background-color: white;
+        position: relative;
+        text-align: justify;
+        z-index: 1;
+        flex: 1; /* Take available space */
+        padding: 2rem;
+        border-radius: 8px;
+        height: fit-content;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        margin-right: 5rem;
+        max-width: 60%; /* Ensures the text is not too wide */
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+    }
+    
+    .image-placeholder {
+        position: absolute;
+        top: -5rem;
+        right: -3rem;
+        width: 40%;
+        height: 450px;
+        z-index: 2;
+        box-shadow: -8px 8px 24px rgba(0, 0, 0, 0.2);
+        background-size: 100%;
+    }
+    
+    .proposTitle {
+        margin-bottom: 2.5rem;
         position: relative;
         z-index: 2;
-        width: 92%;
     }
-}
-
-
-
-.image-placeholder {
-    position: absolute;
-    top: -5rem;
-    right: -3rem;
-    width: 40%;
-    height: 450px;
-    background-color: #ccc;
-    z-index: 2;
-    box-shadow: -8px 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.proposTitle {
-    margin-bottom: 2.5rem;
-    position: relative;
-    z-index: 2;
+  
 }
 
 /* Tablet breakpoint */
-@media screen and (max-width: 1024px) {
-    .container-propos {
-        padding: 1.5rem;
+@media screen and (max-width: 1023px) {
+    .content{
+        flex-direction: column; /* Default for mobile */
     }
-    
     .text {
         max-width: 80%;
         padding: 2.5rem;
     }
-    
+
     .image-placeholder {
-        width: 45%;
         height: 400px;
     }
 }
 
 /* Mobile breakpoint */
 @media screen and (max-width: 768px) {
-    .container-propos {
-        padding: 1rem;
-    }
-    
     .content {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
+        flex-direction: column; /* Stacks for mobile */
+        align-items: center;
     }
-    
+
     .text {
         max-width: 100%;
         padding: 1.5rem;
-        margin-right: 0;
-        order: 2; /* Move text below image */
-        margin-top: -2rem; /* Create slight overlap with image */
+        order: 2;
     }
-    
+
     .image-placeholder {
-        position: relative;
         width: 100%;
-        height: 300px;
-        top: 0;
-        order: 1; /* Move image to top */
-        margin-bottom: 0;
+        height: 600px;
+        order: 1;
+        margin-bottom: 1rem;
+        max-width: 600px;
     }
 }
 
@@ -108,23 +119,23 @@
     .container-propos {
         padding: 0.5rem;
     }
-    
+
     .text {
         padding: 1.25rem;
+        margin: 0 auto;
     }
-    
-    .image-placeholder {
-        height: 250px;
-    }
-    
+
     .proposTitle {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .text p {
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 1.5rem;
         margin-bottom: 1rem;
+    }
+
+    .text p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .image-placeholder {
+        height: 350px;
     }
 }
