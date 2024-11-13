@@ -1,231 +1,253 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     const carousel = document.querySelector('.carousel-items');
-//     const items = document.querySelectorAll('.carousel-item');
-//     const prevButton = document.querySelector('.carousel-button.prev');
-//     const nextButton = document.querySelector('.carousel-button.next');
-//     const dotsContainer = document.querySelector('.carousel-dots');
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.carousel-items');
+    const items = document.querySelectorAll('.carousel-item');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const nextButton = document.querySelector('.carousel-button.next');
+    const dotsContainer = document.querySelector('.carousel-dots');
     
-//     let currentIndex = 0;
-//     const totalItems = items.length;
-//     let isAnimating = false;
+    let currentIndex = 0;
+    const totalItems = items.length;
+    let isAnimating = false;
     
-//     // Create dots for each carousel item
-//     items.forEach((_, index) => {
-//         const dot = document.createElement('div');
-//         dot.classList.add('dot');
-//         if (index === 0) dot.classList.add('active');
-//         dot.addEventListener('click', () => goToSlide(index));
-//         dotsContainer.appendChild(dot);
-//     });
+    // Create dots for each carousel item
+    items.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
     
-//     // Update dots to reflect active slide
-//     function updateDots() {
-//         document.querySelectorAll('.dot').forEach((dot, index) => {
-//             dot.classList.toggle('active', index === currentIndex);
-//         });
-//     }
+    // Update dots to reflect active slide
+    function updateDots() {
+        document.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
 
-//     // Function to update active, prev, and next classes on carousel items
-//     function updateCards(direction = null) {
-//         if (isAnimating) return;
-//         isAnimating = true;
+    // Function to update active, prev, and next classes on carousel items
+    function updateCards(direction = null) {
+        if (isAnimating) return;
+        isAnimating = true;
 
-//         items.forEach((item, index) => {
-//             item.classList.remove(
-//                 'active', 'prev', 'next', 'swipe-left-enter', 
-//                 'swipe-left-exit', 'swipe-right-enter', 'swipe-right-exit'
-//             );
+        items.forEach((item, index) => {
+            item.classList.remove(
+                'active', 'prev', 'next', 'swipe-left-enter', 
+                'swipe-left-exit', 'swipe-right-enter', 'swipe-right-exit'
+            );
             
-//             if (index === currentIndex) {
-//                 item.classList.add('active');
-//             } else if (index === (currentIndex - 1 + totalItems) % totalItems) {
-//                 item.classList.add('prev');
-//             } else if (index === (currentIndex + 1) % totalItems) {
-//                 item.classList.add('next');
-//             }
-//         });
+            if (index === currentIndex) {
+                item.classList.add('active');
+            } else if (index === (currentIndex - 1 + totalItems) % totalItems) {
+                item.classList.add('prev');
+            } else if (index === (currentIndex + 1) % totalItems) {
+                item.classList.add('next');
+            }
+        });
         
-//         updateDots();
-//         setTimeout(() => {
-//             isAnimating = false;
-//         }, 400); // Match transition duration
-//     }
+        updateDots();
+        setTimeout(() => {
+            isAnimating = false;
+        }, 400); // Match transition duration
+    }
 
-//     // Function to navigate to a specific slide
-//     function goToSlide(index, direction = null) {
-//         if (isAnimating) return;
+    // Function to navigate to a specific slide
+    function goToSlide(index, direction = null) {
+        if (isAnimating) return;
 
-//         const previousIndex = currentIndex;
-//         currentIndex = index;
+        const previousIndex = currentIndex;
+        currentIndex = index;
         
-//         // Add exit animation to current slide
-//         if (direction === 'left') {
-//             items[previousIndex].classList.add('swipe-left-exit');
-//         } else if (direction === 'right') {
-//             items[previousIndex].classList.add('swipe-right-exit');
-//         }
+        // Add exit animation to current slide
+        if (direction === 'left') {
+            items[previousIndex].classList.add('swipe-left-exit');
+        } else if (direction === 'right') {
+            items[previousIndex].classList.add('swipe-right-exit');
+        }
         
-//         updateCards(direction);
-//     }
+        updateCards(direction);
+    }
 
-//     // Function to go to the next slide
-//     function nextSlide() {
-//         currentIndex = (currentIndex + 1) % totalItems;
-//         goToSlide(currentIndex, 'left');
-//     }
+    // Function to go to the next slide
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        goToSlide(currentIndex, 'left');
+    }
 
-//     // Function to go to the previous slide
-//     function prevSlide() {
-//         currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-//         goToSlide(currentIndex, 'right');
-//     }
+    // Function to go to the previous slide
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        goToSlide(currentIndex, 'right');
+    }
 
-//     // Event listeners for navigation buttons
-//     nextButton.addEventListener('click', nextSlide);
-//     prevButton.addEventListener('click', prevSlide);
+    // Event listeners for navigation buttons
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
 
-//     // Keyboard navigation
-//     document.addEventListener('keydown', (e) => {
-//         if (e.key === 'ArrowLeft') prevSlide();
-//         if (e.key === 'ArrowRight') nextSlide();
-//     });
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+    });
 
-//     // Touch support for swiping
-//     let touchStartX = 0;
-//     let touchEndX = 0;
+    // Touch support for swiping
+    let touchStartX = 0;
+    let touchEndX = 0;
     
-//     carousel.addEventListener('touchstart', (e) => {
-//         touchStartX = e.changedTouches[0].screenX;
-//     });
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
 
-//     carousel.addEventListener('touchend', (e) => {
-//         touchEndX = e.changedTouches[0].screenX;
-//         if (touchStartX - touchEndX > 50) {
-//             nextSlide();
-//         } else if (touchEndX - touchStartX > 50) {
-//             prevSlide();
-//         }
-//     });
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) {
+            nextSlide();
+        } else if (touchEndX - touchStartX > 50) {
+            prevSlide();
+        }
+    });
 
-//     // Initial setup to show the first item
-//     updateCards();
-// });
-// document.addEventListener('DOMContentLoaded', function() {
-//     const modal = document.getElementById('modal');
-//     const modalImage = modal.querySelector('.main-image');
-//     const modalTitle = modal.querySelector('.modal-text h3');
-//     const modalDescription = modal.querySelector('.modal-text p');
-//     const closeButton = modal.querySelector('.close');
-//     const thumbnailGallery = modal.querySelector('.thumbnail-gallery');
+    // Initial setup to show the first item
+    updateCards();
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modal');
+    const modalImage = modal.querySelector('.main-image');
+    const modalTitle = modal.querySelector('.modal-text h3');
+    const modalDescription = modal.querySelector('.modal-text p');
+    const closeButton = modal.querySelector('.close');
+    const thumbnailGallery = modal.querySelector('.thumbnail-gallery');
     
-//     // Sample related images data structure
-//     const projectImages = {
-//         'Logo Typomorphose': [
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600'
-//         ],
-//         'Livre de comptines': [
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600'
-//         ],
-//         'Les fables de La Fontaine': [
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600'
-//         ],
-//         'Logo Couronne de co': [
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600',
-//             '/api/placeholder/800/600'
-//         ]
-//     };
+    // Sample related images data structure
+    const projectImages = {
+        'Affiches': [
+            '/Affiche Final 25_VICTORIOUS.jpg',
+            '/Banniere moyenne1.jpg',
+            '/Banniere_Opulence_v1.jpg',
+            '/FINAL FRONT COVER.jpg',
+            '/Montage.jpg'
+        ],
+        'Appolo': [
+            '/Diapositive6.jpg',
+            '/Diapositive17.jpg',
+            '/Diapositive19.jpg',
+            '/Moodboard.jpg',
+            '/Moodboard 2.jpg',
+            '/Moodboard 3.jpg'
+        ],
+        'Cola couronne': [
+            '/ColaCouronne_GrandeCanette.jpg',
+            '/ColaCouronne_PetiteCannette.jpg',
+            '/Current version.jpg',
+            '/Prototype 1.jpg',
+            '/Prototype 2.jpg',
+            '/Prototype 3.jpg',
+        ],
+        'Librairies Racines': [
+            '/e15df277-ae5d-46c0-a4e1-14a560f4a981-5.jpg',
+            '/e15df277-ae5d-46c0-a4e1-14a560f4a981-6.jpg',
+            '/e15df277-ae5d-46c0-a4e1-14a560f4a981-8.jpg',
+            '/Packaging + Promotionnel.jpg'
+        ],
+        'Pizzeria Olive et Lune': [
+            '/2c3bd1e5-3e0b-4e5b-9b99-e4d5fee6cac6-3.jpg',
+            '/2c3bd1e5-3e0b-4e5b-9b99-e4d5fee6cac6-5.jpg',
+            '/2c3bd1e5-3e0b-4e5b-9b99-e4d5fee6cac6-9.jpg',
+            '/2c3bd1e5-3e0b-4e5b-9b99-e4d5fee6cac6-10.jpg',
+            '/MoodBoard 1.jpg',
+            '/MoodBoard 2.jpg',
+            '/MoodBoard 3.jpg',
+        ]
+        ,
+        'Typomorphie': [
+            '/Diapositive1.jpg',
+            '/Mockup_ Cup.jpg',
+            '/Mockup_tshirt_totebag.jpg',
+        ]
+    };
     
-//     function createThumbnails(projectTitle, mainImageSrc) {
-//         thumbnailGallery.innerHTML = ''; // Clear existing thumbnails
+    function createThumbnails(projectTitle, mainImageSrc) {
+        thumbnailGallery.innerHTML = ''; // Clear existing thumbnails
         
-//         const images = projectImages[projectTitle] || [];
-//         images.forEach((imgSrc, index) => {
-//             const thumbnail = document.createElement('img');
-//             thumbnail.src = imgSrc;
-//             thumbnail.alt = `${projectTitle} view ${index + 1}`;
-//             thumbnail.classList.add('thumbnail');
-//             if (imgSrc === mainImageSrc) thumbnail.classList.add('active');
+        const images = projectImages[projectTitle] || [];
+        console.log(projectImages[projectTitle])
+        images.forEach((imgSrc, index) => {
+            const thumbnail = document.createElement('img');
+            const thumbailImgPath = '/assets/Portefolio/';
+            thumbnail.src = thumbailImgPath+projectTitle+imgSrc;
+            thumbnail.alt = `${projectTitle} view ${index + 1}`;
+            thumbnail.classList.add('thumbnail');
+            if (imgSrc === mainImageSrc) thumbnail.classList.add('active');
             
-//             thumbnail.addEventListener('click', () => {
-//                 modalImage.src = imgSrc;
-//                 // Update active state
-//                 thumbnailGallery.querySelectorAll('.thumbnail').forEach(thumb => 
-//                     thumb.classList.remove('active'));
-//                 thumbnail.classList.add('active');
+            thumbnail.addEventListener('click', () => {
+                modalImage.src = thumbailImgPath+projectTitle+imgSrc;
+                // Update active state
+                thumbnailGallery.querySelectorAll('.thumbnail').forEach(thumb => 
+                    thumb.classList.remove('active'));
+                thumbnail.classList.add('active');
                 
-//                 // Animate main image change
-//                 modalImage.style.opacity = '0';
-//                 setTimeout(() => {
-//                     modalImage.style.opacity = '1';
-//                 }, 50);
-//             });
+                // Animate main image change
+                modalImage.style.opacity = '0';
+                setTimeout(() => {
+                    modalImage.style.opacity = '1';
+                }, 50);
+            });
             
-//             thumbnailGallery.appendChild(thumbnail);
-//         });
-//     }
+            thumbnailGallery.appendChild(thumbnail);
+        });
+    }
     
-//     // Updated openModal function
-//     function openModal(card) {
-//         const cardImage = card.querySelector('.card-image img');
-//         const cardTitle = card.querySelector('h4');
-//         const cardDescription = card.querySelector('.card-description');
+    // Updated openModal function
+    function openModal(card) {
+        const cardImage = card.querySelector('.card-image img');
+        const cardTitle = card.querySelector('h4');
+        const cardDescription = card.querySelector('.card-description');
         
-//         modalImage.src = cardImage.src;
-//         modalImage.alt = cardImage.alt;
-//         modalTitle.textContent = cardTitle.textContent;
-//         modalDescription.textContent = cardDescription.textContent;
+        modalImage.src = cardImage.src;
+        modalImage.alt = cardImage.alt;
+        modalTitle.textContent = cardTitle.textContent;
+        modalDescription.textContent = cardDescription.textContent;
         
-//         // Create thumbnails for the project
-//         createThumbnails(cardTitle.textContent, cardImage.src);
+        // Create thumbnails for the project
+        createThumbnails(cardTitle.textContent, cardImage.src);
         
-//         modal.style.display = 'block';
-//         modal.offsetHeight; // Trigger reflow
-//         modal.classList.add('show');
-//         document.body.style.overflow = 'hidden';
-//     }
+        modal.style.display = 'block';
+        modal.offsetHeight; // Trigger reflow
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
     
-//     // Rest of the modal code remains the same...
+    // Rest of the modal code remains the same...
     
-//     // Close modal function
-//     function closeModal() {
-//         modal.classList.remove('show');
-//         setTimeout(() => {
-//             modal.style.display = 'none';
-//             document.body.style.overflow = 'auto';
-//             thumbnailGallery.innerHTML = ''; // Clear thumbnails when closing
-//         }, 300);
-//     }
+    // Close modal function
+    function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            thumbnailGallery.innerHTML = ''; // Clear thumbnails when closing
+        }, 300);
+    }
     
-//     // Event listeners
-//     document.querySelectorAll('.portfolio-card').forEach(card => {
-//         card.addEventListener('click', () => openModal(card));
-//     });
+    // Event listeners
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+    });
     
-//     closeButton.addEventListener('click', closeModal);
+    closeButton.addEventListener('click', closeModal);
     
-//     window.addEventListener('click', (event) => {
-//         if (event.target === modal) {
-//             closeModal();
-//         }
-//     });
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
     
-//     document.addEventListener('keydown', (event) => {
-//         if (event.key === 'Escape' && modal.style.display === 'block') {
-//             closeModal();
-//         }
-//     });
-// });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     const burger = document.querySelector('.burger');
@@ -233,19 +255,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-links li');
 
    
-    burger.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
 
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+
+            burger.classList.toggle('toggle');
         });
-
-        burger.classList.toggle('toggle');
-    });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
