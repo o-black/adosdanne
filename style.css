@@ -590,3 +590,33 @@ h1 {
         margin-left: 0.5em;
     }
 }
+/* Image loading effects */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Logo specific fixes */
+.logo img {
+    height: 60px !important;
+    width: auto !important;
+    object-fit: contain;
+    max-width: none;
+}

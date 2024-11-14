@@ -292,3 +292,36 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 });
+// Image loading handler
+document.addEventListener('DOMContentLoaded', function() {
+    // Lazy loading
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => {
+        imageObserver.observe(img);
+    });
+
+    // Standardize modal images
+    const modalImages = document.querySelectorAll('.modal-image');
+    modalImages.forEach(img => {
+        img.addEventListener('load', function() {
+            if (this.naturalWidth > this.naturalHeight) {
+                this.style.width = '100%';
+                this.style.height = 'auto';
+            } else {
+                this.style.height = '80vh';
+                this.style.width = 'auto';
+            }
+        });
+    });
+});
