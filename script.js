@@ -110,6 +110,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial setup to show the first item
     updateCards();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const paragraphs = document.querySelectorAll('.card-description');
+
+    paragraphs.forEach(paragraph => {
+        const maxLength = 50; // Maximum character limit
+        const originalText = paragraph.textContent.trim();
+
+        if (originalText.length > maxLength) {
+            const truncatedText = originalText.slice(0, maxLength) + '...';
+            paragraph.textContent = truncatedText;
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('modal');
     const modalImage = modal.querySelector('.main-image');
