@@ -252,6 +252,7 @@ h2,h3,p{
         pointer-events: none;
         visibility: hidden;
         transform-origin: center center;
+        cursor:pointer;
     }
 
     .carousel-item.active,
