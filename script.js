@@ -110,19 +110,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial setup to show the first item
     updateCards();
 });
-document.addEventListener('DOMContentLoaded', () => {
-    const paragraphs = document.querySelectorAll('.card-description');
+// document.addEventListener('DOMContentLoaded', () => {
+//     const paragraphs = document.querySelectorAll('.card-description');
 
-    paragraphs.forEach(paragraph => {
-        const maxLength = 125; // Maximum character limit
-        const originalText = paragraph.textContent.trim();
+//     paragraphs.forEach(paragraph => {
+//         const maxLength = 125; // Maximum character limit
+//         const originalText = paragraph.textContent.trim();
 
-        if (originalText.length > maxLength) {
-            const truncatedText = originalText.slice(0, maxLength) + '...';
-            paragraph.textContent = truncatedText;
-        }
-    });
-});
+//         if (originalText.length > maxLength) {
+//             const truncatedText = originalText.slice(0, maxLength) + '...';
+//             paragraph.textContent = truncatedText;
+//         }
+//     });
+// });
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -233,7 +234,8 @@ document.addEventListener('DOMContentLoaded', function() {
         modalImage.src = cardImage.src;
         modalImage.alt = cardImage.alt;
         modalTitle.textContent = cardTitle.textContent;
-        modalDescription.textContent = cardDescription.textContent;
+        modalDescription.textContent =  cardDescription.getAttribute('data-full-text');
+        ;
         
         // Create thumbnails for the project
         createThumbnails(cardTitle.textContent, cardImage.src);
