@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="card-content">
                             <h4>Appolo</h4>
-                            <p class="card-description">Illustrations ludiques pour livre jeunesse</p>
+                            <p class="card-description">Le but de l’exercice était la refonte de l’aspect visuel du magazine d’art Apollo. On a cherché à se baser sur la définition mythologique et agrémenter l’aspect visuel par un rouge inspirant la passion et l’or qui ajoute une touche de raffinement à l’allure générale.</p>
                             <a class="card-button">Voir plus</a>
                         </div>
                     </div>
@@ -374,93 +374,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </section>
 
-<!-- Updated JavaScript -->
-<!-- <script>
-document.addEventListener('DOMContentLoaded', function() {
-        const carousel = document.querySelector('.carousel-items');
-        const items = document.querySelectorAll('.carousel-item');
-        const prevButton = document.querySelector('.carousel-button.prev');
-        const nextButton = document.querySelector('.carousel-button.next');
-        const dotsContainer = document.querySelector('.carousel-dots');
-        
-        let currentIndex = 0;
-        const totalItems = items.length;
-
-        // Create dots
-        items.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
-        });
-
-        function updateDots() {
-            document.querySelectorAll('.dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function updateCards() {
-            items.forEach((item, index) => {
-                item.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
-                
-                if (index === currentIndex) {
-                    item.classList.add('active');
-                } else if (index === (currentIndex - 1 + totalItems) % totalItems) {
-                    item.classList.add('prev');
-                } else if (index === (currentIndex + 1) % totalItems) {
-                    item.classList.add('next');
-                } else if (index === (currentIndex - 2 + totalItems) % totalItems) {
-                    item.classList.add('far-prev');
-                } else if (index === (currentIndex + 2) % totalItems) {
-                    item.classList.add('far-next');
-                }
-            });
-            updateDots();
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateCards();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            updateCards();
-        }
-
-        // Event listeners
-        nextButton.addEventListener('click', nextSlide);
-        prevButton.addEventListener('click', prevSlide);
-        
-        // Initial setup
-        updateCards();
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevSlide();
-            if (e.key === 'ArrowRight') nextSlide();
-        });
-
-        // Touch support
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        carousel.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        carousel.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) {
-                nextSlide();
-            } else if (touchEndX - touchStartX > 50) {
-                prevSlide();
-            }
-        });
-    });
-</script> -->
     </main>
 
 <footer class="site-footer">
