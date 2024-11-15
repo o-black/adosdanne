@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const paragraphs = document.querySelectorAll('.card-description');
 
     paragraphs.forEach(paragraph => {
-        const maxLength = 50; // Maximum character limit
+        const maxLength = 125; // Maximum character limit
         const originalText = paragraph.textContent.trim();
 
         if (originalText.length > maxLength) {
