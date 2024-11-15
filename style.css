@@ -20,6 +20,7 @@
 body {
     p{
         font-family:'Montserrat',sans-serif;
+        font-weight: 300;
     }
     h1,h2,h3{
         font-family: 'Kalnia',sans-serif;
@@ -75,6 +76,7 @@ nav {
     transition: all 0.3s ease;
 }
 .green-button {
+    padding: 0.5em 1em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
   border-radius: 25px;
@@ -498,7 +500,7 @@ button {
 
 
 .contactUs-button{
-    padding: 0.5em;
+    padding: 0.5em 1em;
     color: white;
     font-weight: bold;
     margin: auto;
