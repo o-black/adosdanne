@@ -208,38 +208,8 @@ h1 {
     }
 }
 
-/***************************************************************************/
-/*CONTACTS*/
-/* styles.css */
-:root {
-    --green: #336600;
-    --light-green: #99CC66;
-    --white: #FFFFFF;
-    --black: #000000;
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: var(--white);
-    color: var(--black);
-}
-
-header {
-    background-color: var(--white);
-    padding: 1rem;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .logo img {
     height: 50px;
@@ -261,11 +231,6 @@ nav {
 
 .nav-links a[href="#design-graphique"] {
     color: var(--green);
-}
-
-.burger {
-    display: none;
-    cursor: pointer;
 }
 
 .burger div {
@@ -412,17 +377,7 @@ button {
     --black: #000000;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--black);
-}
 
 header {
     background-color: var(--white);
