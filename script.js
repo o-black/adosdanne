@@ -125,6 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    const paragraphs = document.querySelectorAll('.card-description');
+    
+    // Store original text content in a data attribute
+    paragraphs.forEach(paragraph => {
+        const originalText = paragraph.textContent.trim();
+        paragraph.dataset.fullText = originalText;
+        
+        if (originalText.length > 50) {
+            const truncatedText = originalText.slice(0, 50) + '...';
+            paragraph.textContent = truncatedText;
+        }
+    });
     const modal = document.getElementById('modal');
     const modalImage = modal.querySelector('.main-image');
     const modalTitle = modal.querySelector('.modal-text h3');
