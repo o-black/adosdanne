@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.remove('show');
         setTimeout(() => {
             modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            document.body.style.overflowX = 'hidden';
             thumbnailGallery.innerHTML = ''; // Clear thumbnails when closing
         }, 300);
     }
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
             !burger.contains(e.target)) {
             nav.classList.remove('nav-active');
             burger.classList.remove('toggle');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'hidden';
         }
     });
 
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', () => {
             nav.classList.remove('nav-active');
             burger.classList.remove('toggle');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'hidden';
         });
     });
 
