@@ -436,10 +436,7 @@ h2,h3,p{
     
    /* Base mobile styles (for devices under 768px) */
 @media screen and (max-width: 768px) {
-    /* Header & Navigation */
-    /* .nav-links {
-        display: none; /* Hide regular nav links on mobile */
-    } */
+    
     
     .burger {
         display: block; /* Show burger menu */
