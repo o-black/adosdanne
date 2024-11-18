@@ -110,19 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial setup to show the first item
     updateCards();
 });
-// document.addEventListener('DOMContentLoaded', () => {
-//     const paragraphs = document.querySelectorAll('.card-description');
-
-//     paragraphs.forEach(paragraph => {
-//         const maxLength = 125; // Maximum character limit
-//         const originalText = paragraph.textContent.trim();
-
-//         if (originalText.length > maxLength) {
-//             const truncatedText = originalText.slice(0, maxLength) + '...';
-//             paragraph.textContent = truncatedText;
-//         }
-//     });
-// });
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -283,43 +270,53 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
 
-   
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('nav-active');
-
-            navLinks.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                }
-            });
-
-            burger.classList.toggle('toggle');
+    function toggleNav() {
+        // Toggle navigation
+        nav.classList.toggle('nav-active');
+        
+        // Toggle animations for links
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
         });
+
+        // Toggle burger animation
+        burger.classList.toggle('toggle');
+        
+        // Toggle body overflow
+        document.body.style.overflow = nav.classList.contains('nav-active') ? 'hidden' : 'auto';
+    }
+
+    function closeNav() {
+        nav.classList.remove('nav-active');
+        burger.classList.remove('toggle');
+        document.body.style.overflow = 'auto';
+        
+        // Clear animations
+        navLinks.forEach(link => {
+            link.style.animation = '';
+        });
+    }
+
+    // Burger click handler
+    burger.addEventListener('click', toggleNav);
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (nav.classList.contains('nav-active') && 
             !nav.contains(e.target) && 
             !burger.contains(e.target)) {
-            nav.classList.remove('nav-active');
-            burger.classList.remove('toggle');
-            document.body.style.overflow = 'hidden';
+            closeNav();
         }
     });
 
     // Close menu when clicking a link
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('nav-active');
-            burger.classList.remove('toggle');
-            document.body.style.overflow = 'hidden';
-        });
+        link.addEventListener('click', closeNav);
     });
-
-    
-
 });
 // Image loading handler
 document.addEventListener('DOMContentLoaded', function() {
@@ -353,4 +350,51 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById('prenom').value;
+            const lastName = document.getElementById('nom').value;
+            const email = document.getElementById('courriel').value;
+            const subject = document.getElementById('sujet').value;
+            const message = document.getElementById('message').value;
+            
+            // Get selected radio button value
+            const radioButtons = document.getElementsByName('fav_language');
+            let selectedType = '';
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                    selectedType = radioButton.nextElementSibling.textContent;
+                    break;
+                }
+            }
+            
+            // Construct email body
+            const emailBody = `
+                De: ${firstName} ${lastName}
+                Courriel: ${email}
+                Type de message: ${selectedType}
+                Sujet: ${subject}
+                
+                Message:
+                ${message}
+            `.trim();
+            
+            // Construct mailto URL
+            const mailtoUrl = `mailto:your-adosdanne.art@gmail.com?subject=${encodeURIComponent(selectedType + ': ' + subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open default email client
+            window.location.href = mailtoUrl;
+            
+            // Optional: Reset form after submission
+            contactForm.reset();
+        });
+    }
 });
