@@ -221,8 +221,21 @@ document.addEventListener('DOMContentLoaded', function() {
         modalImage.src = cardImage.src;
         modalImage.alt = cardImage.alt;
         modalTitle.textContent = cardTitle.textContent;
-        modalDescription.textContent =  cardDescription.getAttribute('data-full-text');
-        ;
+        modalDescription.textContent = cardDescription.getAttribute('data-full-text');
+        
+        // Add button if it doesn't exist
+        let modalButton = modal.querySelector('.modal-button');
+        if (!modalButton) {
+            modalButton = document.createElement('a');
+            modalButton.classList.add('modal-button');
+            modalButton.textContent = 'View Project';
+            modalButton.href = 'https://www.behance.net/cassandragomez7';
+            modalButton.target = '_blank'; // Opens in new tab
+            modal.querySelector('.modal-text').appendChild(modalButton);
+        } else {
+            // Update existing button's href (in case it was changed)
+            modalButton.href = 'https://www.behance.net/cassandragomez7';
+        }
         
         // Create thumbnails for the project
         createThumbnails(cardTitle.textContent, cardImage.src);

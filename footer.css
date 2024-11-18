@@ -2,8 +2,9 @@
     background-color: #f8f8f8;
     border-top: 1px solid #e5e5e5;
     padding: 3rem 0 1rem 0;
-    margin-top: 4rem;
     width: 100vw;
+    position: relative;
+    clear: both;
 }
 
 .footer-container {
