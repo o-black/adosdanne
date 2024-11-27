@@ -11,9 +11,7 @@ img {
     max-width: 100%;
 }
 
-h2, h3, p {
-    padding-left: 1em;
-}
+
 
 /* Layout Containers */
 .container {
@@ -36,7 +34,9 @@ h2, h3, p {
 #intro img {
     margin-left: 10em;
 }
-
+#intro p{
+    width: 90%;;
+}
 /* Histoire Section */
 #histoire {
     position: relative;
@@ -108,12 +108,17 @@ h2, h3, p {
     margin-bottom: 4rem;
     display: flex;
     flex-direction: column;
-    width: 90vw;
+    width: 98vw;
+}
 
-    h2 {
-        font-size: 32px;
-        margin-left: auto;
-    }
+#services h2 {
+    font-size: 32px;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 2.5em;
+    margin-bottom: 2rem;
+    width: 94%;
+    max-width: 1300px;
 }
 
 /* Portfolio Section */
@@ -135,6 +140,9 @@ h2, h3, p {
         width: 100%;
         top: 0;
         left: 0;
+    }
+    h2{
+        margin-left: 2.5rem;
     }
 }
 
@@ -413,6 +421,12 @@ h2, h3, p {
             transform: rotate(45deg) translate(-5px, -6px);
         }
     }
+    @media screen and (max-width: 425px) {
+    /* Portfolio Section */
+    #portfolio h2 {
+        margin-left: 2em;
+        }
+    }
 }
 
 /* Media Queries */
@@ -430,12 +444,6 @@ h2, h3, p {
 
     /* Background Image */
     .bg-img {
-        background: linear-gradient(to right, 
-            var(--peach) 0%,
-            var(--peach) 75%,
-            var(--peach) 90%,
-            rgba(255, 227, 213, 0) 100%
-        ), url('/assets/declinaison\ 1\ 0524\ .png');
         background-size: 100%;
         min-height: 25em;
         opacity: 0.3;
@@ -467,6 +475,9 @@ h2, h3, p {
             ), url('/assets/declinaison\ 1\ 0524\ .png');
             background-size: 100%;
         }
+        h2{
+            margin-left: 1rem;
+        }
     }
 
     /* Carousel Adjustments */
@@ -494,6 +505,26 @@ h2, h3, p {
     .carousel-item.next {
         opacity: 0;
     }
+
+    #intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .logo-large {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .logo-large img {
+        max-width: 80%;
+    
+    }
 }
 
 /* Desktop Styles */
@@ -519,3 +550,26 @@ h2, h3, p {
         background-size: 100%;
     }
 }
+
+/* Align content with histoire section */
+#services .container-service {
+    display: flex;
+ 
+    gap: 2rem;
+    width: 94%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Portfolio title alignment
+#portfolio h2 {
+    margin-top: 2rem;
+    margin-left: 3.5em;
+    width: 94%;
+    max-width: 1300px;
+}
+
+/* Keep the logo margin adjustment */
+/*.logo-large img {
+    margin-left: 7em;
+} */

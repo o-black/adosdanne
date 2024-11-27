@@ -75,11 +75,12 @@
   
 }
 
-/* Tablet breakpoint */
+/* Tablet and Mobile Styles */
 @media screen and (max-width: 1023px) {
-    .content{
-        flex-direction: column; /* Default for mobile */
+    .content {
+        flex-direction: column; /* Stack elements vertically */
     }
+
     .text {
         max-width: 80%;
         padding: 2.5rem;
@@ -89,12 +90,19 @@
     .image-placeholder {
         height: 400px;
     }
+
+    /* Move the signature image to the bottom */
+    img {
+        order: 3; /* Ensure it appears last */
+        margin-top: 1rem;
+        align-self: center; /* Center the image */
+    }
 }
 
-/* Mobile breakpoint */
+/* Mobile Styles */
 @media screen and (max-width: 768px) {
     .content {
-        flex-direction: column; /* Stacks for mobile */
+        flex-direction: column; /* Stack elements vertically */
         align-items: center;
     }
 
@@ -110,6 +118,13 @@
         order: 1;
         margin-bottom: 1rem;
         max-width: 600px;
+    }
+
+    /* Move the signature image to the bottom */
+    img {
+        order: 3; /* Ensure it appears last */
+        margin-top: 1rem;
+        align-self: center; /* Center the image */
     }
 }
 

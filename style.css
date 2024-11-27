@@ -60,8 +60,46 @@ nav {
 }
 
 .nav-links a {
-    color: var(--white);
+    color: var(--black);
     text-decoration: none;
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--green);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--white);
+    background-color: var(--green);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links a.active {
+    color: var(--white);
+    background-color: var(--green);
+    font-weight: 700;
+}
+
+.nav-links a.active::after {
+    display: none;
+}
+
+.nav-links a.active:hover {
+    background-color: var(--light-green);
+    color: var(--white);
 }
 
 .burger {
