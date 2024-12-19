@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - À Dos D'Anne</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="/index.html"><img alt="logo-no slogan" height="60" loading="eager" src="/assets/logo seul 0524.png" style="width: auto;" width="1426"/></a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="/propos.html">A Propos</a></li>
+                <li><a href="/contact.html" class="active">Contact</a></li>
+                <li><a href="/designgraphique.html">Design Graphique</a></li>
+                <li><a href="/gallery.html">Galerie</a></li>
+                
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="gallery">
+            <div class="bg-img"></div>
+            <h2>Notre Galerie</h2>
+            <div class="carousel-container">
+                <button class="carousel-button prev" aria-label="Previous slide">&#10094;</button>
+                <div class="carousel-wrapper">
+                    <div class="carousel-items">
+                        <!-- Cards will be dynamically populated here -->
+                    </div>
+                </div>
+                <button class="carousel-button next" aria-label="Next slide">&#10095;</button>
+                <div class="carousel-dots"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>À Dos D'Anne</h3>
+                <p>Création d'identités visuelles et illustrations uniques</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="https://www.behance.net/YourBehanceProfile" target="_blank" rel="noopener">Behance</a>
+                    <a href="https://www.instagram.com/a_dos_danne" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=100064044342398" target="_blank" rel="noopener">Facebook</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Informations légales</h3>
+                <ul>
+                    <li><a href="/conditions.html">Termes, Conditions et autre</a></li>
+                    
+    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> À Dos D'Anne. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <script src="gallery.js"></script>
+</body>
+</html>
