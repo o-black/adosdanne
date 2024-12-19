@@ -18,6 +18,10 @@
 }
 
 body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     p{
         font-family:'Montserrat',sans-serif;
         font-weight: 300;
@@ -29,8 +33,8 @@ body {
 }
 
 header {
-    background-color: var(--green);
-    padding: 1rem;
+    background-color: var(--white);
+    flex-shrink: 0;
 }
 
 nav {
@@ -42,7 +46,7 @@ nav {
 }
 
 .logo {
-    margin-left: 1em;
+    margin-left: 1.5em;
     margin-top: 0.2em;
     color: black;
     font-size: 1.5rem;
@@ -63,10 +67,10 @@ nav {
     color: var(--black);
     text-decoration: none;
     position: relative;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     transition: all 0.3s ease;
     border-radius: 20px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
@@ -143,9 +147,15 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 62px);
 }
-
+.main{
+    background-size: cover;
+    aspect-ratio: 16/9;
+    background-image: url('/assets/Page\ d\'acceuil-min.JPG');
+    height: 40em;
+    background-position-y: center;
+}
 .social-icons {
     position: absolute;
     top: 1rem;
@@ -277,7 +287,9 @@ h1 {
 
 
 .logo img {
-    height: 50px;
+    height: 45px;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-links {
@@ -308,7 +320,6 @@ h1 {
 
 main {
     padding: 2rem;
-    max-width: 1200px;
     margin: 0 auto;
     width: 100vw;
 }
@@ -446,7 +457,6 @@ button {
 
 header {
     background-color: var(--white);
-    padding: 1rem;
 
     a{
         color: black;
@@ -478,7 +488,7 @@ nav {
 }
 
 main {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding: 2rem;
 }
@@ -642,4 +652,94 @@ h1 {
     width: auto !important;
     object-fit: contain;
     max-width: none;
+}
+
+.main::before {
+    content: '';
+    position: absolute;
+    top: 0em;
+    left: 0;
+    width: 100%;
+    height: 50em;
+    background-image: url('/assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    background-color: whitesmoke;/* Move behind the overlay */
+}
+
+/* Add dark overlay */
+main::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
+    z-index: -1;
+}
+
+/* Add styles for the main logo */
+.main-image {
+    max-width: 100%;
+    height: auto;
+    filter: brightness(1.2) contrast(1.1); /* Increase brightness and contrast */
+    z-index: 2; /* Ensure logo is above overlay */
+    position: relative;
+    margin: 0 auto; /* Center horizontally */
+    display: block; /* Ensure proper margin behavior */
+}
+
+.logo-container, .buttons {
+    position: relative;
+    z-index: 1;
+}
+
+.main {
+    position: relative;
+    min-height: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.main-image {
+    max-width: 100%;
+    height: auto;
+    filter: brightness(1.2) contrast(1.1);
+    z-index: 2;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+}
+
+.buttons {
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+}
+
+/* Restore original button styles */
+.green-button {
+    padding: 0.5em 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    border-radius: 25px;
+    font-size: larger;
+}
+
+.green-button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure background covers exactly the main section */
+.main::before,
+.main::after {
+    height: 60em;
 }
