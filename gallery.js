@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const carouselContainer = document.querySelector('.carousel-container');
     const carouselItems = document.querySelector('.carousel-items');
     const prevButton = document.querySelector('.carousel-button.prev');
     const nextButton = document.querySelector('.carousel-button.next');
@@ -8,32 +9,44 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             image: '/assets/Portefolio/Affiches/Affiche Final 25_VICTORIOUS.jpg',
             title: 'Affiches',
-            description: 'Cet exercice avait pour but de créer une affiche fictive pour le Festival de la typographie.'
+            description: 'Cet exercice avait pour but de créer une affiche fictive pour le Festival de la typographie.',
+            date: 'Mars 2024',
+            fullDescription: 'Une affiche créée pour le Festival de la typographie, mettant en valeur différentes polices de caractères et leurs utilisations créatives. Le design s\'inspire des mouvements typographiques modernes tout en conservant une lisibilité optimale.'
         },
         {
             image: '/assets/Portefolio/Appolo/Moodboard 3.JPG',
             title: 'Appolo',
-            description: 'Le but de l\'exercice était la refonte de l\'aspect visuel du magazine d\'art Apollo.'
+            description: 'Le but de l\'exercice était la refonte de l\'aspect visuel du magazine d\'art Apollo.',
+            date: 'Mars 2024',
+            fullDescription: 'Le but de l\'exercice était la refonte de l\'aspect visuel du magazine d\'art Apollo. Le design s\'inspire des mouvements typographiques modernes tout en conservant une lisibilité optimale.'
         },
         {
             image: '/assets/Portefolio/Cola couronne/ColaCouronne_GrandeCanette.jpg',
             title: 'Cola couronne',
-            description: 'Le but de l\'exercice était la refonte de l\'identité visuelle tout en gardant le même logo.'
+            description: 'Le but de l\'exercice était la refonte de l\'identité visuelle tout en gardant le même logo.',
+            date: 'Mars 2024',
+            fullDescription: 'Le but de l\'exercice était la refonte de l\'identité visuelle tout en gardant le même logo. Le design s\'inspire des mouvements typographiques modernes tout en conservant une lisibilité optimale.'
         },
         {
             image: '/assets/Portefolio/Librairies Racines/Packaging + Promotionnel.jpg',
             title: 'Librairies Racines',
-            description: 'L\'exercice était de construire un emballage basé sur le branding existant de la compagnie.'
+            description: 'L\'exercice était de construire un emballage basé sur le branding existant de la compagnie.',
+            date: 'Mars 2024',
+            fullDescription: 'L\'exercice était de construire un emballage basé sur le branding existant de la compagnie. Le design s\'inspire des mouvements typographiques modernes tout en conservant une lisibilité optimale.'
         },
         {
             image: '/assets/Portefolio/Pizzeria Olive et Lune/MoodBoard 2.JPG',
             title: 'Pizzeria Olive et Lune',
-            description: 'Nous avons créé pour ce couple fictif un logo pour leur pizzeria moderne.'
+            description: 'Nous avons créé pour ce couple fictif un logo pour leur pizzeria moderne.',
+            date: 'Mars 2024',
+            fullDescription: 'Nous avons créé pour ce couple fictif un logo pour leur pizzeria moderne. Le design s\'inspire des mouvements typographiques modernes tout en conservant une lisibilité optimale.'
         },
         {
             image: '/assets/Portefolio/Typomorphie/Mockup_ Cup.jpg',
             title: 'Typomorphie',
-            description: 'Pour cet exercice une nouvelle compagnie de typographie voulait un logo qui les représentait.'
+            description: 'Pour cet exercice une nouvelle compagnie de typographie voulait un logo qui les représentait.',
+            date: 'Mars 2024',
+            fullDescription: 'Pour cet exercice une nouvelle compagnie de typographie voulait un logo qui les représentait. Le design s\'inspire des mouvements typographiques modernes tout en conservant une lisibilité optimale.'
         }
     ];
 
@@ -58,6 +71,23 @@ document.addEventListener('DOMContentLoaded', function() {
         carouselItems.appendChild(card);
     });
 
+    // Create and add dots - Moving this outside the carousel-wrapper
+    const dotsContainer = document.createElement('div');
+    dotsContainer.className = 'carousel-dots';
+    
+    galleryItems.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.className = `carousel-dot${index === 0 ? ' active' : ''}`;
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    // Add dots container directly to carousel container, after the wrapper
+    carouselContainer.appendChild(dotsContainer);
+
     function updateCarousel() {
         const items = document.querySelectorAll('.carousel-item');
         items.forEach((item, index) => {
@@ -70,6 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (index === (currentIndex + 1) % items.length) {
                 item.classList.add('next');
             }
+        });
+
+        // Update dots
+        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
         });
     }
 
@@ -120,8 +155,19 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="popup">
             <div class="popup-content">
                 <span class="close">&times;</span>
-                <img class="popup-image" src="" alt="">
-                <div class="thumbnail-gallery"></div>
+                <div class="popup-image-container">
+                    <img class="popup-image" src="" alt="">
+                    <div class="popup-nav-buttons">
+                        <button class="popup-nav-button popup-nav-prev">&#10094;</button>
+                        <button class="popup-nav-button popup-nav-next">&#10095;</button>
+                    </div>
+                    <div class="dot-navigation"></div>
+                </div>
+                <div class="popup-info">
+                    <h3 class="popup-title"></h3>
+                    <p class="popup-date"></p>
+                    <p class="popup-description"></p>
+                </div>
             </div>
         </div>
     `;
@@ -129,7 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const popup = document.querySelector('.popup');
     const popupImage = popup.querySelector('.popup-image');
-    const thumbnailGallery = popup.querySelector('.thumbnail-gallery');
     const closeButton = popup.querySelector('.close');
 
     // Sample related images for each gallery item
@@ -157,37 +202,82 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function openPopup(title, mainImage) {
-        popupImage.src = mainImage;
-        thumbnailGallery.innerHTML = '';
-        
-        // Add title to popup
-        const titleElement = popup.querySelector('.popup-title') || document.createElement('h3');
-        titleElement.className = 'popup-title';
-        titleElement.textContent = title;
-        if (!popup.querySelector('.popup-title')) {
-            popup.querySelector('.popup-content').insertBefore(titleElement, popup.querySelector('.popup-image'));
-        }
-
-        // Add thumbnails if available for this project
+        const item = galleryItems.find(item => item.title === title);
+        let currentImageIndex = 0;
         const images = relatedImages[title] || [mainImage];
-        images.forEach(img => {
-            const thumbnail = document.createElement('img');
-            thumbnail.src = img;
-            thumbnail.alt = title;
-            thumbnail.classList.toggle('active', img === mainImage);
-            thumbnail.addEventListener('click', () => {
-                popupImage.src = img;
-                thumbnailGallery.querySelectorAll('img').forEach(thumb => {
-                    thumb.classList.toggle('active', thumb.src === img);
-                });
+        
+        // Set main image
+        popupImage.src = mainImage;
+        popup.querySelector('.popup-title').textContent = title;
+        popup.querySelector('.popup-date').textContent = item.date;
+        popup.querySelector('.popup-description').textContent = item.fullDescription;
+
+        // Create dots
+        const dotNavigation = popup.querySelector('.dot-navigation');
+        dotNavigation.innerHTML = '';
+        images.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = `dot${index === 0 ? ' active' : ''}`;
+            dot.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateImage();
             });
-            thumbnailGallery.appendChild(thumbnail);
+            dotNavigation.appendChild(dot);
         });
 
-        // Show popup with animation
+        // Touch handling for swipe
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        popupImage.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        popupImage.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next image
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                } else {
+                    // Swipe right - previous image
+                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                }
+                updateImage();
+            }
+        }
+
+        function updateImage() {
+            popupImage.src = images[currentImageIndex];
+            // Update dot active state
+            dotNavigation.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentImageIndex);
+            });
+        }
+
+        // Navigation buttons (for desktop)
+        const prevButton = popup.querySelector('.popup-nav-prev');
+        const nextButton = popup.querySelector('.popup-nav-next');
+        
+        prevButton.onclick = () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateImage();
+        };
+        
+        nextButton.onclick = () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateImage();
+        };
+
         popup.style.display = 'flex';
-        // Trigger reflow
-        popup.offsetHeight;
+        popup.offsetHeight; // Trigger reflow
         popup.classList.add('show');
         document.body.style.overflow = 'hidden';
     }
@@ -209,25 +299,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300); // Match this with the CSS transition duration
     }
 
-    // Add burger menu functionality
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
+    // Add to the existing JavaScript after the carousel items initialization
+    function initializeCarousel() {
+        // ... existing carousel initialization code ...
 
-    burger.addEventListener('click', () => {
-        // Toggle Nav
-        nav.classList.toggle('nav-active');
+        // Add dots navigation
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'carousel-dots';
         
-        // Animate Links
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
+        galleryItems.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = `carousel-dot${index === 0 ? ' active' : ''}`;
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+            dotsContainer.appendChild(dot);
         });
-        
-        // Burger Animation
-        burger.classList.toggle('toggle');
-    });
+
+        // Add dots container after the carousel
+        document.querySelector('.carousel-container').appendChild(dotsContainer);
+
+        // Update the updateCarousel function to include dot updates
+        function updateCarousel() {
+            // ... existing carousel update code ...
+
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Add dot updates to next/prev button clicks
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        });
+    }
+
+    // Call the initialization function when the document is ready
+    document.addEventListener('DOMContentLoaded', initializeCarousel);
 }); 
