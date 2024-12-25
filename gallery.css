@@ -584,7 +584,8 @@ button {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 1rem;
-        height: 95vh;
+        height: 85vh;
+        min-height: 85vh;
         margin: 2.5vh auto;
     }
 
@@ -748,7 +749,7 @@ body {
         grid-template-columns: 1fr;
         gap: 0.5rem;
         padding: 1rem;
-        height: 85vh;
+        min-height: 75vh;
         margin: 7.5vh auto;
         display: flex;
         flex-direction: column;
@@ -1010,4 +1011,43 @@ body {
     .carousel-item {
         width: 300px;
     }
+}
+
+/* Tablet specific adjustments */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .popup-content {
+        height: auto;
+        min-height: 40vh; /* Reduced from 50vh */
+        max-height: 80vh; /* Reduced from 90vh */
+        margin: 10vh auto; /* Increased margin to position popup more towards center */
+        padding: 1.5rem;
+    }
+
+    .popup-image-container {
+        max-height: 45vh; /* Reduced from 50vh */
+    }
+
+    .popup-info {
+        max-height: 35vh; /* Reduced from 40vh */
+        padding-right: 0.5rem;
+    }
+}
+
+/* Target 1024px screens specifically */
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+    .popup .popup-content {
+        display: grid;
+        grid-template-columns: 55% 40%; /* Adjust columns to bring content closer */
+        gap: 0.5rem !important; /* Force smaller gap */
+    }
+
+    .popup .popup-info {
+        margin-left: -1rem; /* Pull content closer to image */
+    }
+}
+
+/* Ensure these styles take precedence */
+.popup.show .popup-content {
+    transform: scale(0.9);
+    opacity: 1;
 }
