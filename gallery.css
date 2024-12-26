@@ -92,7 +92,11 @@ button {
     padding-right: 0.5rem;
     padding-left: 0;
     overflow-y: auto;
-    margin: auto
+    margin: auto;
+    font-size: 1.15rem;
+}
+.popup-date,.popup-description,.popup-price,.popup-specs{
+    font-size: 1.15rem;
 }
 
 .popup-description{
@@ -395,12 +399,22 @@ button {
 .carousel-button.next { right: 2em; }
 
 /* Desktop and large screens */
-
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1441px) {
+    .popup-info {
+        bottom: 2.5%;
+        
+    }
+}
+@media screen and (min-width: 1025px) and (max-width: 1441px) {
     .popup-info {
         bottom: 10em;
         
     }
+  
+    
+}
+@media screen and (min-width: 1025px) {
+   
     .popup-image{
         width: 30em;
         aspect-ratio: 4/3;

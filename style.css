@@ -27,10 +27,15 @@ body {
         font-family:'Montserrat',sans-serif;
         font-weight: 300;
     }
-    h1,h2,h3{
+    h1,h2,h3,h4{
         font-family: 'Kalnia',sans-serif;
     }
     background-color: var(--white);
+    
+    .btn,.green-button,.card-button{
+        font-family:'Montserrat',sans-serif;
+
+    }
 }
 
 header {
@@ -48,6 +53,7 @@ nav {
 }
 
 .logo {
+    contain: strict;
     margin-left: 1.5em;
     margin-top: 0.2em;
     color: black;
@@ -59,6 +65,7 @@ nav {
 }
 
 .nav-links {
+    contain: content;
     display: flex;
     list-style: none;
 }
@@ -72,10 +79,10 @@ nav {
     text-decoration: none;
     position: relative;
     padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
+    transition: text-shadow 0.3s ease;
     border-radius: 20px;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: normal;
     text-shadow: none;
 }
 
@@ -120,15 +127,43 @@ nav {
 
 .green-button {
     padding: 0.5em 1em;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease;
-  border-radius: 25px;
-  font-size: larger;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 25px;
+    font-size: larger;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--green);
+    color: var(--white);
 }
 
 .green-button:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px) scale(1.05);
+    background-color: var(--light-green);
 }
+
+.green-button:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.green-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) rotate(35deg) scale(0);
+    transition: transform 0.5s ease;
+}
+
+.green-button:hover::after {
+    transform: translate(-50%, -50%) rotate(35deg) scale(1);
+}
+
 main {
     padding: 2rem;
     display: flex;
@@ -137,6 +172,13 @@ main {
     min-height: calc(100vh - 62px);
     margin: 0;
     width: 100%;
+
+    .buttons{
+        .btn{
+           min-width: auto;
+            padding: 0.6em;
+        }
+    }
 }
 .main{
     background-size: cover;
@@ -659,7 +701,7 @@ h1 {
 .main::before {
     content: '';
     position: absolute;
-    top: 0em;
+    top: 0;
     left: 0;
     width: 100%;
     height: 50em;
@@ -668,19 +710,13 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
     opacity: 1;
+    will-change: transform;
     mask-image: linear-gradient(to bottom, 
         white, 
-        white 25px,  /* Reduced from 100px */
-        rgba(255, 255, 255, 1) 30px,  /* Reduced from 100px */
-        rgba(255, 255, 255, 0.6) 50px,  /* Reduced from 150px */
-        rgba(255, 255, 255, 0) 75px  /* Reduced from 200px */
-    );
-    -webkit-mask-image: linear-gradient(to bottom, 
-        white, 
-        white 25px,  /* Reduced from 100px */
-        rgba(255, 255, 255, 1) 30px,  /* Reduced from 100px */
-        rgba(255, 255, 255, 0.6) 50px,  /* Reduced from 150px */
-        rgba(255, 255, 255, 0) 75px  /* Reduced from 200px */
+        white 25px,
+        rgba(255, 255, 255, 1) 30px,
+        rgba(255, 255, 255, 0.6) 50px,
+        rgba(255, 255, 255, 0) 75px
     );
 }
 
@@ -727,16 +763,6 @@ h1 {
     overflow: hidden;
 }
 
-.main-image {
-    max-width: 100%;
-    height: auto;
-    filter: brightness(1.2) contrast(1.1);
-    z-index: 2;
-    position: relative;
-    margin: 0 auto;
-    display: block;
-}
-
 .buttons {
     position: relative;
     z-index: 2;
@@ -747,7 +773,7 @@ h1 {
 .green-button {
     padding: 0.5em 1em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     border-radius: 25px;
     font-size: larger;
 }
@@ -777,7 +803,7 @@ h1 {
     height: 50em; /* Adjust based on your needs */
     background-color: white;
     width: 100rem;
-    opacity: 0.3;
+    opacity: 0.6;
     z-index: 1;
     pointer-events: none; /* Allows clicking through the overlay */
 }

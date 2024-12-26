@@ -60,7 +60,9 @@ img {
     }
 
     .histoire-content {
-        min-height: 17em;
+        position: relative;
+        top: 2em;
+        min-height: 15em;
         width: 94%;
         display: flex;
         z-index: 2;
@@ -69,10 +71,16 @@ img {
         box-sizing: border-box;
 
         .histoire-image {
+            background-image: url('/assets/file\ \(1\).jpg');
             width: 50%;
         }
-    }
 
+        
+    }
+    .green-button{
+        position: relative;
+        top: 1.5em;
+    }
     .histoire-text {
         width: 50%;
         padding: 1rem 1rem 2rem;
@@ -90,7 +98,7 @@ img {
 /* Background Image Styles */
 .bg-img {
     width: 100vw;
-    min-height: 28em;
+    min-height: 24em;
     z-index: 1;
     position: absolute;
     background: linear-gradient(to right, 
