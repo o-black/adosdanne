@@ -493,9 +493,11 @@ button {
     .popup-content {
         display: flex;
         flex-direction: column;
-        height: 90vh;
+        /* height: 90vh; */
         margin: 7.5vh auto;
         padding: 1rem;
+        padding-top: 3em;
+        padding-bottom: 4em;
     }
 
     .popup-image-container {
@@ -506,6 +508,7 @@ button {
     }
     .popup.show .popup-image{
     height: 75%;
+    aspect-ratio: 4/3;
 }
     .popup-info {
         right: 0;
@@ -541,9 +544,13 @@ button {
 @media screen and (max-width: 480px) {
     .popup-content {
         width: 95%;
-        height: 75vh;
+        min-height: 75vh;
+        
         margin: 5vh auto;
         padding: 0.8rem;
+        padding-top: 3em;
+        padding-bottom: 4em;
+
     }
 
     .popup-image-container {
