@@ -110,14 +110,7 @@ button {
     border-radius: 8px;
 }
 
-.popup-nav-buttons {
-    /* Remove or comment out the existing styles */
-    /* display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: auto;
-    margin-bottom: 1.5rem; */
-}
+
 
 .popup-nav-button {
     position: absolute;
@@ -250,8 +243,14 @@ button {
     padding: 2rem 2rem;
     width: 85vw;
     min-height: 38rem;
-}
 
+
+}
+#gallery>h4{
+    font-family:'Montserrat',sans-serif;
+    font-weight: normal;
+    color: grey;
+}
 .carousel-container {
     position: relative;
     display: flex;

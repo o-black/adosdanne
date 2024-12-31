@@ -51,6 +51,9 @@ nav {
     font-family: 'Kalnia',sans-serif;
     font-weight: bold;
 }
+h2{
+    font-size: 32px;
+}
 
 .logo {
     contain: strict;
@@ -62,6 +65,8 @@ nav {
     text-decoration: none;
     display: flex;
     align-items: center;
+    width: 60px;
+    height: 60px;
 }
 
 .nav-links {

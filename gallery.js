@@ -23,50 +23,62 @@ document.addEventListener('DOMContentLoaded', function() {
             date: 'Mars 2024',
             fullDescription: 'Un corps en pleine transcendance. Établi dans un environnement complémentaire qui lui permet de dialoguer avec la conscience spirituelle qui la compose. La plante serpent reconnue pour son pouvoir de connexion et de purification et les pierres d’eau douce viennent compléter le balancement de la composition. Orné de quelques symboles inspirés de vêvê, un dialogue entre physique et spirituel se crée.',
             price: '1164$',
-            size: '24 * 36 in',
+            size: '24 x 36 in',
             material: 'Acrylique et pastel à l’huile'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Closing windows.jpg',
             title: 'Closing windows',
-            description: 'Description for Closing windows',
+            description: '2 fenêtres sur des parties de mon corps revendiquées...',
             date: 'Mars 2024',
-            fullDescription: 'Full description for Closing windows'
+            fullDescription: '2 fenêtres sur des parties de mon corps revendiquées par la culture du paraître et du devoir.2 fenêtres sur des parties de mon être qui me classe dans des catégories indésirables puisque je ne [suis] pas la norme',
+            price: '600$',
+            size: '22 x 28 in',
+            material: 'Acrylique'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Golden ideas.jpg',
             title: 'Golden ideas',
-            description: 'Description for Golden ideas',
+            description: 'Tableau "Golden Ideas"',
             date: 'Mars 2024',
-            fullDescription: 'Full description for Golden ideas'
+            fullDescription: 'Tableau "Golden Ideas"'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Hold on.JPG',
             title: 'Hold on',
-            description: 'Description for Hold on',
+            description: 'Tableau "Hold On"',
             date: 'Mars 2024',
-            fullDescription: 'Full description for Hold on'
+            fullDescription: '',
+            rice: '1120$',
+            size: '19.7 x 49.2 in',
+            material: 'Acrylique sur panneau mdf'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Hope.jpg',
             title: 'Hope',
-            description: 'Description for Hope',
+            description: 'Tableau "Hope"',
             date: 'Mars 2024',
-            fullDescription: 'Full description for Hope'
+            fullDescription: 'Tableau "Hope"'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Meditation.jpg',
             title: 'Meditation',
-            description: 'Description for Meditation',
+            description: 'Une Vénus en méditation devant le mouvement des motif...',
             date: 'Mars 2024',
-            fullDescription: 'Full description for Meditation'
+            fullDescription: 'Une Vénus en méditation devant le mouvement des motif construisant un labyrinthe de possibles itinéraire.',
+            price: '614$',
+            size: '22 x 28 in',
+            material: 'Acrylique'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Men.jpg',
             title: 'Men',
-            description: 'Description for Men',
+            description: 'L’encrage du noyau traditionnel familiale.',
             date: 'Mars 2024',
-            fullDescription: 'Full description for Men'
+            fullDescription: 'L’encrage du noyau traditionnel familiale.',
+            price: '300$',
+            size: '22 x 28 in',
+            material: 'Acrylique'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Molding.jpg',
@@ -74,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Ce tableau par du désir de me construire...',
             date: 'Mars 2024',
             fullDescription: 'Ce tableau par du désir de me construire ou plutôt de renaitre avec des concepts fluides et malléables. La femme noire, la femme forte qui construit sa personne en puisant dans les vallées des sommets de son héritage. La palette de couleur fait référence à la passion qui l’anime en parallèle à sa connexion au monde spirituel : ses ancêtres.',
-            price: '760s$',
+            price: '760$',
             size: '22 x 28 in',
             material: 'Acrylique et pastel à l’huile'
         },
@@ -91,9 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Test subject.jpg',
             title: 'Test subject',
-            description: 'Description for Test subject',
+            description: 'Tableau "Test Subject"',
             date: 'Mars 2024',
-            fullDescription: 'Full description for Test subject',
+            fullDescription: '',
             price: '300$',
             size: '8.66 x 19.56 in',
             material: 'Acrylique sur panneau mdf'
@@ -111,9 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             image: '/assets/Galerie/compressed/Ready Paintings/The worker.JPG',
             title: 'The worker',
-            description: 'Description for The worker',
+            description: 'Tableau "worker"',
             date: 'Mars 2024',
-            fullDescription: 'Full description for The worker'
+            fullDescription: 'Tableau "worker"',
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Under the bridge.jpg',
@@ -128,9 +140,9 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Venus.JPG',
             title: 'Venus',
-            description: 'Description for Venus',
+            description: 'Peinture de Venus',
             date: '2022',
-            fullDescription: 'Full description for Venus',
+            fullDescription: '',
             price: '720$',
             size: '0 x 0 in',
             material: ''
