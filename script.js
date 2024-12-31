@@ -287,6 +287,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Toggle navigation
         nav.classList.toggle('nav-active');
         
+        // Toggle animations for links
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
+
         // Toggle burger animation
         burger.classList.toggle('toggle');
         
@@ -298,6 +307,11 @@ document.addEventListener('DOMContentLoaded', function() {
         nav.classList.remove('nav-active');
         burger.classList.remove('toggle');
         document.body.style.overflow = 'auto';
+        
+        // Clear animations
+        navLinks.forEach(link => {
+            link.style.animation = '';
+        });
     }
 
     // Burger click handler
