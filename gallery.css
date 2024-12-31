@@ -72,7 +72,8 @@ button {
 
 .popup-image-container {
     position: relative;
-    width: 40em;
+    min-width: 30em;
+    max-width: 40em;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -398,6 +399,24 @@ button {
 
 .carousel-button.prev { left: 2em; }
 .carousel-button.next { right: 2em; }
+.popup-content {
+    width: 70%;
+   
+}
+@media screen and (min-width: 1500px) {
+    .popup-info {
+        bottom: 2.5%;
+        
+    }
+    .popup-nav-next{
+        right: 0em;
+        
+    }
+    .popup-nav-prev{
+        left: 0em;
+        
+    }
+}
 
 /* Desktop and large screens */
 @media screen and (min-width: 1441px) {
@@ -432,6 +451,20 @@ button {
     }
 }
 
+@media screen and (min-width: 1500px) {
+    .popup-info {
+        bottom: 2.5%;
+        
+    }
+    .popup-nav-next{
+        right: 4em;
+        
+    }
+    .popup-nav-prev{
+        left: 4em;
+        
+    }
+}
 /* Tablet */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .popup-content {
@@ -454,7 +487,7 @@ button {
     .popup-image-container {
         right: 4em;
         width: 40em;
-        bottom: 4em;
+        bottom: 3em;
         margin-right: 2rem;
     }
 
@@ -475,11 +508,11 @@ button {
     }
 
     .popup-nav-prev {
-        left: 4em;
+        left: 8em;
     }
 
     .popup-nav-next {
-        right: 4em;
+        right: 8em;
     }
 
     .popup-image {

@@ -1,3 +1,11 @@
+:root {
+    --peach: #FFE3D5;
+    --green: #336600;
+    --light-green: #99CC66;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+
 /* Reset and Base Styles */
 body, main {
     overflow-x: hidden;
@@ -11,7 +19,6 @@ body, main {
 img {
     max-width: 100%;
 }
-
 
 
 /* Layout Containers */
@@ -29,12 +36,9 @@ img {
     margin: 0;
     padding: 2rem;
     box-sizing: border-box;
+
 }
 
-/* Intro Section */
-#intro img {
-    margin-left: 10em;
-}
 #intro p{
     width: 90%;;
 }
@@ -42,12 +46,13 @@ img {
 #histoire {
     position: relative;
     display: flex;
-    background-color: var(--peach);
+    background-color: peachpuff !important ;
     margin-bottom: 4rem;
     width: 100vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
 
     a {
         margin: 2em auto;
@@ -62,7 +67,7 @@ img {
     .histoire-content {
         position: relative;
         top: 2em;
-        min-height: 15em;
+        min-height: 18em;
         width: 94%;
         display: flex;
         z-index: 2;
@@ -75,12 +80,11 @@ img {
             width: 50%;
             border-radius: 0 25px 25px 0;
         }
-
         
     }
     .green-button{
         position: relative;
-        top: 1.5em;
+        top: 1em;
     }
     .histoire-text {
         width: 50%;
@@ -89,7 +93,7 @@ img {
         border-radius: 25px 0 0 25px;
         
         h2 {
-            padding-left: 0.6em;
+            
         }
         button {
             margin-left: 1em;
@@ -99,17 +103,18 @@ img {
 
 /* Background Image Styles */
 .bg-img {
-    width: 100vw;
-    min-height: 24em;
+    width: 100%;
+    min-height: 30em;
     z-index: 1;
+    opacity: 0.3;
     position: absolute;
     background: linear-gradient(to right, 
         var(--peach) 0%,
         var(--peach) 10%,
-        var(--peach) 40%,
-        rgba(255, 227, 213, 0) 100%
+        var(--peach) 30%,
+        rgba(249, 246, 244, 0) 100%
     ), url('/assets/declinaison\ 1\ 0524\ .png');
-    background-size: 50% auto;
+    background-size: 70% auto;
     background-position: right center;
     background-repeat: no-repeat;
 }
@@ -135,6 +140,8 @@ img {
 /* Portfolio Section */
 #portfolio {
     position: relative;
+    background-color: peachpuff !important;
+    padding: 3rem;
     
     .bg-img {
         background: linear-gradient(to bottom, 
@@ -142,18 +149,23 @@ img {
             var(--peach) 80%,
             var(--peach) 100%
         ), url('/assets/declinaison\ 1\ 0524\ .png');
-        background-size: 50%;
+        background-size: cover;
         padding: 5em;
-        background-repeat: repeat;
+        background-repeat: no-repeat;
+        background-position: center;
         height: 100%;
         min-height: 44em;
-        opacity: 0.5;
+        opacity: 0.8;
         width: 100%;
+        position: absolute;
         top: 0;
         left: 0;
+        z-index: 1;
     }
     h2{
         margin-left: 3rem;
+        position: relative;
+        z-index: 2;
     }
 }
 
@@ -378,6 +390,28 @@ img {
     &.active {
         border-color: #333;
     }
+}
+
+/* Button Styles */
+.modal-button {
+    display: inline-block;
+    background-color: var(--green);
+    color: white;
+    padding: 1em 2em;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    margin-top: 2em;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.modal-button:hover {
+    background-color: #2c5530;
+    transform: translateX(-50%) translateY(-2px);
 }
 
 /* Mobile Navigation */
