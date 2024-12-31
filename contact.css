@@ -118,6 +118,8 @@ main {
 h1 {
     margin-bottom: 0.75rem;
     font-size: 2rem;
+    position: relative;
+    left: 1.75em;
 }
 
 @media screen and (max-width: 768px) {

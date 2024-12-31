@@ -197,53 +197,74 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalImage = modal.querySelector('.modal-image img');
     const modalTitle = modal.querySelector('.modal-text h3');
     const modalDescription = modal.querySelector('.modal-text p');
-    const closeButton = modal.querySelector('.close');
-    
+    const fullscreenViewer = document.querySelector('.fullscreen-viewer');
+    const fullscreenImage = fullscreenViewer.querySelector('img');
+    const fullscreenClose = document.querySelector('.fullscreen-close');
+
     // Function to open modal
     function openModal(card) {
-        const cardImage = card.querySelector('.card-image img');
-        const cardTitle = card.querySelector('h4');
-        const cardDescription = card.querySelector('.card-description');
-        
-        modalImage.src = cardImage.src;
-        modalImage.alt = cardImage.alt;
-        modalTitle.textContent = cardTitle.textContent;
-        modalDescription.textContent = cardDescription.textContent;
-        
+        const image = card.querySelector('img');
+        const title = card.querySelector('h3').textContent;
+        const description = card.querySelector('p').textContent;
+
+        modalImage.src = image.src;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+
         modal.style.display = 'block';
-        // Trigger reflow to ensure transition works
-        modal.offsetHeight;
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
+        setTimeout(() => modal.classList.add('show'), 10);
     }
-    
-    // Function to close modal with animation
+
+    // Function to close modal
     function closeModal() {
         modal.classList.remove('show');
-        setTimeout(() => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }, 300); // Match this with the transition duration
+        setTimeout(() => modal.style.display = 'none', 300);
     }
-    
+
+    // Function to open fullscreen viewer
+    function openFullscreen(imageSrc) {
+        fullscreenImage.src = imageSrc;
+        fullscreenViewer.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Function to close fullscreen viewer
+    function closeFullscreen() {
+        fullscreenViewer.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Add click event to modal image to open fullscreen
+    modalImage.addEventListener('click', () => {
+        openFullscreen(modalImage.src);
+    });
+
+    // Close fullscreen on click
+    fullscreenViewer.addEventListener('click', (e) => {
+        if (e.target !== fullscreenImage) {
+            closeFullscreen();
+        }
+    });
+
+    // Close fullscreen on close button click
+    fullscreenClose.addEventListener('click', closeFullscreen);
+
+    // Close fullscreen on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeFullscreen();
+        }
+    });
+
     // Add click event to all portfolio cards
     document.querySelectorAll('.portfolio-card').forEach(card => {
         card.addEventListener('click', () => openModal(card));
     });
-    
-    // Close modal when clicking the X button
-    closeButton.addEventListener('click', closeModal);
-    
-    // Close modal when clicking outside
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
+
+    // Close modal when clicking on close button or outside
+    modal.querySelector('.close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
             closeModal();
         }
     });
@@ -412,6 +433,10 @@ document.addEventListener('DOMContentLoaded', function() {
         <p>&copy; <script>document.write(new Date().getFullYear())</script> À Dos D'Anne. Tous droits réservés.</p>
     </div>
 </footer>
+    <div class="fullscreen-viewer">
+        <span class="fullscreen-close">&times;</span>
+        <img src="" alt="Fullscreen Image">
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

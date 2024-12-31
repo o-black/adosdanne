@@ -12,6 +12,8 @@ img {
     max-width: 100%;
 }
 
+
+
 /* Layout Containers */
 .container {
     width: 100%;
@@ -36,7 +38,6 @@ img {
 #intro p{
     width: 90%;;
 }
-
 /* Histoire Section */
 #histoire {
     position: relative;
@@ -74,21 +75,13 @@ img {
             width: 50%;
             border-radius: 0 25px 25px 0;
         }
-    }
 
+        
+    }
     .green-button{
         position: relative;
         top: 1.5em;
-        margin: 2em auto;
-        background-color: var(--green);
-        font-weight: bold;
-        color: white;
-        padding: 0.5em 1em;
-        text-decoration: none;
-        z-index: 2;
-        display: inline-block;
     }
-
     .histoire-text {
         width: 50%;
         padding: 1rem 1rem 2rem;
@@ -142,7 +135,6 @@ img {
 /* Portfolio Section */
 #portfolio {
     position: relative;
-    background-color: var(--peach);
     
     .bg-img {
         background: linear-gradient(to bottom, 
@@ -159,11 +151,9 @@ img {
         width: 100%;
         top: 0;
         left: 0;
-        position: absolute;
-        z-index: 1;
     }
     h2{
-        margin-left: 2.5rem;
+        margin-left: 3rem;
     }
 }
 
@@ -278,7 +268,7 @@ img {
 
 .card-button {
     display: inline-block;
-    padding: 0.5em 1.25rem;
+    padding: 0.5rem 1.25rem;
     background-color: #333;
     color: white;
     text-decoration: none;
@@ -537,7 +527,6 @@ img {
     }
 
     .logo-large {
-        height: 14em;
         display: flex;
         justify-content: center;
         width: 100%;
@@ -580,30 +569,15 @@ img {
     margin: 0 auto;
 }
 
-/* Logo size fix */
-.logo {
-    contain: strict;
-    margin-left: 1.5em;
-    margin-top: 0.2em;
-    width: 60px;
-    height: 60px;
+/* Portfolio title alignment
+#portfolio h2 {
+    margin-top: 2rem;
+    margin-left: 3.5em;
+    width: 94%;
+    max-width: 1300px;
 }
 
-.logo img {
-    width: 60px;
-    height: auto;
-}
-
-/* Button sizing fix */
-.green-button {
-    padding: 0.5em 1em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 25px;
-    font-size: larger;
-    position: relative;
-    overflow: hidden;
-    background-color: var(--green);
-    color: var(--white);
-    display: inline-block;
-}
+/* Keep the logo margin adjustment */
+/*.logo-large img {
+    margin-left: 7em;
+} */

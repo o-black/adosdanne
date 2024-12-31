@@ -190,8 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
         carouselItems.appendChild(card);
     });
 
-
-    
     // Add popup HTML to the page
     const popupHTML = `
         <div class="popup">
@@ -399,6 +397,48 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         }, 300); // Match this with the CSS transition duration
     }
+
+    // Add fullscreen viewer functionality
+    const fullscreenViewer = document.querySelector('.fullscreen-viewer');
+    const fullscreenImage = fullscreenViewer.querySelector('img');
+    const fullscreenClose = document.querySelector('.fullscreen-close');
+
+    // Function to open fullscreen viewer
+    function openFullscreen(imageSrc) {
+        fullscreenImage.src = imageSrc;
+        fullscreenViewer.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Function to close fullscreen viewer
+    function closeFullscreen() {
+        fullscreenViewer.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Add click event to popup images to open fullscreen
+    document.addEventListener('click', (e) => {
+        if (e.target.matches('.popup-content img')) {
+            openFullscreen(e.target.src);
+        }
+    });
+
+    // Close fullscreen on click outside image
+    fullscreenViewer.addEventListener('click', (e) => {
+        if (e.target !== fullscreenImage) {
+            closeFullscreen();
+        }
+    });
+
+    // Close fullscreen on close button click
+    fullscreenClose.addEventListener('click', closeFullscreen);
+
+    // Close fullscreen on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && fullscreenViewer.classList.contains('active')) {
+            closeFullscreen();
+        }
+    });
 
     // Add to the existing JavaScript after the carousel items initialization
     function initializeCarousel() {
