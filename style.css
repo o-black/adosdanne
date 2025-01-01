@@ -8,7 +8,7 @@
     will-change: transform;
     backface-visibility: hidden;
 }
-.designgraphique_link{
+header li>a .designgraphique_link{
     color: var(--green) !important;
 }
 /* Optimize background image loading */
