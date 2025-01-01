@@ -9,7 +9,7 @@
     backface-visibility: hidden;
 }
 .designgraphique_link{
-    background-color: var(--green) !important;
+    color: var(--green) !important;
 }
 /* Optimize background image loading */
 .main::before {
