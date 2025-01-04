@@ -66,20 +66,21 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 0.5rem;
+
+    img{
+        width: 30px;
+    }
 }
 
 .social-links a {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: var(--green);
     color: white;
     border-radius: 25px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
 }
 
 .social-links a:hover {
-    background-color: #45a049;
     color: white;
 }
 
