@@ -8,6 +8,7 @@
 }
 
 .footer-container {
+    height: 6em;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -21,6 +22,7 @@
     flex: 1;
     min-width: 250px;
     text-align: left;
+    
 }
 
 .footer-section h3 {
