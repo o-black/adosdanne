@@ -207,6 +207,7 @@ h2{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     border-radius: 25px;
+    text-decoration: none;
     font-size: larger;
     position: relative;
     overflow: hidden;
@@ -325,6 +326,7 @@ h1 {
 
 .btn {
     background-color: var(--green);
+    border-radius: 25px;
     color: var(--white);
     padding: 0.5rem 1rem;
     text-decoration: none;
@@ -429,8 +431,25 @@ h1 {
         width: 70%;
     }
 }
-@media screen and (max-width:320px){
-    .main-image{
+
+
+@media screen and (max-width: 428px) {
+    .main-image {
+        width: 25em;
+    }
+    .nav-links {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 376px) {  /* Changed from 375px to 376px */
+    .main-image {
+        width: 21em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .main-image {
         width: 18em;
     }
 }
@@ -1482,5 +1501,4 @@ button:active,
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
 }
-
 
