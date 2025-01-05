@@ -410,6 +410,11 @@ h1 {
         width: 25em;
     }
 }
+@media screen and (max-width:320px){
+    .main-image{
+        width: 18em;
+    }
+}
 @media screen and (max-width: 768px) {
     
     .nav-links {
