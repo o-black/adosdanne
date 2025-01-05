@@ -872,3 +872,8 @@ button {
     padding: 2rem;
 }
 
+@media screen and (max-width: 376px) {
+   #gallery{
+    padding: 0em;
+   }
+}
