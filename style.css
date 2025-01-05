@@ -248,13 +248,7 @@ main {
         }
     }
 }
-.main{
-    background-size: cover;
-    aspect-ratio: 16/9;
-    background-image: url('/assets/Page\ d\'acceuil-min.JPG');
-    height: 40em;
-    background-position-y: center;
-}
+
 .social-icons {
     position: absolute;
     top: 1rem;
@@ -411,8 +405,13 @@ h1 {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 }
-
+@media screen and (max-width:428px){
+    .main-image{
+        width: 25em;
+    }
+}
 @media screen and (max-width: 768px) {
+    
     .nav-links {
         display: none; /* Hide nav links on mobile, you might want to implement a burger menu */
         
@@ -566,6 +565,13 @@ h1 {
     text-align: center;
     padding: 2rem;
     overflow: hidden;
+    
+        background-size: cover;
+        aspect-ratio: 16/9;
+        background-image: url('/assets/Page\ d\'acceuil-min.JPG');
+        height: 40em;
+        background-position-y: center;
+    
 }
 
 .buttons {
@@ -891,13 +897,6 @@ nav {
 }
 
 main {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: calc(100vh - 62px);
-    margin: 0;
-    width: 100%;
 
     .buttons{
         .btn{
@@ -906,13 +905,7 @@ main {
         }
     }
 }
-.main{
-    background-size: cover;
-    aspect-ratio: 16/9;
-    background-image: url('/assets/Page\ d\'acceuil-min.JPG');
-    height: 40em;
-    background-position-y: center;
-}
+
 .social-icons {
     position: absolute;
     top: 1rem;
@@ -1088,11 +1081,6 @@ h1 {
     transition: all 0.3s ease;
 }
 
-main {
-    padding: 2rem;
-    margin: 0;
-    width: 100%;
-}
 
 h1 {
     font-size: 2.5rem;
@@ -1245,11 +1233,6 @@ nav {
     color: var(--green);
 }
 
-main {
-    /* max-width: 1200px; */
-    margin: 0 auto;
-    padding: 2rem;
-}
 
 #intro {
     text-align: center;
@@ -1451,17 +1434,6 @@ h1 {
     z-index: 1;
 }
 
-.main {
-    position: relative;
-    min-height: unset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    overflow: hidden;
-}
 
 .buttons {
     position: relative;
