@@ -11,9 +11,7 @@
         }
     }
 }
-#gallery h2{
-    font-size: 36px;
-}
+
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease;
