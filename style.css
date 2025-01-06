@@ -666,7 +666,6 @@ h1 {
 /* Update existing button styles and add a general button style */
 .btn,
 button,
-.contactUs-button,
 .green-button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
@@ -674,7 +673,6 @@ button,
 
 .btn:hover,
 button:hover,
-.contactUs-button:hover,
 .green-button:hover {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
@@ -682,7 +680,6 @@ button:hover,
 
 .btn:active,
 button:active,
-.contactUs-button:active,
 .green-button:active {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
@@ -1265,14 +1262,7 @@ button {
 }
 
 
-.contactUs-button{
-    padding: 0.5em 1em;
-    color: white;
-    font-weight: bold;
-    margin: auto;
-    background-color: var(--green);
-    text-decoration: none;
-}
+
 .service {
     margin-bottom: 2rem;
 }
@@ -1478,7 +1468,6 @@ h1 {
 /* Update existing button styles and add a general button style */
 .btn,
 button,
-.contactUs-button,
 .green-button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
@@ -1486,7 +1475,6 @@ button,
 
 .btn:hover,
 button:hover,
-.contactUs-button:hover,
 .green-button:hover {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
@@ -1494,7 +1482,6 @@ button:hover,
 
 .btn:active,
 button:active,
-.contactUs-button:active,
 .green-button:active {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(0);

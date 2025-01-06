@@ -224,11 +224,11 @@ document.addEventListener('DOMContentLoaded', function() {
         modalDescription.textContent = cardDescription.getAttribute('data-full-text');
         
         // Add button if it doesn't exist
-        let modalButton = modal.querySelector('.modal-button');
+        let modalButton = modal.querySelector('.green-button');
         if (!modalButton) {
             modalButton = document.createElement('a');
-            modalButton.classList.add('modal-button');
-            modalButton.textContent = 'View Project';
+            modalButton.classList.add('green-button');
+            modalButton.textContent = 'En Savoir Plus';
             modalButton.href = 'https://www.behance.net/cassandragomez7';
             modalButton.target = '_blank'; // Opens in new tab
             modal.querySelector('.modal-text').appendChild(modalButton);

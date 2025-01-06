@@ -79,6 +79,8 @@ img {
         
     }
     .green-button{
+        width: max-content;
+        margin: auto;
         position: relative;
         top: 1em;
     }
