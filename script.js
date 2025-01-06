@@ -254,6 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             modal.style.display = 'none';
             document.body.style.overflowX = 'hidden';
+            document.body.style.overflowY = 'auto';
             thumbnailGallery.innerHTML = ''; // Clear thumbnails when closing
         }, 300);
     }
