@@ -4,6 +4,13 @@
     margin: auto;
     overflow: hidden;
 }
+#gallery{
+    h4{
+        a{
+            color: var(--green);
+        }
+    }
+}
 #gallery h2{
     font-size: 36px;
 }
@@ -71,17 +78,13 @@ button {
 }
 
 .popup-image-container {
-    position: relative;
-    min-width: 30em;
-    max-width: 40em;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-height: calc(90vh - 4rem);
-    justify-content: center;
     align-items: center;
-    
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
 }
 
 .popup-info {
@@ -546,7 +549,7 @@ button {
 }
     .popup-info {
         right: 0;
-        bottom: -1.5em;
+        bottom: 0em;
         height: 40%;
         padding-right: 0;
         overflow-y: auto;
@@ -588,12 +591,22 @@ button {
     }
 
     .popup-image-container {
-        height: 50%;
+        
+        .popup-image{
+            width: 25em;
+        }
     }
-
+    
     .popup-info {
         height: 50%;
     }
+}
+@media screen and (max-width: 321px) {
+    .portfolio-card {
+       width: 90%;
+
+    }
+
 }
 
 /* Landscape mode */
