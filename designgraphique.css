@@ -108,17 +108,17 @@ img {
    
     .bg-img {
         width: 100%;
-        min-height: 30em;
+        height: 100%;
         z-index: 1;
         opacity: 0.3;
         position: absolute;
         background: linear-gradient(to right, 
             var(--peach) 0%,
-            var(--peach) 10%,
-            var(--peach) 80%,
+            var(--peach) 0%,
+            var(--peach) 20%,
             rgba(249, 246, 244, 0) 100%
         ), url('/assets/declinaison\ 1\ 0524\ .png');
-        background-size: 70% auto;
+        background-size: cover;
         background-position: right center;
         background-repeat: no-repeat;
     }
@@ -645,6 +645,7 @@ img {
     /* Portfolio Section */
     #portfolio {
         .bg-img {
+            height: 100%;
             background: linear-gradient(to bottom, 
                 rgba(255, 255, 255, 0) 0%,
                 var(--peach) 90%,
