@@ -76,7 +76,7 @@ body {
     
 }
 
-p,a{
+p,a,label,input,textarea,::placeholder{
     font-family:'Montserrat',sans-serif;
     font-weight: 300;
 }
