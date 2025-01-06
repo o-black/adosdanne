@@ -767,9 +767,8 @@ button:active,
 }
 
 #intro .logo-large {
-    margin-left: 5em;
+    max-width: 26em;
     margin-bottom: 2em;
-    width: 26em;
 }
 
 #histoire {
