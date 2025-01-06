@@ -125,7 +125,8 @@ h1 {
     .contact-container {
         flex-direction: column;
         padding: 1.5rem;
-        margin: 1rem;
+        width: 25em;
+        margin: 0;
     }
 
     .form-row {
