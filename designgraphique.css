@@ -78,9 +78,9 @@ img {
         }
         
     }
+    
     .green-button{
-        width: max-content;
-        margin: auto;
+        
         position: relative;
         top: 1em;
     }
@@ -98,7 +98,12 @@ img {
         }
     }
 }
-
+.modal-grid{
+    .green-button{
+    width: fit-content;
+    margin: auto;
+    }
+}
 #histoire {
    
     .bg-img {
