@@ -450,7 +450,7 @@ h1 {
 
 @media screen and (max-width: 320px) {
     .main-image {
-        width: 17em;
+        width: 18em;
     }
 }
 @media screen and (max-width: 768px) {
@@ -589,7 +589,6 @@ h1 {
 /* Add styles for the main logo */
 .main-image {
     position: relative;
-    margin: 0 auto; /* Center horizontally */
     display: block; /* Ensure proper margin behavior */
 }
 
