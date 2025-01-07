@@ -25,6 +25,11 @@
 header li>a .designgraphique_link{
     color: var(--green) !important;
 }
+main{
+    h1{
+        left: 0.5em;
+    }
+}
 /* Optimize background image loading */
 .main::before {
     content: '';
@@ -243,7 +248,6 @@ h2{
 }
 
 main {
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -313,7 +317,6 @@ main {
 }
 
 h1 {
-    margin-top: 1rem;
     font-size: 2rem;
 }
 
@@ -987,10 +990,6 @@ main {
     transform: translateX(-50%);
 }
 
-h1 {
-    margin-top: 1rem;
-    font-size: 2rem;
-}
 
 .buttons {
     margin-top: 2rem;

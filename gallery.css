@@ -5,6 +5,7 @@
     overflow: hidden;
 }
 #gallery{
+    
     h4{
         a{
             color: var(--green);
@@ -244,7 +245,7 @@ button {
 
 #gallery {
     position: relative;
-    padding: 2rem 2rem;
+    padding: 1rem 1rem;
     width: 85vw;
     min-height: 38rem;
 
@@ -404,6 +405,14 @@ button {
     width: 70%;
    
 }
+@media screen and (min-width: 1024px) {
+    h1,h4 {
+        position: relative;
+        left: 1.5em;
+    }
+    
+}
+
 @media screen and (min-width: 1500px) {
     .popup-info {
         bottom: 2.5%;
@@ -880,7 +889,6 @@ button {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
 @media screen and (max-width: 376px) {
