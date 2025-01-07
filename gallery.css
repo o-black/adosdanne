@@ -557,6 +557,11 @@ main{
 }
 
 /* Mobile */
+@media screen and (max-width: 376px) {
+    #gallery>h4{
+        max-width: 18em;
+    }
+}
 @media screen and (max-width: 767px) {
     #gallery{
         padding: 0em;
@@ -564,11 +569,11 @@ main{
     }
     #gallery>h4{
         position: relative;
-        left: 5em;
+        left: 3.5em;
         text-wrap:balance;
     }
     #gallery>h1{
-        left: 2em;
+        left: 1.2em;
     }
     .popup-content {
         display: flex;
