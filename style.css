@@ -180,7 +180,7 @@ h2{
 .burger {
     display: none;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 999;
 }
 
 .burger div {
