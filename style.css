@@ -768,7 +768,6 @@ button:active,
 }
 #intro {
     text-align: center;
-    margin-bottom: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -799,15 +798,7 @@ button:active,
     margin-bottom: 1rem;
 }
 
-#services {
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .green-button {
-        margin-top: 2rem;
-    }
-}
+
 
 
 
@@ -1234,14 +1225,7 @@ nav {
 }
 
 
-#intro {
-    text-align: center;
-    margin-bottom: 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 .image-logo{
     width: 10em;
     height: 10em;
