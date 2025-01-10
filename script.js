@@ -352,49 +352,49 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const contactForm = document.getElementById('contact-form');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+//     if (contactForm) {
+//         contactForm.addEventListener('submit', function(e) {
+//             e.preventDefault();
             
-            // Get form values
-            const firstName = document.getElementById('prenom').value;
-            const lastName = document.getElementById('nom').value;
-            const email = document.getElementById('courriel').value;
-            const subject = document.getElementById('sujet').value;
-            const message = document.getElementById('message').value;
+//             // Get form values
+//             const firstName = document.getElementById('prenom').value;
+//             const lastName = document.getElementById('nom').value;
+//             const email = document.getElementById('courriel').value;
+//             const subject = document.getElementById('sujet').value;
+//             const message = document.getElementById('message').value;
             
-            // Get selected radio button value
-            const radioButtons = document.getElementsByName('fav_language');
-            let selectedType = '';
-            for (const radioButton of radioButtons) {
-                if (radioButton.checked) {
-                    selectedType = radioButton.nextElementSibling.textContent;
-                    break;
-                }
-            }
+//             // Get selected radio button value
+//             const radioButtons = document.getElementsByName('fav_language');
+//             let selectedType = '';
+//             for (const radioButton of radioButtons) {
+//                 if (radioButton.checked) {
+//                     selectedType = radioButton.nextElementSibling.textContent;
+//                     break;
+//                 }
+//             }
             
-            // Construct email body
-            const emailBody = `
-                De: ${firstName} ${lastName}
-                Courriel: ${email}
-                Type de message: ${selectedType}
-                Sujet: ${subject}
+//             // Construct email body
+//             const emailBody = `
+//                 De: ${firstName} ${lastName}
+//                 Courriel: ${email}
+//                 Type de message: ${selectedType}
+//                 Sujet: ${subject}
                 
-                Message:
-                ${message}
-            `.trim();
+//                 Message:
+//                 ${message}
+//             `.trim();
             
-            // Construct mailto URL
-            const mailtoUrl = `mailto:your-adosdanne.art@gmail.com?subject=${encodeURIComponent(selectedType + ': ' + subject)}&body=${encodeURIComponent(emailBody)}`;
+//             // Construct mailto URL
+//             const mailtoUrl = `mailto:your-adosdanne.art@gmail.com?subject=${encodeURIComponent(selectedType + ': ' + subject)}&body=${encodeURIComponent(emailBody)}`;
             
-            // Open default email client
-            window.location.href = mailtoUrl;
+//             // Open default email client
+//             window.location.href = mailtoUrl;
             
-            // Optional: Reset form after submission
-            contactForm.reset();
-        });
-    }
-});
+//             // Optional: Reset form after submission
+//             contactForm.reset();
+//         });
+//     }
+// });
