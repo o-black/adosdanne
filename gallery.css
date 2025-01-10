@@ -493,7 +493,7 @@ main{
         overflow-x: auto;
         #gallery>h4{
             position: relative;
-            left: 4.5em;
+            left: 4em;
         }
         h1,h4{
             left: 1.5em;
@@ -557,9 +557,10 @@ main{
 }
 
 /* Mobile */
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 426px) {
     #gallery>h4{
-        max-width: 18em;
+        font-size: 0.8em;
+        left: 4em !important;
     }
 }
 @media screen and (max-width: 767px) {
