@@ -70,7 +70,7 @@ button {
     margin: 2% auto;
     width: 90%;
     max-width: 1200px;
-    min-height: 70vh;
+    /* min-height: 70vh; */
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -82,14 +82,15 @@ button {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 35em;
     padding: 1rem;
+    left: -1em;
 }
 
 .popup-info {
     right: 2em;
-    bottom: 7em;
     width: 90%;
+    min-height: 80%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -113,6 +114,7 @@ button {
     width: 100%;
     object-fit: contain;
     border-radius: 8px;
+    aspect-ratio: 4/3;
 }
 
 
@@ -441,10 +443,10 @@ main{
     }
 }
 @media screen and (min-width: 1025px) and (max-width: 1441px) {
-    .popup-info {
-        bottom: 5em;
+    /* .popup-info {
+        bottom: 3em;
         
-    }
+    } */
   
     
 }
@@ -504,24 +506,19 @@ main{
     .popup-content {
         display: flex;
         flex-direction: row;
-        height: auto;
-        min-height: 40vh;
-        max-height: 80vh;
-        height: 68vh;
+        min-height: 28em;
         margin: 10vh auto;
         padding: 1.5rem;
         width: 100%;
     }
-    .popup.show .popup-image {
-        height: 65%;
-    }
+    
     .popup-image{
         aspect-ratio: 4/3;
     }
     .popup-image-container {
         right: 4em;
-        width: 40em;
-        bottom: 3em;
+        width: 34em;
+        bottom: 1em;
         margin-right: 2rem;
     }
 
@@ -529,10 +526,10 @@ main{
         flex: 1;
         padding-right: 0.5rem;
         overflow-y: auto;
-        bottom: 3em;
         right: 0;
         margin-left: 0em;
         right: 1.5em;
+        bottom: 1em;
     }
 
     .popup-nav-button {
@@ -542,11 +539,11 @@ main{
     }
 
     .popup-nav-prev {
-        left: 8em;
+        left: 3em;
     }
 
     .popup-nav-next {
-        right: 8em;
+        right: 3em;
     }
 
     .popup-image {
@@ -561,6 +558,14 @@ main{
     #gallery>h4{
         font-size: 0.8em;
         left: 4em !important;
+    }
+    #gallery{
+        .popup-content{
+            height: 90vh !important;
+        }
+        .popup-image-container{
+            left: 0;
+        }
     }
 }
 @media screen and (max-width: 767px) {
@@ -629,13 +634,13 @@ main{
 /* Small mobile devices */
 @media screen and (max-width: 480px) {
     .popup-content {
-        width: 95%;
-        min-height: 75vh;
-        
+        width: 95% !important;
+        height: 98vh;
         margin: 5vh auto;
         padding: 0.8rem;
         padding-top: 3em;
         padding-bottom: 4em;
+        
 
     }
 
@@ -644,10 +649,14 @@ main{
         .popup-image{
             width: 25em;
         }
+        left: 0em;
+        padding: 0em;
     }
     
     .popup-info {
         height: 50%;
+        min-height: auto;
+        font-size: 1em !important;
     }
 }
 @media screen and (max-width: 321px) {
@@ -662,7 +671,7 @@ main{
 @media screen and (max-width: 768px) and (orientation: landscape) {
     .popup-content {
         grid-template-columns: 60% 40%;
-        height: 90vh;
+        min-height: 90vh;
         margin: 5vh auto;
     }
 
@@ -670,9 +679,11 @@ main{
         height: 100%;
     }
 
-    .popup-info {
-        height: 100%;
+    .popup-info{
+        min-height: 90%;
     }
+
+    
 }
 
 /* Ensure popup image fits container */
@@ -763,6 +774,11 @@ main{
 }
 
 @media screen and (max-width: 768px) {
+    .popup-content{
+        width: 100%;
+    }
+    .popup-description{
+    }
     .popup-nav-buttons {
         display: none; /* Hide buttons on mobile */
     }
@@ -847,16 +863,9 @@ main{
 
 /* Tablet specific adjustments */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .popup-content {
-        min-height: 40vh; /* Reduced from 50vh */
-        max-height: 80vh; /* Reduced from 90vh */
-        margin: 10vh auto; /* Increased margin to position popup more towards center */
-        padding: 1.5rem;
-    }
 
 
     .popup-info {
-        max-height: 40vh; /* Reduced from 40vh */
         padding-right: 0.5rem;
     }
 }
