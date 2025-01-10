@@ -207,7 +207,6 @@ button {
 .popup.show .popup-image {
     opacity: 1;
     transform: translateX(0);
-    height: 80%;
 }
 
 .thumbnail-gallery {
@@ -598,7 +597,7 @@ main{
        
     }
     .popup.show .popup-image{
-    height: 75%;
+    
     aspect-ratio: 4/3;
 }
     .popup-info {
