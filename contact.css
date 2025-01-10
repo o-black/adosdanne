@@ -125,7 +125,12 @@ h1 {
         }
     }
 }
-   
+   @media screen and (max-width:425px){
+    .contact-container {
+       min-width: 22em !important;
+        
+    }
+   }
 @media screen and (max-width: 768px) {
     main{
         h1{
@@ -135,7 +140,7 @@ h1 {
     .contact-container {
         flex-direction: column;
         padding: 1.5rem;
-       min-width: 23em;
+       min-width: 25em;
         margin: 0;
     }
 
