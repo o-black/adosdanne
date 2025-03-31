@@ -183,7 +183,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="card-content">
                     <h4>${item.title}</h4>
                     <p class="card-description">${item.description}</p>
-                    <a class="card-button">Voir plus</a>
                 </div>
             </div>
         `;
