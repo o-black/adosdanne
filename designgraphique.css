@@ -69,11 +69,13 @@ img {
         max-width: 1300px;
         margin: 0 auto;
         box-sizing: border-box;
+        align-items: center;
 
         .histoire-image {
             background-image: url('/assets/file\ \(1\).jpg');
             width: 50%;
             border-radius: 0 25px 25px 0;
+            align-self: stretch;
         }
         
     }
@@ -88,6 +90,10 @@ img {
         padding: 1rem 1rem 2rem;
         background-color: whitesmoke;
         border-radius: 25px 0 0 25px;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         
         h2 {
             

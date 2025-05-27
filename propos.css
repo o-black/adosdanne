@@ -37,16 +37,13 @@
     }
     
     .text {
-        background-color: #f5f5f5;
         position: relative;
         right: 4em;
         text-align: justify;
         z-index: 1;
         flex: 1;
         padding: 2rem;
-        border-radius: 8px;
         height: fit-content;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         margin-right: 5rem;
         max-width: 70%;
         p {
@@ -69,9 +66,9 @@
     }
     
     .proposTitle {
-        margin-bottom: 2.5rem;
-        position: relative;
-        z-index: 2;
+        /* margin-bottom: 2.5rem; */ /* Handled by .page-title */
+        /* position: relative; */ /* Handled by .page-title */
+        /* z-index: 2; */ /* z-index might not be needed if positioning is static */
        
     }
   
@@ -85,19 +82,19 @@
         right: -10em;
     }
     .proposTitle {
-        right: 2.5em;
+        /* right: 2.5em; */ /* Handled by .page-title */
     }
     
 }
 @media screen and (min-width: 1024px) {
     .proposTitle{
-        bottom: 0.5em;
+        /* bottom: 0.5em; */ /* Handled by .page-title */
     }
 
 }
 @media screen and (min-width: 1024px) and (max-width: 1339px) {
     .proposTitle {
-        left:0em;
+        /* left:0em; */ /* Handled by .page-title */
     }
     .text {
         max-width: 55%;
@@ -122,7 +119,6 @@
     .text {
         max-width: 80%;
         padding: 2.5rem;
-        background-color: #f5f5f5;
     }
 
     .image-placeholder {
@@ -180,10 +176,10 @@
     }
 
     .proposTitle {
-        left: 0.5em;
-        top:0.5em;
-        margin-bottom: 1rem;
-        position: relative;
+        /* left: 0.5em; */ /* Handled by .page-title */
+        /* top:0.5em; */ /* Handled by .page-title */
+        /* margin-bottom: 1rem; */ /* Handled by .page-title */
+        /* position: relative; */ /* Handled by .page-title */
     }
 
     .text p {

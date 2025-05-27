@@ -84,10 +84,23 @@ p,a,label,input,textarea,::placeholder{
 h1,h2,h3,h4{
     font-family: 'Kalnia',sans-serif;
 }
+/* General h1, h2 font size - can be overridden by .page-title or other specific selectors */
 h1,h2{
-    font-size: 36px;
+    font-size: 36px; 
 }
 
+.page-title {
+    font-size: 2.5rem; /* Consistent size */
+    line-height: 1.2; /* Add consistent line-height */
+    margin-top: 2rem; 
+    margin-bottom: 1.5rem; 
+    margin-left: calc(0.25rem + 30px); /* Dynamically calculate margin based on rem and px */
+    text-align: left; /* Align text to the left */
+    position: static; 
+    width: fit-content; 
+    max-width: calc(100% - (0.25rem + 30px) - 2rem); /* Account for own margin-left and main's padding-right (2rem) */
+    /* Ensure it doesn't exceed the space available */
+}
 
 .btn,.green-button,.card-button{
     font-family:'Kalnia',sans-serif;
@@ -131,6 +144,7 @@ h2{
     text-decoration: none;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 60px;
     height: 60px;
 }
@@ -246,10 +260,13 @@ h2{
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     min-height: calc(100vh - 62px);
     margin: 0;
     width: 100%;
+    padding-top: 0.9rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 
     .buttons{
         .btn{
@@ -313,7 +330,11 @@ main {
 }
 
 h1 {
-    font-size: 2rem;
+    /* margin-bottom: 1.5rem; */ /* Commented out as .page-title will handle this */
+    /* text-align: center; */ /* Commented out as .page-title will handle this */
+    /* position: relative; */ /* Commented out as .page-title will handle this */
+    /* left: 4em; */ /* Commented out */
+    /* top: 1em; */ /* Commented out */
 }
 
 .buttons {
@@ -344,15 +365,20 @@ h1 {
     }
 }
 @media screen and (min-width: 1024px) and (max-width: 1439) {
-    h1,.proposTitle{
-        left: 0em;
+    h1,.proposTitle{ /* Keep .proposTitle here for now, will be removed from propos.css */
+        /* font-size: 3rem; */ /* Commented out if .page-title fixed size is preferred */
+        /* top: 1em; */ /* Commented out */
+        /* left: 3em; */ /* Commented out */
     }
     
 }
 @media screen and (min-width: 1440px){
     main{
         h1{
-            left: 0.5em;
+            /* font-size: 3.5rem; */ /* Commented out */
+            /* position: relative; */ /* Commented out */
+            /* left: 4em; */ /* Commented out */
+            /* top: 0.5em; */ /* Commented out */
         }
     }
     
@@ -435,67 +461,32 @@ h1 {
     .burger.toggle .line3 {
         transform: rotate(45deg) translate(-5px, -6px);
     }
-}
-@media screen and (max-width:428px){
-    .main-image{
-        width: 25em;
-    }
-    .nav-links{
-        width: 70%;
-    }
-}
 
-
-@media screen and (max-width: 428px) {
-    .main-image {
-        width: 25em;
-    }
-    .nav-links {
-        width: 70%;
-    }
-}
-
-@media screen and (max-width: 376px) {  /* Changed from 375px to 376px */
-    .main-image {
-        width: 21em;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .main-image {
-        width: 18em;
-    }
-}
-@media screen and (max-width: 768px) {
-    
-    .nav-links {
-        display: none; /* Hide nav links on mobile, you might want to implement a burger menu */
-        
-    }
-    .nav-active{
-        display: flex;
-    }
-    #histoire {
-        flex-direction: column;
-    }
-
-    .histoire-content {
-        padding-right: 0;
-        margin-bottom: 2rem;
-    }
-
-    .portfolio-items {
-        justify-content: center;
-    }
     .container-service{
         flex-direction: column;
+    }
+
+    /* Ensure this .page-title rule is the definitive one for mobile */
+    .page-title {
+        margin-left: 0.5em; /* Target alignment for mobile/tablet */
+        font-size: 2.5rem; /* Consistent font size */
+        line-height: 1.2; /* Add consistent line-height for mobile */
+        margin-top: 2rem; /* Consistent top margin */
+        margin-bottom: 1.5rem; /* Consistent bottom margin */
+        text-align: left;
+        position: static;
+        width: fit-content;
+        max-width: calc(100% - 0.5em - 2rem); /*自身のマージンとmainの右パディングを考慮 */
     }
 }
 
 /******************************************************************/
 h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    /* text-align: center; */ /* Commented out */
+    /* margin-bottom: 2rem; */ /* Commented out */
+    /* font-size: 2.5rem; */ /* Commented out */
+    /* position: relative; */ /* Commented out */
+    /* left: 4em; */ /* Commented out */
 }
 
 .container-propos{
@@ -527,9 +518,7 @@ h1 {
         max-width: 400px;
         margin-top: 1em;
     } */
-    .proposTitle{
-        margin-left: 0.5em;
-    }
+    /* .page-title rule removed from here as it is defined in the main mobile media query */
 }
 /* Image loading effects */
 .lazy-image {
@@ -1091,9 +1080,11 @@ main {
 
 
 h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    margin-right: auto;
+    /* text-align: center; */ /* Commented out */
+    /* margin-bottom: 2rem; */ /* Commented out */
+    /* font-size: 2.5rem; */ /* Commented out */
+    /* position: relative; */ /* Commented out */
+    /* left: 4em; */ /* Commented out */
 }
 
 .contact-container {
@@ -1241,7 +1232,9 @@ nav {
 }
 
 h1, h2, h3 {
-    margin-bottom: 1rem;
+    /* color: #333; */ /* Retaining color, or can be part of .page-title if needed */
+    /* margin-bottom: 1rem; */ /* Commented out */
+    /* font-weight: 700; */ /* Retaining font-weight, or can be part of .page-title */
 }
 
 button {
@@ -1330,9 +1323,7 @@ button {
         max-width: 400px;
         margin-top: 1em;
     } */
-    .proposTitle{
-        margin-left: 0.5em;
-    }
+    /* .page-title rule removed from here as it is defined in the main mobile media query */
 }
 /* Image loading effects */
 .lazy-image {
