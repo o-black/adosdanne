@@ -582,9 +582,7 @@ img {
         .histoire-text{
             border-radius: 25px;
         }
-        .green-button{
-            top: 0;
-        }
+        
     }
 
     
@@ -647,7 +645,7 @@ img {
         min-height: 22em;
     }
     .carousel-dots{
-        padding-top: 1em ;
+        padding-top: 2em ;
     }
    
 }
@@ -691,71 +689,111 @@ img {
     .carousel-wrapper{
         min-height: 26em;
     }
-    h2 {
+    /* Removing h2 margin-left to ensure consistency with general mobile styles */
+    /* h2 {
         margin-left: 0.9rem!important;
-    }
+    } */
 }
 @media screen and (min-width: 320px) and (max-width: 375px) {
     /* Portfolio Section */
-    h2 {
+    /* Removing h2 margin-left to ensure consistency with general mobile styles */
+    /* h2 {
         margin-left: 0.7rem!important;
-    }
+    } */
 }
 
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
-    /* Typography */
+    /* General Typography Adjustments for Mobile */
     h1 { font-size: 2rem; }
-    h2 { font-size: 1.75rem; }
-    h3 { font-size: 1.25rem; }
+    h2 { 
+        font-size: 1.75rem; 
+        padding-left: 1rem; /* Added for horizontal alignment */
+        text-align: left; /* Ensure all h2 are left-aligned */
+        margin-left: 0; /* Reset any specific left margins */
+        margin-right: 0; /* Reset any specific right margins */
+        width: auto; /* Allow h2 to take natural width after padding */
+    }
+    h3 { 
+        font-size: 1.25rem; 
+        padding-left: 1rem; /* Align with h2 by default */
+        text-align: left;   /* Ensure all h3 are left-aligned */
+        margin-left: 0;     /* Reset any specific left margins */
+        margin-right: 0;    /* Reset any specific right margins */
+    }
     p { font-size: 1rem; }
 
-    /* Section Padding */
+    /* Adjustments for specific sections if needed, ensuring h2 alignment */
     #histoire, #portfolio, #services {
-        padding: 1rem;
+        padding-left: 0; /* Reset section padding if it interferes */
+        padding-right: 0; /* Reset section padding if it interferes */
+        align-items: flex-start; /* Ensure items align to the start for flex containers like #histoire and #services */
     }
 
-    /* Background Image */
     .bg-img {
-        background-size: 100%;
-        min-height: 25em;
-        opacity: 0.3;
+        /* background: none !important; */
+        /* Consider if this is needed or how it affects layout */
     }
 
-    /* Histoire Section */
+    /* Histoire Section Mobile */
     #histoire {
         .histoire-content {
             flex-direction: column;
-            width: 100%;
-
             .histoire-text {
                 width: 100%;
+                border-radius: 25px;
+                padding: 1rem; /* Consistent padding */
+                h2 { /* Target h2 inside .histoire-text specifically */
+                    padding-left: 0; /* Counteract parent's 1rem padding-left */
+                }
             }
-            
             .histoire-image {
-                display: none;
+                display: none; /* Or manage differently if image is important */
             }
         }
+        /* Remove the old h2 block if it was directly under #histoire and less specific */
+        /* h2 { ... } */ 
     }
 
-    /* Portfolio Section */
+    /* Portfolio Section Mobile */
     #portfolio {
         .bg-img {
-            height: 100%;
-            background: linear-gradient(to bottom, 
-                rgba(255, 255, 255, 0) 0%,
-                var(--peach) 90%,
-                var(--peach) 60%
-            ), url('/assets/declinaison\ 1\ 0524\ .png');
-            background-size: 100%;
+            padding: 2em; /* Adjusted padding for mobile */
+            height: auto; /* Adjust height or remove if not suitable */
+            background-size: contain; /* Or cover, depending on desired effect */
+            opacity: 0.5; /* Adjusted opacity */
         }
-        h2{
-            margin-left:1.8rem;
+        h2 {
+            /* text-align: center; */ /* Overridden by general h2 style for left alignment */
+            /* margin-left: 0; */ /* Handled by general h2 style */
+            margin-bottom: 1rem; /* Adjusted margin */
+            /* padding-left: 1rem; already handled by general h2 style */
         }
     }
 
-   
+    /* Services Section Mobile */
+    #services {
+        h2 {
+            text-align: left !important; /* Ensure this overrides any desktop styles for text-align */
+            margin-bottom: 1rem; /* Adjusted margin */
+            margin-right: 0.4em; /* Added as per request */
+            /* padding-left: 1rem; -- Handled by general h2 mobile style */
+            /* Other desktop styles like width, margin-left are reset by general h2 mobile style */
+        }
+        .container-service {
+            flex-direction: column;
+            .service {
+                width: 100%;
+                margin-bottom: 1rem;
+                padding: 1rem; /* Consistent padding */
+                h3 { /* Target h3 inside .service specifically */
+                    padding-left: 0; /* Counteract parent's 1rem padding-left */
+                }
+            }
+        }
+    }
+
     .carousel-item {
         width: 90%;
     }
@@ -764,9 +802,6 @@ img {
         display: none;
     }
 
-    /* .carousel-dots{
-        padding: 2em;
-    } */
     .carousel-items {
         height: 20em;
     }
