@@ -40,7 +40,7 @@ img {
 }
 
 #intro p{
-    width: 90%;;
+    width: 90%;
 }
 /* Histoire Section */
 #histoire {
@@ -622,16 +622,6 @@ img {
         }
     }
     @media screen and (max-width: 426px) {
-    
-        #histoire{
-            .green-button{
-                top: 0.9em;
-            }
-          
-        }
-        /* #portfolio h2 {
-            margin-left: 2em;
-        } */
 
         .carousel-dots{
             padding-bottom: 1em ;
@@ -775,7 +765,6 @@ img {
     /* Services Section Mobile */
     #services {
         h2 {
-            text-align: left !important; /* Ensure this overrides any desktop styles for text-align */
             margin-bottom: 1rem; /* Adjusted margin */
             margin-right: 0.4em; /* Added as per request */
             /* padding-left: 1rem; -- Handled by general h2 mobile style */
@@ -820,10 +809,16 @@ img {
         padding: 1rem;
     }
 
+    #intro p { /* Style for the paragraph within the intro section for mobile */
+        width: 100%;
+        text-align: center; /* Center the intro text on mobile for better visual balance */
+    }
+
     .logo-large {
         display: flex;
         justify-content: center;
-        width: 100%;
+        width: 100%; /* This line was part of your last accepted change and is kept */
+        /* The incorrect nested 'p' rule that was here is now removed by this updated block */
     }
 
     
@@ -865,7 +860,7 @@ img {
     display: flex;
  
     gap: 2rem;
-    width: 94%;
+    width: 91%;
     max-width: 1300px;
     margin: 0 auto;
 }
