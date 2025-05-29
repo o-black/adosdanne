@@ -7,6 +7,85 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="designgraphique.css">
     <link rel="stylesheet" href="footer.css">
+    <style>
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1001; /* Ensure they are above modal content but below close button if necessary */
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            user-select: none; /* Prevent text selection */
+        }
+        .modal-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .modal-nav.prev-project {
+            left: 10px;
+        }
+        .modal-nav.next-project {
+            right: 10px;
+        }
+        /* .modal-nav.disabled {
+            opacity: 0.3;
+            cursor: default;
+            pointer-events: none;
+        } */
+
+        @keyframes pulse-fade {
+            0%, 100% {
+                opacity: 0.7;
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.05);
+            }
+        }
+
+        .swipe-hint {
+            display: none; /* Hidden by default */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            z-index: 1002; /* Above arrows and modal content */
+            text-align: center;
+            /* Removed margin-top, now positioned by bottom/left/transform */
+        }
+
+        @media screen and (max-width: 767px) { /* Mobile breakpoint */
+            .modal-nav {
+                display: none !important; /* Hide arrows on mobile */
+            }
+            .swipe-hint {
+                display: block; /* Show swipe hint on mobile */
+                animation: pulse-fade 2s infinite ease-in-out;
+                top: 80%; /* Position from top of viewport */
+                transform: translate(-50%, -50%); /* Adjust transform for better centering at new top */
+            }
+        }
+
+        @media screen and (max-width: 320px) { /* Specific for very small screens */
+            .swipe-hint {
+                top: 75%; /* Adjust top position for very small screens */
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -31,6 +110,9 @@
     </header>
  <!-- The HTML remains the same -->
  <div id="modal" class="modal">
+    <span class="modal-nav prev-project" aria-label="Previous project">&#10094;</span>
+    <span class="modal-nav next-project" aria-label="Next project">&#10095;</span>
+    <p class="swipe-hint">Balayez pour naviguer</p> 
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="modal-grid">
@@ -62,24 +144,75 @@ document.addEventListener('DOMContentLoaded', function() {
     const fullscreenImage = fullscreenViewer.querySelector('img');
     const fullscreenClose = document.querySelector('.fullscreen-close');
 
-    // Function to open modal
-    function openModal(card) {
+    const modalContent = modal.querySelector('.modal-content');
+
+    const portfolioCards = Array.from(document.querySelectorAll('.portfolio-card'));
+    let currentProjectIndex = -1;
+
+    const prevProjectButton = modal.querySelector('.prev-project');
+    const nextProjectButton = modal.querySelector('.next-project');
+    const swipeHint = modal.querySelector('.swipe-hint');
+
+    // Function to update modal content based on project index
+    function showProjectInModal(index) {
+        if (index < 0 || index >= portfolioCards.length) {
+            console.error('Invalid project index:', index);
+            return;
+        }
+        const card = portfolioCards[index];
         const image = card.querySelector('img');
-        const title = card.querySelector('h3').textContent;
-        const description = card.querySelector('p').textContent;
+        const title = card.querySelector('h4').textContent; // Portfolio cards use h4 for title
+        const description = card.querySelector('.card-description').textContent;
 
         modalImage.src = image.src;
         modalTitle.textContent = title;
         modalDescription.textContent = description;
 
+        currentProjectIndex = index;
+    }
+
+    function updateModalOverlayElements() {
+        if (!modal || !modalContent || !prevProjectButton || !nextProjectButton || !swipeHint) return;
+
+        const modalContentRect = modalContent.getBoundingClientRect();
+        const arrowWidth = 44; // From CSS .modal-nav width
+        const arrowHeight = 44; // From CSS .modal-nav height
+
+        // Vertical alignment for arrows
+        const arrowTopPosition = modalContentRect.top + (modalContentRect.height / 2) - (arrowHeight / 2);
+        prevProjectButton.style.top = `${arrowTopPosition}px`;
+        nextProjectButton.style.top = `${arrowTopPosition}px`;
+
+        // Horizontal alignment for arrows
+        const gap = 20; 
+        prevProjectButton.style.left = `${modalContentRect.left - arrowWidth - gap}px`;
+        prevProjectButton.style.right = 'auto';
+        nextProjectButton.style.left = `${modalContentRect.right + gap}px`;
+        nextProjectButton.style.right = 'auto';
+    }
+
+    // Function to open modal
+    function openModal(card) {
+        const index = portfolioCards.indexOf(card);
+        if (index === -1) {
+            console.error('Card not found in portfolioCards list.');
+            return;
+        }
+        showProjectInModal(index);
+
         modal.style.display = 'block';
-        setTimeout(() => modal.classList.add('show'), 10);
+        setTimeout(() => {
+            modal.classList.add('show');
+            updateModalOverlayElements();
+        }, 10);
     }
 
     // Function to close modal
     function closeModal() {
         modal.classList.remove('show');
         setTimeout(() => modal.style.display = 'none', 300);
+        // No need to specifically remove resize listener if it's general and lightweight,
+        // but if it caused issues, it could be removed here and re-added in openModal.
     }
 
     // Function to open fullscreen viewer
@@ -95,26 +228,18 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     }
 
-    // Add click event to modal image to open fullscreen
-    modalImage.addEventListener('click', () => {
-        openFullscreen(modalImage.src);
+    // Event listener for previous project button
+    prevProjectButton.addEventListener('click', () => {
+        if (portfolioCards.length === 0) return;
+        currentProjectIndex = (currentProjectIndex - 1 + portfolioCards.length) % portfolioCards.length;
+        showProjectInModal(currentProjectIndex);
     });
 
-    // Close fullscreen on click
-    fullscreenViewer.addEventListener('click', (e) => {
-        if (e.target !== fullscreenImage) {
-            closeFullscreen();
-        }
-    });
-
-    // Close fullscreen on close button click
-    fullscreenClose.addEventListener('click', closeFullscreen);
-
-    // Close fullscreen on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeFullscreen();
-        }
+    // Event listener for next project button
+    nextProjectButton.addEventListener('click', () => {
+        if (portfolioCards.length === 0) return;
+        currentProjectIndex = (currentProjectIndex + 1) % portfolioCards.length;
+        showProjectInModal(currentProjectIndex);
     });
 
     // Add click event to all portfolio cards
@@ -127,6 +252,13 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();
+        }
+    });
+
+    // Update arrow positions on window resize if modal is visible
+    window.addEventListener('resize', () => {
+        if (modal.style.display === 'block' && modal.classList.contains('show')) {
+            updateModalOverlayElements();
         }
     });
 });
