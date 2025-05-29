@@ -38,11 +38,12 @@
     
     .text {
         position: relative;
-        right: 4em;
+        right: 5em;
         text-align: justify;
         z-index: 1;
         flex: 1;
         padding: 2rem;
+        padding-top: 0em;
         height: fit-content;
         margin-right: 5rem;
         max-width: 70%;
@@ -97,8 +98,8 @@
         /* left:0em; */ /* Handled by .page-title */
     }
     .text {
-        max-width: 55%;
-        right: 1em;
+      
+        
     }
     .image-placeholder{
         right: -2em;
@@ -118,7 +119,7 @@
 
     .text {
         max-width: 80%;
-        padding: 2.5rem;
+        text-align: justify;
     }
 
     .image-placeholder {
@@ -144,7 +145,6 @@
 
     .text {
         max-width: 100%;
-        padding: 1.5rem;
         order: 2;
     }
 
@@ -171,7 +171,6 @@
     }
 
     .text {
-        padding: 1.25rem;
         margin: 0 auto;
     }
 
