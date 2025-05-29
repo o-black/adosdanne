@@ -502,7 +502,7 @@ main{
         overflow-x: auto;
         #gallery>h4{
             position: relative;
-            left: 4em;
+            left: 1.5em;
         }
         h1,h4{
             /* left: 1.5em; */ /* Commented out to allow .page-title to control h1 horizontal position */
@@ -581,6 +581,7 @@ main{
         overflow-x: hidden;
     }
     #gallery>h4{
+        margin-top: 1em;
         position: relative;
         left: 3.5em;
         text-wrap:balance;
