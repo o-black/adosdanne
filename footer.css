@@ -94,21 +94,30 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 0.5rem;
-
-    img{
-        width: 20px;
-    }
 }
 
-.social-links a {
-    display: inline-block;
-    color: white;
-    border-radius: 25px;
+.social-link-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-decoration: none;
+    color: #666;
+    gap: 0.25rem;
 }
 
-.social-links a:hover {
-    color: white;
+.social-link-item img {
+    width: 20px;
+    height: 20px;
+}
+
+.social-link-item:hover .social-label {
+    color: var(--green);
+}
+
+.social-label {
+    font-size: 0.7rem;
+    text-align: center;
+    transition: color 0.3s ease;
 }
 
 .footer-bottom {
@@ -153,5 +162,9 @@
     
     .social-links {
         justify-content: center;
+        gap: 0.75rem;
+    }
+    .social-link-item {
+        gap: 0.15rem;
     }
 }
