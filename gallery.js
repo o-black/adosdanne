@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const carouselContainer = document.querySelector('.carousel-container');
-    const carouselItems = document.querySelector('.carousel-items');
+    const carouselItemsContainer = document.querySelector('.carousel-items');
     const prevButton = document.querySelector('.carousel-button.prev');
     const nextButton = document.querySelector('.carousel-button.next');
     
@@ -92,13 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/My throne_s Spirit .JPG',
-            title: 'A throne’s Spirit ',
+            title: 'A throne\'s Spirit ',
             description: 'Le bois, symbole de sagesse ancestrale...',
             date: 'Mars 2024',
-            fullDescription: 'Le bois, symbole de sagesse ancestrale et de force spirituel, semble être le parfait matériel pour la construction du trône de notre esprit; inséminer par la stabilité. C’est cette recherche de tranquillité mais aussi cette espace de profondeur présent dans nos tripes qui explique le fond de la toile. On y retrouve aussi un concept développé pas l’artiste comme dossier du trône : Les colored Queens. Finalement le une piscine pour siège pour permettre à l’esprit sirène de se ressourcer étant dans son élément intuitif.',
+            fullDescription: 'Le bois, symbole de sagesse ancestrale et de force spirituel, semble être le parfait matériel pour la construction du trône de notre esprit; inséminer par la stabilité. C\'est cette recherche de tranquillité mais aussi cette espace de profondeur présent dans nos tripes qui explique le fond de la toile. On y retrouve aussi un concept développé pas l\'artiste comme dossier du trône : Les colored Queens. Finalement le une piscine pour siège pour permettre à l\'esprit sirène de se ressourcer étant dans son élément intuitif.',
             price: '1160$',
             size: '24 x 30 in',
-            material: 'Acrylique et pastel à l’huile'
+            material: 'Acrylique et pastel à l\'huile'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Test subject.jpg',
@@ -112,13 +112,13 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/The invisible women.jpg',
-            title: 'L’esprit à 7 cordes',
+            title: 'L\'esprit à 7 cordes',
             description: 'Femme à tout faire, Femme glorieuse.',
             date: '2024',
             fullDescription: 'Femme à tout faire, Femme glorieuse.',
             price: '1164$',
             size: '24 x 36 in',
-            material: 'Acrylique et pastel à l’huile'
+            material: 'Acrylique et pastel à l\'huile'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/The worker.JPG',
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Under the bridge',
             description: 'Ce panneau est initialement initié par le désir de créer un genre...',
             date: '2024',
-            fullDescription: 'Ce panneau est initialement initié par le désir de créer un genre de casse-tête. Les plus petites plaques devraient être interchangeables mais faute de temps et de ressources j’ai préféré les collés à la planche. Chaque Vénus est dans la pause du mouvement. Savourer du moment présent pour cette seconde de réalisation… tout en regardant l’eau qui continue de suivre son cours symbolisant, le temps, la réalité la plus décisive qui nous échappera toujours.',
+            fullDescription: 'Ce panneau est initialement initié par le désir de créer un genre de casse-tête. Les plus petites plaques devraient être interchangeables mais faute de temps et de ressources j\'ai préféré les collés à la planche. Chaque Vénus est dans la pause du mouvement. Savourer du moment présent pour cette seconde de réalisation… tout en regardant l\'eau qui continue de suivre son cours symbolisant, le temps, la réalité la plus décisive qui nous échappera toujours.',
             price: '720$',
             size: '24 x 24 in',
             material: 'Acrylique sur panneau de bois et MDF'
@@ -162,20 +162,22 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Émergence',
             description: 'Des ténèbres à la lumière...',
             date: 'Mars 2024',
-            fullDescription: 'Des ténèbres à la lumière, on manifeste notre véritable nature. Les marques blanches de mes Vénus célébrant les blessures transformées en page blanche, l’opportunité de se redéfinir en suivant la moulure de notre corps, en les acceptant comme une orientation de l’avenir.',
+            fullDescription: 'Des ténèbres à la lumière, on manifeste notre véritable nature. Les marques blanches de mes Vénus célébrant les blessures transformées en page blanche, l\'opportunité de se redéfinir en suivant la moulure de notre corps, en les acceptant comme une orientation de l\'avenir.',
             price: '1120$',
             size: '19.7 x 49.2 in',
             material: 'Acrylique sur panneau mdf'
         },
     ];
     
-    let currentIndex = 0;
+    let mainCarouselCurrentIndex = 0;
+    let currentPortfolioCardIndex = -1;
 
-    // Create cards
+    // Create cards for the main carousel
     galleryItems.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.className = 'carousel-item';
-        card.innerHTML = `
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'carousel-item';
+        cardDiv.dataset.portfolioIndex = index;
+        cardDiv.innerHTML = `
             <div class="portfolio-card">
                 <div class="card-image">
                     <img src="${item.image}" alt="${item.title}">
@@ -186,18 +188,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        carouselItems.appendChild(card);
+        if (carouselItemsContainer) carouselItemsContainer.appendChild(cardDiv);
     });
 
-    // Add popup HTML to the page
     const popupHTML = `
         <div class="popup">
+            <span class="modal-nav prev-project" aria-label="Previous portfolio project">&#10094;</span>
+            <span class="modal-nav next-project" aria-label="Next portfolio project">&#10095;</span>
+            <p class="swipe-hint">Balayez pour naviguer</p>
             <div class="popup-content">
                 <span class="close">&times;</span>
                 <div class="popup-image-container">
-                    <button class="popup-nav-button popup-nav-prev">&#10094;</button>
-                    <img class="popup-image" src="" alt="">
-                    <button class="popup-nav-button popup-nav-next">&#10095;</button>
+                    <button class="popup-nav-button popup-nav-prev" aria-label="Previous image in series">&#10094;</button>
+                    <img class="popup-image" src="" alt="Artwork Image">
+                    <button class="popup-nav-button popup-nav-next" aria-label="Next image in series">&#10095;</button>
                     <div class="dot-navigation"></div>
                 </div>
                 <div class="popup-info">
@@ -212,12 +216,34 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 
-    const popup = document.querySelector('.popup');
-    const popupImage = popup.querySelector('.popup-image');
-    const closeButton = popup.querySelector('.close');
+    const popupElement = document.querySelector('.popup');
+    const popupContentElement = popupElement.querySelector('.popup-content');
+    const popupImageElement = popupElement.querySelector('.popup-image');
+    const popupCloseButton = popupElement.querySelector('.popup-content .close');
+    const popupTitleElement = popupElement.querySelector('.popup-title');
+    const popupDateElement = popupElement.querySelector('.popup-date');
+    const popupPriceStrongElement = popupElement.querySelector('.popup-price strong');
+    const popupSpecsElement = popupElement.querySelector('.popup-specs');
+    const popupDescriptionElement = popupElement.querySelector('.popup-description');
+    const dotNavigationElement = popupElement.querySelector('.dot-navigation');
+    const prevRelatedImageButton = popupElement.querySelector('.popup-nav-button.popup-nav-prev');
+    const nextRelatedImageButton = popupElement.querySelector('.popup-nav-button.popup-nav-next');
 
-    // Update the relatedImages object to remove extra spaces in keys
-    const relatedImages = {
+    // Define portfolio navigation buttons
+    const prevPortfolioCardButton = popupElement.querySelector('.modal-nav.prev-project');
+    const nextPortfolioCardButton = popupElement.querySelector('.modal-nav.next-project');
+
+    let currentRelatedImageArrayIndex = 0;
+    let currentArtworkRelatedImages = [];
+
+    // Variables for swipe navigation
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    const swipeThreshold = 50; // Minimum distance for a swipe
+
+    const relatedImagesData = {
         'Ancestors market': [
             '/assets/Galerie/compressed/Ready Paintings/Ancestors market 1.jpg',
             '/assets/Galerie/compressed/Ready Paintings/Ancestors market 2.jpg',
@@ -243,17 +269,17 @@ document.addEventListener('DOMContentLoaded', function() {
         'Men': [
             '/assets/Galerie/compressed/Ready Paintings/Men 1.jpg',
         ],
-        'Molding': [
+        'Molding Waters': [
             '/assets/Galerie/compressed/Ready Paintings/Molding 1.jpg',
             '/assets/Galerie/compressed/Ready Paintings/Molding 3.jpg',
         ],
-        'My throne_s Spirit': [
+        'A throne\'s Spirit ': [
             '/assets/Galerie/compressed/Ready Paintings/My throne_s Spirit 1.JPG',
             '/assets/Galerie/compressed/Ready Paintings/My throne_s Spirit 2.JPG',
             '/assets/Galerie/compressed/Ready Paintings/My throne_s Spirit 3.JPG',
             '/assets/Galerie/compressed/Ready Paintings/My throne_s Spirit 4.JPG',
         ],
-        'The invisible women': [
+        'L\'esprit à 7 cordes': [
             '/assets/Galerie/compressed/Ready Paintings/The invisible women 1.jpg',
             '/assets/Galerie/compressed/Ready Paintings/The invisible women 2.jpg',
         ],
@@ -277,211 +303,296 @@ document.addEventListener('DOMContentLoaded', function() {
         ],
     };
 
-    // Add click event to portfolio cards
-    document.querySelectorAll('.portfolio-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const title = card.querySelector('h4').textContent;
-            const mainImage = card.querySelector('.card-image img').src;
-            openPopup(title, mainImage);
-        });
-    });
+    function displayPortfolioCardInPopup(portfolioIndex) {
+        if (portfolioIndex < 0 || portfolioIndex >= galleryItems.length) {
+            console.error('Invalid portfolioIndex:', portfolioIndex);
+            return;
+        }
+        currentPortfolioCardIndex = portfolioIndex;
+        const item = galleryItems[currentPortfolioCardIndex];
 
-    function openPopup(title, mainImage) {
-        const item = galleryItems.find(item => item.title === title);
-        let currentImageIndex = 0;
+        popupTitleElement.textContent = item.title;
+        popupDateElement.textContent = item.date || '';
+        popupPriceStrongElement.textContent = item.price || (item.rice || 'Prix sur demande');
+        const specsText = item.material ? `<strong>${item.material}</strong>${item.size ? ` - ${item.size}` : ''}` : (item.size || '');
+        popupSpecsElement.innerHTML = specsText;
+        popupDescriptionElement.textContent = item.fullDescription || item.description || '';
+
+        currentArtworkRelatedImages = relatedImagesData[item.title.trim()] || [];
+        currentRelatedImageArrayIndex = 0;
         
-        // Create array with main image first, followed by related images
-        const allImages = [mainImage];
-        if (relatedImages[title.trim()]) {
-            allImages.push(...relatedImages[title.trim()]);
+        if (currentArtworkRelatedImages.length > 0) {
+            popupImageElement.src = currentArtworkRelatedImages[0];
+        } else {
+            popupImageElement.src = item.image;
         }
         
-        // Set all information
-        popupImage.src = mainImage;
-        popup.querySelector('.popup-title').textContent = title;
-        popup.querySelector('.popup-date').textContent = item.date;
-        popup.querySelector('.popup-price strong').textContent = item.price || 'Prix sur demande';
-        
-        // Format material and size together
-        const specs = item.material ? 
-            `<strong>${item.material}</strong>${item.size ? ` - ${item.size}` : ''}` : 
-            (item.size ? item.size : '');
-        popup.querySelector('.popup-specs').innerHTML = specs;
-        
-        popup.querySelector('.popup-description').textContent = item.fullDescription;
-
-        // Create dots
-        const dotNavigation = popup.querySelector('.dot-navigation');
-        dotNavigation.innerHTML = '';
-        allImages.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.className = `dot${index === 0 ? ' active' : ''}`;
-            dot.addEventListener('click', () => {
-                currentImageIndex = index;
-                updateImage();
-            });
-            dotNavigation.appendChild(dot);
-        });
-
-        // Touch handling for swipe
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        popupImage.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        popupImage.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    // Swipe left - next image
-                    currentImageIndex = (currentImageIndex + 1) % allImages.length;
-                } else {
-                    // Swipe right - previous image
-                    currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-                }
-                updateImage();
-            }
-        }
-
-        function updateImage() {
-            popupImage.src = allImages[currentImageIndex];
-            // Update dot active state
-            dotNavigation.querySelectorAll('.dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentImageIndex);
-            });
-        }
-
-        // Navigation buttons (for desktop)
-        const prevButton = popup.querySelector('.popup-nav-prev');
-        const nextButton = popup.querySelector('.popup-nav-next');
-        
-        prevButton.onclick = () => {
-            currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-            updateImage();
-        };
-        
-        nextButton.onclick = () => {
-            currentImageIndex = (currentImageIndex + 1) % allImages.length;
-            updateImage();
-        };
-
-        popup.style.display = 'flex';
-        popup.offsetHeight; // Trigger reflow
-        popup.classList.add('show');
-        document.body.style.overflow = 'hidden';
+        updateRelatedImageDots();
+        updateRelatedImageNavButtonsVisibility();
+        setupRelatedImageInteractions();
     }
 
-    // Close popup events
-    closeButton.addEventListener('click', closePopup);
-    popup.addEventListener('click', e => {
-        if (e.target === popup) closePopup();
+    function updateRelatedImageDisplay() {
+        if (currentArtworkRelatedImages.length > 0 && currentArtworkRelatedImages[currentRelatedImageArrayIndex]) {
+            popupImageElement.src = currentArtworkRelatedImages[currentRelatedImageArrayIndex];
+        } else {
+            const item = galleryItems[currentPortfolioCardIndex];
+            if(item) popupImageElement.src = item.image;
+        }
+        updateRelatedImageDots();
+    }
+
+    function updateRelatedImageDots() {
+        dotNavigationElement.innerHTML = '';
+        if (currentArtworkRelatedImages.length > 1) {
+            currentArtworkRelatedImages.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (index === currentRelatedImageArrayIndex) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    currentRelatedImageArrayIndex = index;
+                    updateRelatedImageDisplay();
+                });
+                dotNavigationElement.appendChild(dot);
+            });
+        }
+    }
+
+    function updateRelatedImageNavButtonsVisibility() {
+        if (currentArtworkRelatedImages.length <= 1) {
+            prevRelatedImageButton.style.display = 'none';
+            nextRelatedImageButton.style.display = 'none';
+        } else {
+            prevRelatedImageButton.style.display = 'flex';
+            nextRelatedImageButton.style.display = 'flex';
+            prevRelatedImageButton.disabled = currentRelatedImageArrayIndex === 0;
+            nextRelatedImageButton.disabled = currentRelatedImageArrayIndex === currentArtworkRelatedImages.length - 1;
+        }
+    }
+    
+    function setupRelatedImageInteractions() {
+        popupImageElement.onclick = () => openFullscreen(popupImageElement.src);
+    }
+
+    prevRelatedImageButton.onclick = () => {
+        if (currentRelatedImageArrayIndex > 0) {
+            currentRelatedImageArrayIndex--;
+            updateRelatedImageDisplay();
+            updateRelatedImageNavButtonsVisibility();
+        }
+    };
+
+    nextRelatedImageButton.onclick = () => {
+        if (currentRelatedImageArrayIndex < currentArtworkRelatedImages.length - 1) {
+            currentRelatedImageArrayIndex++;
+            updateRelatedImageDisplay();
+            updateRelatedImageNavButtonsVisibility();
+        }
+    };
+
+    document.querySelectorAll('.carousel-item .portfolio-card').forEach(cardElement => {
+        cardElement.addEventListener('click', () => {
+            const portfolioIndex = parseInt(cardElement.closest('.carousel-item').dataset.portfolioIndex);
+            if (!isNaN(portfolioIndex)) {
+                displayPortfolioCardInPopup(portfolioIndex);
+                popupElement.style.display = 'flex';
+                popupElement.offsetHeight;
+                popupElement.classList.add('show');
+                document.body.style.overflow = 'hidden';
+                updatePopupOverlayElements();
+            }
+        });
+    });
+
+    prevPortfolioCardButton.addEventListener('click', () => {
+        if (galleryItems.length === 0) return;
+        const newIndex = (currentPortfolioCardIndex - 1 + galleryItems.length) % galleryItems.length;
+        displayPortfolioCardInPopup(newIndex);
+        updatePopupOverlayElements();
+    });
+
+    nextPortfolioCardButton.addEventListener('click', () => {
+        if (galleryItems.length === 0) return;
+        const newIndex = (currentPortfolioCardIndex + 1) % galleryItems.length;
+        displayPortfolioCardInPopup(newIndex);
+        updatePopupOverlayElements();
+    });
+
+    if (popupCloseButton) popupCloseButton.addEventListener('click', closePopup);
+    popupElement.addEventListener('click', e => {
+        if (e.target === popupElement) closePopup();
     });
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closePopup();
+        if (e.key === 'Escape' && popupElement.classList.contains('show')) closePopup();
     });
 
     function closePopup() {
-        popup.classList.remove('show');
+        popupElement.classList.remove('show');
         setTimeout(() => {
-            popup.style.display = 'none';
+            popupElement.style.display = 'none';
             document.body.style.overflow = '';
-        }, 300); // Match this with the CSS transition duration
+        }, 300);
     }
 
-    // Add fullscreen viewer functionality
-    const fullscreenViewer = document.querySelector('.fullscreen-viewer');
-    const fullscreenImage = fullscreenViewer.querySelector('img');
-    const fullscreenClose = document.querySelector('.fullscreen-close');
+    const fullscreenViewerElement = document.querySelector('.fullscreen-viewer');
+    const fullscreenImageElement = fullscreenViewerElement ? fullscreenViewerElement.querySelector('img') : null;
+    const fullscreenCloseButton = fullscreenViewerElement ? fullscreenViewerElement.querySelector('.fullscreen-close') : null;
 
-    // Function to open fullscreen viewer
     function openFullscreen(imageSrc) {
-        fullscreenImage.src = imageSrc;
-        fullscreenViewer.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (fullscreenViewerElement && fullscreenImageElement) {
+            fullscreenImageElement.src = imageSrc;
+            fullscreenViewerElement.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     }
 
-    // Function to close fullscreen viewer
     function closeFullscreen() {
-        fullscreenViewer.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        if (fullscreenViewerElement) {
+            fullscreenViewerElement.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     }
 
-    // Add click event to popup images to open fullscreen
-    document.addEventListener('click', (e) => {
-        if (e.target.matches('.popup-content img')) {
-            openFullscreen(e.target.src);
-        }
-    });
+    if (fullscreenViewerElement) {
+        fullscreenViewerElement.addEventListener('click', (e) => {
+            if (e.target !== fullscreenImageElement) {
+                closeFullscreen();
+            }
+        });
+    }
 
-    // Close fullscreen on click outside image
-    fullscreenViewer.addEventListener('click', (e) => {
-        if (e.target !== fullscreenImage) {
-            closeFullscreen();
-        }
-    });
-
-    // Close fullscreen on close button click
-    fullscreenClose.addEventListener('click', closeFullscreen);
-
-    // Close fullscreen on escape key
+    if (fullscreenCloseButton) fullscreenCloseButton.addEventListener('click', closeFullscreen);
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && fullscreenViewer.classList.contains('active')) {
+        if (e.key === 'Escape' && fullscreenViewerElement && fullscreenViewerElement.classList.contains('active')) {
             closeFullscreen();
         }
     });
 
-    // Add to the existing JavaScript after the carousel items initialization
-    function initializeCarousel() {
-        // ... existing carousel initialization code ...
+    function updatePopupOverlayElements() {
+        if (!popupElement || !popupContentElement || !prevPortfolioCardButton || !nextPortfolioCardButton) return;
 
-        // Add dots navigation
+        const popupContentRect = popupContentElement.getBoundingClientRect();
+        const arrowWidth = 44;
+        const arrowHeight = 44;
+
+        const arrowTopPosition = popupContentRect.top + (popupContentRect.height / 2) - (arrowHeight / 2);
+        prevPortfolioCardButton.style.top = `${arrowTopPosition}px`;
+        nextPortfolioCardButton.style.top = `${arrowTopPosition}px`;
+
+        const gap = 20;
+        prevPortfolioCardButton.style.left = `${popupContentRect.left - arrowWidth - gap}px`;
+        prevPortfolioCardButton.style.right = 'auto';
+        nextPortfolioCardButton.style.left = `${popupContentRect.right + gap}px`;
+        nextPortfolioCardButton.style.right = 'auto';
+    }
+
+    window.addEventListener('resize', () => {
+        if (popupElement.style.display !== 'none' && popupElement.classList.contains('show')) {
+            updatePopupOverlayElements();
+        }
+    });
+
+    let items = [];
+
+    function initializeCarousel() {
+        const carouselElement = document.querySelector('.carousel-container .carousel-items');
+        if (!carouselElement) return;
+
+        items = Array.from(carouselElement.children);
+        if (items.length === 0) return;
+
         const dotsContainer = document.createElement('div');
         dotsContainer.className = 'carousel-dots';
         
         galleryItems.forEach((_, index) => {
             const dot = document.createElement('div');
-            dot.className = `carousel-dot${index === 0 ? ' active' : ''}`;
+            dot.className = 'carousel-dot';
             dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateCarousel();
+                mainCarouselCurrentIndex = index;
+                updateMainCarousel();
             });
             dotsContainer.appendChild(dot);
         });
 
-        // Add dots container after the carousel
-        document.querySelector('.carousel-container').appendChild(dotsContainer);
-
-        // Update the updateCarousel function to include dot updates
-        function updateCarousel() {
-            // ... existing carousel update code ...
-
-            // Update dots
-            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
+        if (carouselContainer) {
+            carouselContainer.appendChild(dotsContainer);
         }
+        updateMainCarousel();
+    }
 
-        // Add dot updates to next/prev button clicks
-        prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + items.length) % items.length;
-            updateCarousel();
+    function updateMainCarousel() {
+        if (!carouselItemsContainer) return;
+        
+        const mainDots = document.querySelectorAll('.carousel-container .carousel-dots .carousel-dot');
+        mainDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === mainCarouselCurrentIndex);
         });
+        
+        console.log("Update main page carousel to index:", mainCarouselCurrentIndex);
+    }
 
-        nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % items.length;
-            updateCarousel();
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            mainCarouselCurrentIndex = (mainCarouselCurrentIndex - 1 + galleryItems.length) % galleryItems.length;
+            updateMainCarousel();
         });
     }
 
-    // Call the initialization function when the document is ready
-    document.addEventListener('DOMContentLoaded', initializeCarousel);
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            mainCarouselCurrentIndex = (mainCarouselCurrentIndex + 1) % galleryItems.length;
+            updateMainCarousel();
+        });
+    }
+
+    if (carouselItemsContainer && galleryItems.length > 0) {
+        initializeCarousel();
+    }
+
+    // Swipe navigation for popup content
+    popupContentElement.addEventListener('touchstart', function(event) {
+        if (!popupElement.classList.contains('show')) return;
+        touchStartX = event.changedTouches[0].screenX;
+        touchStartY = event.changedTouches[0].screenY;
+    }, { passive: true });
+
+    popupContentElement.addEventListener('touchmove', function(event) {
+        if (!popupElement.classList.contains('show')) return;
+        // We only need end coordinates, but could prevent default scroll here if needed
+        // and if passive is false for touchstart/touchmove.
+        // For now, let browser handle scrolling if swipe is not predominantly horizontal.
+    }, { passive: true });
+
+    popupContentElement.addEventListener('touchend', function(event) {
+        if (!popupElement.classList.contains('show')) return;
+        touchEndX = event.changedTouches[0].screenX;
+        touchEndY = event.changedTouches[0].screenY;
+        handleSwipeGesture();
+    });
+
+    function handleSwipeGesture() {
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+
+        // Check if it's a predominantly horizontal swipe and exceeds threshold
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+            if (galleryItems.length === 0) return;
+            if (deltaX > 0) { // Swipe Right (previous item)
+                const newIndex = (currentPortfolioCardIndex - 1 + galleryItems.length) % galleryItems.length;
+                displayPortfolioCardInPopup(newIndex);
+                if (typeof updatePopupOverlayElements === 'function') updatePopupOverlayElements();
+            } else { // Swipe Left (next item)
+                const newIndex = (currentPortfolioCardIndex + 1) % galleryItems.length;
+                displayPortfolioCardInPopup(newIndex);
+                if (typeof updatePopupOverlayElements === 'function') updatePopupOverlayElements();
+            }
+        }
+        // Reset touch coordinates for next swipe (optional, but good practice)
+        touchStartX = 0;
+        touchStartY = 0;
+        touchEndX = 0;
+        touchEndY = 0;
+    }
 }); 
