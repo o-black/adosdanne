@@ -46,7 +46,7 @@
 <input id="courriel" name="courriel" placeholder="Courriel" required="" type="email"/>
 <p>Type de message:</p>
 <div class="radio-group">
-<input id="collaboration" name="type-message" type="radio" value="Collaboration"/>
+<input id="collaboration" name="type-message" type="radio" value="Collaboration" checked/>
 <label for="collaboration">Collaboration</label>
 <input id="design_graphique" name="type-message" type="radio" value="Design Graphique"/>
 <label for="design_graphique">Design Graphique</label>
@@ -55,6 +55,12 @@
 <input id="autre" name="type-message" type="radio" value="Autre"/>
 <label for="autre">Autre</label>
 </div>
+<select id="type-message-dropdown" name="type-message" class="type-message-dropdown">
+    <option value="Collaboration" selected>Collaboration</option>
+    <option value="Design Graphique">Design Graphique</option>
+    <option value="Peinture">Peinture</option>
+    <option value="Autre">Autre</option>
+</select>
 <input id="sujet" name="sujet" placeholder="Sujet" required="" type="text"/>
 <textarea id="message" name="message" placeholder="Message" required=""></textarea>
 <button class="contact-button green-button" type="submit">Soumettre</button>
