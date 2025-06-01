@@ -151,16 +151,36 @@ button {
 }
 
 .thumbnail-gallery {
-    height: 80px;
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
+    display: none; /* JS will set to flex */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically (if they have different heights, though unlikely here) */
+    gap: 10px;
+    margin-top: 15px; 
+    padding: 10px 0; 
+    width: 100%;
+    overflow-x: auto;   /* Enable horizontal scrolling when content overflows */
+    overflow-y: hidden; /* Explicitly disable vertical scrolling */
+    flex-wrap: nowrap;  /* Ensure items stay in a single line */
 }
 
-.thumbnail-gallery img {
-    height: 100%;
-    width: auto;
+.popup-thumbnail-img {
+    width: 60px;
+    height: 60px;
     object-fit: cover;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+}
+
+.popup-thumbnail-img:hover {
+    opacity: 1;
+}
+
+.popup-thumbnail-img.active {
+    opacity: 1;
+    border-color: var(--green); /* Use your theme color for active state */
 }
 
 .popup.show .popup-content {
@@ -206,18 +226,6 @@ button {
 .popup.show .popup-image {
     opacity: 1;
     transform: translateX(0);
-}
-
-.thumbnail-gallery {
-    display: flex;
-    margin-top: 15px;
-    gap: 10px;
-    justify-content: center;
-}
-
-.popup.show .thumbnail-gallery {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .thumbnail-gallery img {
@@ -707,100 +715,6 @@ main{
     opacity: 1;
 }
 
-/* Add thumbnail gallery styles for mobile */
-.thumbnail-gallery {
-    display: none; /* Hidden by default (desktop) */
-    margin-top: 15px;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.thumbnail-gallery img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.thumbnail-gallery img:hover {
-    opacity: 1;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.thumbnail-gallery img.active {
-    opacity: 1;
-    border: 2px solid var(--green);
-    transform: translateY(-2px);
-}
-
-@media screen and (max-width: 768px) {
-    .popup-nav-buttons {
-        display: none; /* Hide buttons on mobile */
-    }
-
-    .thumbnail-gallery {
-        display: flex; /* Show thumbnails on mobile */
-    }
-
-    .thumbnail-gallery img {
-        width: 60px;
-        height: 60px;
-    }
-}
-
-/* Update thumbnail gallery to dots for mobile */
-.thumbnail-gallery {
-    display: none; /* Hidden by default (desktop) */
-}
-
-.dot-navigation {
-    display: none; /* Hidden by default */
-    gap: 8px;
-    justify-content: center;
-    margin-top: 1rem;
-    padding: 0.5rem;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ddd;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.dot.active {
-    background-color: var(--green);
-    transform: scale(1.2);
-}
-
-@media screen and (max-width: 768px) {
-    .popup-content{
-        width: 100%;
-    }
-    .popup-description{
-    }
-    .popup-nav-buttons {
-        display: none; /* Hide buttons on mobile */
-    }
-
-    .thumbnail-gallery {
-        display: none; /* Hide thumbnails completely */
-    }
-
-    .dot-navigation {
-        display: flex; /* Show dots on mobile */
-        order: 3;
-    }
-}
-
 /* Add styles for carousel dots */
 .carousel-dots {
     display: flex;
@@ -996,53 +910,23 @@ main{
     /* bottom: 20px; Or controlled by JS */
 }
 
-@media screen and (max-width: 767px) {
-    .modal-nav {
-        display: none !important; /* Hide arrows on mobile */
-    }
-     .swipe-hint {
-        display: block; /* Show swipe hint on mobile */
-        /* Consider adding animation if desired, like in designgraphique.html */
-        /* animation: pulse-fade 2s infinite ease-in-out; */
-        bottom: 60px; /* Adjust as needed */
-    }
-}
-
-/* Keyframes for pulse-fade animation if used with swipe-hint */
-/* @keyframes pulse-fade {
-    0%, 100% {
-        opacity: 0.7;
-        transform: translateX(-50%) scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.05);
-    }
-} */
-
-@media screen and (max-width: 376px) {
-   #gallery{
-    padding: 0em;
-   }
-}
-
-/* Update the existing media query for modal-nav and swipe-hint, and extend it */
-@media screen and (max-width: 1023px) { /* Changed from 767px to 1023px */
+@media screen and (max-width: 1023px) {
     .modal-nav {
         display: none !important; /* Hide outer portfolio arrows */
     }
     .popup-nav-button {
-        display: none !important; /* Hide inner related-image arrows */
+        display: none !important; /* Hide inner related-image arrows ON MOBILE/TABLET */
     }
-    .dot-navigation {
-        display: none !important; /* Hide dot navigation */
-    }
+    /* .dot-navigation {
+        display: none !important; // Commented out: JS now controls dot visibility based on thumbnail presence
+    } */
      .swipe-hint {
         display: block; /* Show swipe hint */
-        position: absolute; /* Ensure it's positioned within the popup */
-        bottom: 10em; /* Increased from 20px to bring it closer to popup-content */
+        /* position: absolute; is already defined in the base style */
+        bottom: 1em; /* Position 1em from the bottom of popup-content */
         left: 50%;
         transform: translateX(-50%);
+        width: auto; /* Allow it to size based on content, or set a specific width if needed */
         /* The rest of .swipe-hint styles (background, color, etc.) are already defined */
     }
 }
@@ -1060,7 +944,7 @@ main{
 } */
 
 @media screen and (max-width: 320px) {
-    .swipe-hint {
-        bottom: 6em; /* Reduced bottom margin for very small screens */
-    }
+    /* .swipe-hint {
+        bottom: 3em; // Commenting out, 1em from parent should be consistent 
+   } */
 }

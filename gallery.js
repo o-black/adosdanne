@@ -195,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="popup">
             <span class="modal-nav prev-project" aria-label="Previous portfolio project">&#10094;</span>
             <span class="modal-nav next-project" aria-label="Next portfolio project">&#10095;</span>
-            <p class="swipe-hint">Balayez pour naviguer</p>
             <div class="popup-content">
                 <span class="close">&times;</span>
                 <div class="popup-image-container">
@@ -203,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img class="popup-image" src="" alt="Artwork Image">
                     <button class="popup-nav-button popup-nav-next" aria-label="Next image in series">&#10095;</button>
                     <div class="dot-navigation"></div>
+                    <div class="thumbnail-gallery"></div>
                 </div>
                 <div class="popup-info">
                     <h3 class="popup-title"></h3>
@@ -211,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="popup-specs"></p>
                     <p class="popup-description"></p>
                 </div>
+                <p class="swipe-hint">Balayez pour naviguer</p>
             </div>
         </div>
     `;
@@ -228,6 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dotNavigationElement = popupElement.querySelector('.dot-navigation');
     const prevRelatedImageButton = popupElement.querySelector('.popup-nav-button.popup-nav-prev');
     const nextRelatedImageButton = popupElement.querySelector('.popup-nav-button.popup-nav-next');
+    const thumbnailGalleryElement = popupElement.querySelector('.thumbnail-gallery');
 
     // Define portfolio navigation buttons
     const prevPortfolioCardButton = popupElement.querySelector('.modal-nav.prev-project');
@@ -330,6 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateRelatedImageDots();
         updateRelatedImageNavButtonsVisibility();
         setupRelatedImageInteractions();
+        populatePopupThumbnails();
     }
 
     function updateRelatedImageDisplay() {
@@ -340,11 +343,22 @@ document.addEventListener('DOMContentLoaded', function() {
             if(item) popupImageElement.src = item.image;
         }
         updateRelatedImageDots();
+        updateActiveThumbnail();
     }
 
     function updateRelatedImageDots() {
-        dotNavigationElement.innerHTML = '';
+        if (!dotNavigationElement) return;
+        dotNavigationElement.innerHTML = ''; // Always clear previous dots
+
+        // If thumbnails are visible, hide dots container entirely
+        if (thumbnailGalleryElement && thumbnailGalleryElement.style.display === 'flex') {
+            dotNavigationElement.style.display = 'none';
+            return;
+        }
+
+        // Original logic to show dots if no thumbnails and multiple images (mostly for fallback or if you ever disable thumbnails)
         if (currentArtworkRelatedImages.length > 1) {
+            dotNavigationElement.style.display = 'flex'; // Show dots container
             currentArtworkRelatedImages.forEach((_, index) => {
                 const dot = document.createElement('div');
                 dot.className = 'dot';
@@ -357,10 +371,57 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 dotNavigationElement.appendChild(dot);
             });
+        } else {
+            dotNavigationElement.style.display = 'none'; // Hide if not needed
         }
     }
 
+    function populatePopupThumbnails() {
+        if (!thumbnailGalleryElement) return;
+        thumbnailGalleryElement.innerHTML = '';
+
+        if (currentArtworkRelatedImages.length > 1) {
+            thumbnailGalleryElement.style.display = 'flex';
+            currentArtworkRelatedImages.forEach((imgSrc, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = imgSrc;
+                thumb.alt = `Thumbnail ${index + 1} for ${galleryItems[currentPortfolioCardIndex].title}`;
+                thumb.classList.add('popup-thumbnail-img');
+                if (index === currentRelatedImageArrayIndex) {
+                    thumb.classList.add('active');
+                }
+                thumb.addEventListener('click', () => {
+                    currentRelatedImageArrayIndex = index;
+                    updateRelatedImageDisplay();
+                });
+                thumbnailGalleryElement.appendChild(thumb);
+            });
+
+        } else {
+            thumbnailGalleryElement.style.display = 'none'; // Hide if not needed
+        }
+    }
+
+    function updateActiveThumbnail() {
+        if (!thumbnailGalleryElement) return;
+        const thumbnails = thumbnailGalleryElement.querySelectorAll('.popup-thumbnail-img');
+        thumbnails.forEach((thumb, index) => {
+            if (index === currentRelatedImageArrayIndex) {
+                thumb.classList.add('active');
+            } else {
+                thumb.classList.remove('active');
+            }
+        });
+    }
+
     function updateRelatedImageNavButtonsVisibility() {
+        // Always hide these buttons as thumbnails are now the primary navigation for related images
+        if (prevRelatedImageButton) prevRelatedImageButton.style.display = 'none';
+        if (nextRelatedImageButton) nextRelatedImageButton.style.display = 'none';
+    
+        // The rest of the original logic for disabling buttons can be removed or commented out
+        // as the buttons are no longer visible.
+        /*
         if (currentArtworkRelatedImages.length <= 1) {
             prevRelatedImageButton.style.display = 'none';
             nextRelatedImageButton.style.display = 'none';
@@ -370,6 +431,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prevRelatedImageButton.disabled = currentRelatedImageArrayIndex === 0;
             nextRelatedImageButton.disabled = currentRelatedImageArrayIndex === currentArtworkRelatedImages.length - 1;
         }
+        */
     }
     
     function setupRelatedImageInteractions() {
