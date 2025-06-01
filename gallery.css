@@ -11,6 +11,13 @@
             color: var(--green);
         }
     }
+
+    main {
+        /* padding-top: 0.9rem; */ /* Removed, now handled by style.css */
+        padding-bottom: 0.9rem; 
+        min-height: calc(100vh - 400px);
+        margin-bottom: 5rem;
+    }
 }
 
 .carousel-images {
