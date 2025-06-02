@@ -33,7 +33,7 @@
  <div id="modal" class="modal">
     <span class="modal-nav prev-project" aria-label="Previous project">&#10094;</span>
     <span class="modal-nav next-project" aria-label="Next project">&#10095;</span>
-    <p class="swipe-hint"><span>Balayez pour naviguer</span></p> 
+    
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="modal-grid">
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const prevProjectButton = modal.querySelector('.prev-project');
     const nextProjectButton = modal.querySelector('.next-project');
-    const swipeHint = modal.querySelector('.swipe-hint');
 
     // Sample related images data structure (copied from script.js)
     const projectImages = {
@@ -185,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateModalOverlayElements() {
-        if (!modal || !modalContent || !prevProjectButton || !nextProjectButton || !swipeHint) return;
+        if (!modal || !modalContent || !prevProjectButton || !nextProjectButton) return;
 
         const modalContentRect = modalContent.getBoundingClientRect();
         // Reset styles for arrows, CSS will handle positioning

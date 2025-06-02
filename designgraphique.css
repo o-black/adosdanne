@@ -475,6 +475,7 @@ img {
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), 
                 opacity 0.5s ease-in-out;
     overflow: auto;
+    box-sizing: border-box;
 }
 
 .modal.show .modal-content {
@@ -529,6 +530,7 @@ img {
     transform: translateY(20px);
     transition: opacity 0.5s ease-in-out 0.3s, 
                 transform 0.5s ease-in-out 0.3s;
+    padding-bottom: 0;
 }
 
 .modal.show .modal-text {
@@ -549,6 +551,7 @@ img {
     line-height: 1.6;
     margin: 0;
     text-align: justify;
+    padding-bottom: 0;
 }
 
 .modal-button {
@@ -957,7 +960,7 @@ img {
 
 /* Swipe Hint */
 .swipe-hint {
-    display: none; 
+    display: none !important; /* Ensure it is hidden */
     position: absolute;
     left: 50%;
     transform: translateX(-50%); 
@@ -978,12 +981,15 @@ img {
     .swipe-hint {
         display: block;
         bottom: 20px; /* Position it 20px from the bottom of the viewport */
+        margin: 0; /* Remove default paragraph margins */
     }
 
     .modal {
         /* Base .modal styles for mobile: should not have a persistent display property here. */
         /* It inherits display: none from the general .modal rule, */
         /* JS sets it to display: block, then .modal.show (below) overrides to flex. */
+        padding-bottom: 85px; /* Increased to further reserve space at the bottom */
+        box-sizing: border-box; /* Include padding in height calculation */
     }
 
     .modal.show {
@@ -996,7 +1002,8 @@ img {
     .modal-content {
         position: relative; 
         width: 90%;     
-        margin: 0;      
+        margin: 2vh auto; /* Small viewport-relative vertical margin, auto horizontal */    
+        max-height: 90%; /* Max height relative to the new shorter parent */
         
         /* Restore initial scale for animation */
         transform: scale(0.7); 
@@ -1006,7 +1013,8 @@ img {
         transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease-in-out;
         transform-origin: 50% 50%; 
         
-        /* max-height, overflow, padding are inherited */
+        /* max-height, overflow, padding are inherited (padding-bottom IS inherited if not overridden here) */
+        /* Explicitly keeping the existing internal padding-bottom for scrollable content */
     }
 
     .modal.show .modal-content {

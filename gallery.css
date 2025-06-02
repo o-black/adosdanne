@@ -111,10 +111,12 @@ button {
 }
 .popup-date,.popup-description,.popup-price,.popup-specs{
     font-size: 1.15rem;
+    margin-bottom: 0;
 }
 
 .popup-description{
     text-align: justify;
+    margin-bottom: 0;
 }
 
 .popup-image {
@@ -902,7 +904,7 @@ main{
 
 /* Swipe hint styles (from designgraphique.html) - if needed for gallery page */
 .swipe-hint {
-    display: none; /* Hidden by default, shown on mobile via JS or media query */
+    display: none !important; /* Ensure it is hidden */
     position: absolute;
     left: 50%;
     transform: translateX(-50%); 

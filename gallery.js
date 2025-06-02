@@ -211,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="popup-specs"></p>
                     <p class="popup-description"></p>
                 </div>
-                <p class="swipe-hint">Balayez pour naviguer</p>
             </div>
         </div>
     `;
