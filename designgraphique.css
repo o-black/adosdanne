@@ -463,12 +463,12 @@ img {
 .modal-content {
     position: relative;
     background-color: #fff;
-    margin: 0 auto; /* Set top/bottom margins to 0 */
-    width: 100%; /* Set width to full viewport width */
-    max-width: none; /* Remove max-width constraint */
-    max-height: 100vh; /* Set max-height to full viewport height */
-    padding: 0; /* Remove all padding */
-    border-radius: 0; /* Remove border-radius for sharp corners */
+    margin: 5% auto;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 95vh;
+    padding: 20px;
+    border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transform: scale(0.7);
     opacity: 0;
@@ -486,19 +486,11 @@ img {
     position: absolute;
     right: 20px;
     top: 10px;
-    width: 60px; /* Increased fixed width */
-    height: 60px; /* Increased fixed height */
-    font-size: 48px; /* Increased font size for the 'x' symbol */
+    font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    color: #fff; /* White color for the 'x' */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    border-radius: 50%; /* Circular shape */
-    display: flex; /* Enable flexbox for centering */
-    align-items: center; /* Center 'x' vertically */
-    justify-content: center; /* Center 'x' horizontally */
-    z-index: 1005; /* Ensure it's on top */
-    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    color: #666;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .close:hover {
@@ -1005,7 +997,6 @@ img {
         position: relative; 
         width: 90%;     
         margin: 0;      
-        max-height: 95vh; /* Set max-height for mobile view to 95vh */
         
         /* Restore initial scale for animation */
         transform: scale(0.7); 
