@@ -7,86 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="designgraphique.css">
     <link rel="stylesheet" href="footer.css">
-    <style>
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 1001; /* Ensure they are above modal content but below close button if necessary */
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-            user-select: none; /* Prevent text selection */
-        }
-        .modal-nav:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-        .modal-nav.prev-project {
-            left: 10px;
-        }
-        .modal-nav.next-project {
-            right: 10px;
-        }
-        /* .modal-nav.disabled {
-            opacity: 0.3;
-            cursor: default;
-            pointer-events: none;
-        } */
-
-        @keyframes pulse-fade {
-            0%, 100% {
-                opacity: 0.7;
-                transform: translateX(-50%) scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: translateX(-50%) scale(1.05);
-            }
-        }
-
-        .swipe-hint {
-            display: none; /* Hidden by default */
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            z-index: 1002; /* Above arrows and modal content */
-            text-align: center;
-            /* Removed margin-top, now positioned by bottom/left/transform */
-        }
-
-        @media screen and (max-width: 767px) { /* Mobile breakpoint */
-            .modal-nav {
-                display: none !important; /* Hide arrows on mobile */
-            }
-            .swipe-hint {
-                display: block; /* Show swipe hint on mobile */
-                animation: pulse-fade 2s infinite ease-in-out;
-                bottom: 20px; /* Position from the bottom of the viewport */
-                /* top: 80%; */ /* Position from top of viewport */
-                /* transform: translate(-50%, -50%); */ /* Adjust transform for better centering at new top */
-            }
-        }
-
-        @media screen and (max-width: 320px) { /* Specific for very small screens */
-            .swipe-hint {
-                /* top: 75%; */ /* Adjust top position for very small screens */
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -113,7 +33,7 @@
  <div id="modal" class="modal">
     <span class="modal-nav prev-project" aria-label="Previous project">&#10094;</span>
     <span class="modal-nav next-project" aria-label="Next project">&#10095;</span>
-    <p class="swipe-hint">Balayez pour naviguer</p> 
+    <p class="swipe-hint"><span>Balayez pour naviguer</span></p> 
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="modal-grid">
@@ -266,21 +186,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!modal || !modalContent || !prevProjectButton || !nextProjectButton || !swipeHint) return;
 
         const modalContentRect = modalContent.getBoundingClientRect();
-        const arrowWidth = 44; // From CSS .modal-nav width
-        // const arrowHeight = 44; // Not strictly needed if using transform: translateY(-50%)
+        // Reset styles for arrows, CSS will handle positioning
+        prevProjectButton.style.top = '';
+        prevProjectButton.style.left = '';
+        prevProjectButton.style.right = '';
+        nextProjectButton.style.top = '';
+        nextProjectButton.style.left = '';
+        nextProjectButton.style.right = '';
 
-        // Vertical alignment for arrows
-        // Set top to the center of the modal-content; CSS transform: translateY(-50%) will handle actual centering.
-        const arrowCenterY = modalContentRect.top + (modalContentRect.height / 2);
-        prevProjectButton.style.top = `${arrowCenterY}px`;
-        nextProjectButton.style.top = `${arrowCenterY}px`;
-
-        // Horizontal alignment for arrows, slightly outside the modal-content
-        const gap = 10; // Adjust this value for the desired spacing
-        prevProjectButton.style.left = `${modalContentRect.left - arrowWidth - gap}px`;
-        prevProjectButton.style.right = 'auto';
-        nextProjectButton.style.left = `${modalContentRect.right + gap}px`;
-        nextProjectButton.style.right = 'auto';
+        // Example: If you had other elements to position dynamically relative to modalContent, that logic could remain.
+        // For now, this function will effectively only be called for its side effects if any other logic was present.
+        // If swipeHint needed dynamic positioning based on modalContent, that logic would go here.
     }
 
     // Function to open modal

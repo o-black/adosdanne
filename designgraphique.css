@@ -4,6 +4,10 @@
     --light-green: #99CC66;
     --white: #FFFFFF;
     --black: #000000;
+    /* Variables for modal arrow positioning */
+    --modal-arrow-width: 44px;
+    --modal-arrow-gap: 1em;
+    --modal-content-max-width-val: 1000px; /* Numerical value of modal-content max-width */
 }
 
 /* Reset and Base Styles */
@@ -896,3 +900,96 @@ img {
 /*.logo-large img {
     margin-left: 7em;
 } */
+
+/* Modal Navigation Arrows and Swipe Hint */
+.modal-nav {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%); /* Vertical centering */
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: var(--modal-arrow-width);
+    height: var(--modal-arrow-width); /* Assuming square arrows */
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1001;
+    font-size: 24px; /* Icon size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    user-select: none; /* Prevent text selection */
+}
+
+.modal-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Default positioning for smaller screens (modal-content width is 90vw) */
+/* Left edge of modal-content is at 5% viewport width */
+.modal-nav.prev-project {
+    left: calc(10% - var(--modal-arrow-width) - var(--modal-arrow-gap));
+}
+
+/* Right edge of modal-content is at 95% viewport width */
+.modal-nav.next-project {
+    left: calc(90% + var(--modal-arrow-gap)); /* Position left edge of arrow 10px past right edge of content */
+}
+
+/* Adjust positioning for larger screens when modal-content hits max-width: 1000px */
+/* Breakpoint: 1000px / 0.9 = approx 1111px. Using 1112px. */
+@media screen and (min-width: 1112px) {
+    .modal-nav.prev-project {
+        /* Left edge of 1000px content: 50% viewport - 500px */
+        left: calc(50% - (var(--modal-content-max-width-val) / 2) - var(--modal-arrow-width) - var(--modal-arrow-gap));
+    }
+    .modal-nav.next-project {
+        /* Right edge of 1000px content: 50% viewport + 500px */
+        /* Position left edge of arrow: (50% + 500px) + gap */
+        left: calc(50% + (var(--modal-content-max-width-val) / 2) + var(--modal-arrow-gap));
+    }
+}
+
+/* Swipe Hint */
+.swipe-hint {
+    display: none; /* Hidden by default, shown on mobile */
+    position: absolute;
+    left: 50%;
+    bottom: 20px; /* Position from the bottom of the viewport */
+    transform: translateX(-50%); /* Base horizontal centering */
+    z-index: 1002; /* Above arrows and modal content */
+    text-align: center;
+    /* Styles moved to inner span */
+}
+
+.swipe-hint > span {
+    display: inline-block; /* To allow padding and transform */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    animation: pulse-fade-opacity-scale 2s infinite ease-in-out;
+}
+
+@keyframes pulse-fade-opacity-scale {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* Mobile behavior: Hide arrows, show swipe hint */
+@media screen and (max-width: 767px) {
+    .modal-nav {
+        display: none !important; /* Important to override other display states if any */
+    }
+    .swipe-hint {
+        display: block;
+    }
+}
