@@ -451,11 +451,13 @@ img {
     z-index: 1000;
     opacity: 0;
     transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    pointer-events: none; /* Prevent interaction when hidden */
 }
 
 .modal.show {
     background-color: rgba(0, 0, 0, 0.7);
     opacity: 1;
+    pointer-events: auto; /* Allow interaction when shown */
 }
 
 .modal-content {
@@ -538,6 +540,7 @@ img {
     font-size: 24px;
     color: #333;
     margin: 0;
+    padding-left: 0;
 }
 
 .modal-text p {
@@ -545,6 +548,7 @@ img {
     color: #666;
     line-height: 1.6;
     margin: 0;
+    text-align: justify;
 }
 
 .modal-button {
@@ -987,9 +991,71 @@ img {
 /* Mobile behavior: Hide arrows, show swipe hint */
 @media screen and (max-width: 767px) {
     .modal-nav {
-        display: none !important; /* Important to override other display states if any */
+        display: none !important;
     }
     .swipe-hint {
         display: block;
     }
+
+    .modal {
+        /* Base .modal styles for mobile: should not have a persistent display property here. */
+        /* It inherits display: none from the general .modal rule, */
+        /* JS sets it to display: block, then .modal.show (below) overrides to flex. */
+    }
+
+    .modal.show {
+        /* Apply flex display for centering only when the modal is shown on mobile */
+        display: flex !important; 
+        align-items: center;    
+        justify-content: center; 
+    }
+
+    .modal-content {
+        position: relative; 
+        width: 90%;     
+        margin: 0;      
+        
+        /* Restore initial scale for animation */
+        transform: scale(0.7); 
+        opacity: 0;
+        
+        /* Restore transform to transition */
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease-in-out;
+        transform-origin: 50% 50%; 
+        
+        /* max-height, overflow, padding are inherited */
+    }
+
+    .modal.show .modal-content {
+        /* Restore final scale for animation */
+        transform: scale(0.9); 
+        opacity: 1;
+    }
+
+    /* Other mobile-specific styles */
+    /* General mobile typography (h1, h2, etc.) might be in a broader (max-width: 768px) block */
+
 }
+
+/* Make sure that if there is a (max-width: 768px) block, its .modal-content does not conflict */
+/* For example, if it exists, it should either also have 3vh or not define margin for .modal-content at all, */
+/* letting the (max-width: 767px) take precedence for finer screens. */
+
+/* Ensure this .page-title rule is the definitive one for mobile */
+.page-title {
+    margin-left: 0.5em; /* Target alignment for mobile/tablet */
+    max-width: calc(100% - 0.5em - 2rem); /*自身のマージンとmainの右パディングを考慮 */
+}
+
+/* Adjust modal content margin for better vertical positioning on mobile */
+/* Commenting out this conflicting rule. Mobile modal centering is handled by Flexbox */
+/* in the (max-width: 767px) media query, which requires margin: 0 on .modal-content. */
+/*
+.modal-content {
+    margin-top: 3vh;    
+    margin-bottom: 3vh; 
+    margin-left: auto;  
+    margin-right: auto; 
+    max-height: 90vh; 
+}
+*/

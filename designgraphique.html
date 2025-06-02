@@ -172,7 +172,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const card = portfolioCards[index];
         const image = card.querySelector('img');
         const title = card.querySelector('h4').textContent; // Portfolio cards use h4 for title
-        const description = card.querySelector('.card-description').textContent;
+        const cardDescriptionElement = card.querySelector('.card-description');
+        // Use the data-full-text attribute if available, otherwise fallback to textContent
+        const description = cardDescriptionElement.getAttribute('data-full-text') || cardDescriptionElement.textContent;
 
         modalImage.src = image.src;
         modalTitle.textContent = title;
@@ -250,10 +252,12 @@ document.addEventListener('DOMContentLoaded', function() {
         showProjectInModal(currentProjectIndex);
     });
 
+    /* DIAGNOSTIC: Commenting out portfolio card click listener from embedded script
     // Add click event to all portfolio cards
     document.querySelectorAll('.portfolio-card').forEach(card => {
         card.addEventListener('click', () => openModal(card));
     });
+    */
 
     // Close modal when clicking on close button or outside
     const closeButton = modal.querySelector('.close');
