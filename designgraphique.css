@@ -1020,6 +1020,7 @@ img {
         /* Restore final scale for animation */
         transform: scale(0.9); 
         opacity: 1;
+        top: 1.5em;
     }
 
     /* Other mobile-specific styles */
