@@ -43,9 +43,9 @@ button {
     left: 10px;
 }
 
-.next {
+/* .next {
     right: 10px;
-}
+} */
 
 .popup {
     display: none;
@@ -307,7 +307,6 @@ button {
     visibility: visible;
     pointer-events: auto;
     width: 300px;
-    margin: 0 auto;
 }
 
 .portfolio-card {
