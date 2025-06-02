@@ -1003,7 +1003,6 @@ img {
         position: relative; 
         width: 90%;     
         margin: 2vh auto; /* Small viewport-relative vertical margin, auto horizontal */    
-        max-height: 90%; /* Max height relative to the new shorter parent */
         
         /* Restore initial scale for animation */
         transform: scale(0.7); 
