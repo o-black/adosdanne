@@ -977,6 +977,7 @@ img {
     }
     .swipe-hint {
         display: block;
+        bottom: 20px; /* Position it 20px from the bottom of the viewport */
     }
 
     .modal {
