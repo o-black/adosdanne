@@ -211,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showProjectInModal(index);
 
         modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
         setTimeout(() => {
             modal.classList.add('show');
             updateModalOverlayElements();
@@ -220,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to close modal
     function closeModal() {
         modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
         setTimeout(() => modal.style.display = 'none', 300);
         // No need to specifically remove resize listener if it's general and lightweight,
         // but if it caused issues, it could be removed here and re-added in openModal.
