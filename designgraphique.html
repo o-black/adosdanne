@@ -75,14 +75,15 @@
             .swipe-hint {
                 display: block; /* Show swipe hint on mobile */
                 animation: pulse-fade 2s infinite ease-in-out;
-                top: 80%; /* Position from top of viewport */
-                transform: translate(-50%, -50%); /* Adjust transform for better centering at new top */
+                bottom: 20px; /* Position from the bottom of the viewport */
+                /* top: 80%; */ /* Position from top of viewport */
+                /* transform: translate(-50%, -50%); */ /* Adjust transform for better centering at new top */
             }
         }
 
         @media screen and (max-width: 320px) { /* Specific for very small screens */
             .swipe-hint {
-                top: 75%; /* Adjust top position for very small screens */
+                /* top: 75%; */ /* Adjust top position for very small screens */
             }
         }
     </style>
