@@ -274,11 +274,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     portfolioCards.forEach(card => {
-        // First, ensure all card descriptions have their full text stored
-        const p = card.querySelector('.card-description');
-        if(p) p.dataset.fullText = p.textContent.trim();
-        
-        // Then add the click listener to open the modal
         card.addEventListener('click', () => openModal(card));
     });
 
