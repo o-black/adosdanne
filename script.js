@@ -113,27 +113,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modal');
+    if (!modal) return; // Exit if modal doesn't exist on the page
 
-    const paragraphs = document.querySelectorAll('.card-description');
-    
-    // Store original text content in a data attribute
-    paragraphs.forEach(paragraph => {
-        const originalText = paragraph.textContent.trim();
-        paragraph.dataset.fullText = originalText;
-        
-        if (originalText.length > 50) {
-            const truncatedText = originalText.slice(0, 50) + '...';
-            paragraph.textContent = truncatedText;
+    // Truncate card descriptions and store full text
+    const allPortfolioCards = document.querySelectorAll('.portfolio-card');
+    allPortfolioCards.forEach(card => {
+        const p = card.querySelector('.card-description');
+        if (p) {
+            const originalText = p.textContent.trim();
+            p.dataset.fullText = originalText;
+            if (originalText.length > 50) {
+                p.textContent = originalText.slice(0, 50) + '...';
+            }
         }
     });
-    const modal = document.getElementById('modal');
+
     const modalImage = modal.querySelector('.main-image');
     const modalTitle = modal.querySelector('.modal-text h3');
     const modalDescription = modal.querySelector('.modal-text p');
     const closeButton = modal.querySelector('.close');
     const thumbnailGallery = modal.querySelector('.thumbnail-gallery');
     
-    // Sample related images data structure
+    const portfolioCards = Array.from(document.querySelectorAll('.portfolio-card'));
+    let currentProjectIndex = -1;
+
+    const prevProjectButton = modal.querySelector('.prev-project');
+    const nextProjectButton = modal.querySelector('.next-project');
+
     const projectImages = {
         'Affiches': [
             '/Affiche Final 25_VICTORIOUS.jpg',
@@ -172,152 +179,184 @@ document.addEventListener('DOMContentLoaded', function() {
             '/MoodBoard 1.jpg',
             '/MoodBoard 2.jpg',
             '/MoodBoard 3.jpg',
-        ]
-        ,
+        ],
         'Typomorphie': [
             '/Diapositive1.jpg',
             '/Mockup_ Cup.jpg',
             '/Mockup_tshirt_totebag.jpg',
         ]
     };
-    
-    function createThumbnails(projectTitle, mainImageSrc) {
-        thumbnailGallery.innerHTML = ''; // Clear existing thumbnails
-        
+
+    const projectDescriptions = {
+        'Affiches': [
+            "Cet exercice avait pour but de créer une affiche fictive pour le Festival de la typographie. On a préféré avec un style simple comme pour le slogan ' Less is more'.",
+            "Cet exercice avait pour but de créer une affiche fictive pour le Festival de la typographie. On a préféré avec un style simple comme pour le slogan ' Less is more'.",
+            "L'annonce originale du parfum était un fond uni avec la bouteille au centre. On a rajouté le background, choisi une typographie adaptée et utilisé la répétition pour cet effet d'écho sur l'eau.",
+            "Pour la couverture de mon 1er recueil de poème que j'ai sorti pour mes 31 ans j'ai dessiné cette illustration. Une rétrospection sur l'expérience acquise depuis les 30 dernières années et les nouvelles péripéties à venir.",
+            "L'exercice était de créer la page couverture d'un recueil de photomontage. Étant une fan de ''dimensions'' j'ai voulu jouer avec les perspectives et les matières en représentant une fille marchant sur une rivière de tournesol. Le pont étant un portail vers un autre monde."
+        ]
+    };
+
+    function updateThumbnails(projectTitle, currentMainImageSrc) {
+        thumbnailGallery.innerHTML = '';
         const images = projectImages[projectTitle] || [];
-        console.log(projectImages[projectTitle])
-        images.forEach((imgSrc, index) => {
+        const descriptions = projectDescriptions[projectTitle] || [];
+
+        images.forEach((imgFile, index) => {
             const thumbnail = document.createElement('img');
-            const thumbailImgPath = '/assets/Portefolio/';
-            thumbnail.src = thumbailImgPath+projectTitle+imgSrc;
-            thumbnail.alt = `${projectTitle} view ${index + 1}`;
+            const thumbnailSrcPath = `/assets/Portefolio/${projectTitle}${imgFile}`;
+            thumbnail.src = thumbnailSrcPath;
+            thumbnail.alt = `${projectTitle} thumbnail ${index + 1}`;
             thumbnail.classList.add('thumbnail');
-            if (imgSrc === mainImageSrc) thumbnail.classList.add('active');
-            
-            thumbnail.addEventListener('click', () => {
-                modalImage.src = thumbailImgPath+projectTitle+imgSrc;
-                // Update active state
-                thumbnailGallery.querySelectorAll('.thumbnail').forEach(thumb => 
-                    thumb.classList.remove('active'));
+
+            if (descriptions[index]) {
+                thumbnail.dataset.description = descriptions[index];
+            }
+
+            const currentImageFilename = decodeURIComponent(currentMainImageSrc.split('/').pop());
+            if (imgFile.endsWith(currentImageFilename)) {
                 thumbnail.classList.add('active');
-                
-                // Animate main image change
+                if (projectTitle.trim() === 'Affiches' && thumbnail.dataset.description) {
+                    modalDescription.textContent = thumbnail.dataset.description;
+                }
+            }
+
+            thumbnail.addEventListener('click', () => {
+                modalImage.src = thumbnailSrcPath;
+                if (thumbnail.dataset.description) {
+                    modalDescription.textContent = thumbnail.dataset.description;
+                }
+                thumbnailGallery.querySelectorAll('img').forEach(thumb => thumb.classList.remove('active'));
+                thumbnail.classList.add('active');
                 modalImage.style.opacity = '0';
                 setTimeout(() => {
                     modalImage.style.opacity = '1';
                 }, 50);
             });
-            
             thumbnailGallery.appendChild(thumbnail);
         });
     }
-    
-    // Updated openModal function
-    function openModal(card) {
-        const cardImage = card.querySelector('.card-image img');
-        const cardTitle = card.querySelector('h4');
-        const cardDescription = card.querySelector('.card-description');
+
+    function showProjectInModal(index) {
+        if (index < 0 || index >= portfolioCards.length) return;
         
-        modalImage.src = cardImage.src;
-        modalImage.alt = cardImage.alt;
-        modalTitle.textContent = cardTitle.textContent;
-        modalDescription.textContent = cardDescription.getAttribute('data-full-text');
-        
-        // Add button if it doesn't exist
-        // let modalButton = modal.querySelector('.green-button');
-        // if (!modalButton) {
-        //     modalButton = document.createElement('a');
-        //     modalButton.classList.add('green-button');
-        //     modalButton.textContent = 'En Savoir Plus';
-        //     modalButton.href = 'https://www.behance.net/cassandragomez7';
-        //     modalButton.target = '_blank'; // Opens in new tab
-        //     modal.querySelector('.modal-text').appendChild(modalButton);
-        // } else {
-        //     // Update existing button's href (in case it was changed)
-        //     modalButton.href = 'https://www.behance.net/cassandragomez7';
-        // }
-        
-        // Create thumbnails for the project
-        createThumbnails(cardTitle.textContent, cardImage.src);
-        
-        modal.style.display = 'block';
-        modal.offsetHeight; // Trigger reflow
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
+        const card = portfolioCards[index];
+        const image = card.querySelector('img');
+        const title = card.querySelector('h4').textContent;
+        const cardDescriptionElement = card.querySelector('.card-description');
+        const description = cardDescriptionElement.getAttribute('data-full-text') || cardDescriptionElement.textContent;
+
+        modalImage.src = image.src;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        updateThumbnails(title, image.src);
+
+        currentProjectIndex = index;
     }
     
-    // Rest of the modal code remains the same...
+    function openModal(card) {
+        const index = portfolioCards.indexOf(card);
+        if (index === -1) return;
+        
+        showProjectInModal(index);
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => modal.classList.add('show'), 10);
+    }
     
-    // Close modal function
     function closeModal() {
         modal.classList.remove('show');
         setTimeout(() => {
+            document.body.style.overflow = 'auto';
             modal.style.display = 'none';
-            document.body.style.overflowX = 'hidden';
-            document.body.style.overflowY = 'auto';
-            thumbnailGallery.innerHTML = ''; // Clear thumbnails when closing
         }, 300);
     }
-    
-    // Event listeners
-    document.querySelectorAll('.portfolio-card').forEach(card => {
+
+    portfolioCards.forEach(card => {
+        // First, ensure all card descriptions have their full text stored
+        const p = card.querySelector('.card-description');
+        if(p) p.dataset.fullText = p.textContent.trim();
+        
+        // Then add the click listener to open the modal
         card.addEventListener('click', () => openModal(card));
     });
-    
-    closeButton.addEventListener('click', closeModal);
-    
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
+
+    if(closeButton) closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
     });
+
+    if(prevProjectButton) {
+        prevProjectButton.addEventListener('click', () => {
+            if (portfolioCards.length === 0) return;
+            currentProjectIndex = (currentProjectIndex - 1 + portfolioCards.length) % portfolioCards.length;
+            showProjectInModal(currentProjectIndex);
+        });
+    }
+
+    if(nextProjectButton) {
+        nextProjectButton.addEventListener('click', () => {
+            if (portfolioCards.length === 0) return;
+            currentProjectIndex = (currentProjectIndex + 1) % portfolioCards.length;
+            showProjectInModal(currentProjectIndex);
+        });
+    }
+
+    const modalContent = modal.querySelector('.modal-content');
+    let modalTouchStartX = 0;
     
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
-            closeModal();
-        }
-    });
+    if(modalContent) {
+        modalContent.addEventListener('touchstart', (e) => {
+            if (e.target.closest('.thumbnail-gallery')) {
+                modalTouchStartX = 0;
+                return;
+            }
+            modalTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        modalContent.addEventListener('touchend', (e) => {
+            if (modalTouchStartX === 0) return;
+            
+            const modalTouchEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+
+            if (modalTouchStartX - modalTouchEndX > swipeThreshold) {
+                if (portfolioCards.length > 0) {
+                    currentProjectIndex = (currentProjectIndex + 1) % portfolioCards.length;
+                    showProjectInModal(currentProjectIndex);
+                }
+            } else if (modalTouchEndX - modalTouchStartX > swipeThreshold) {
+                if (portfolioCards.length > 0) {
+                    currentProjectIndex = (currentProjectIndex - 1 + portfolioCards.length) % portfolioCards.length;
+                    showProjectInModal(currentProjectIndex);
+                }
+            }
+            modalTouchStartX = 0;
+        }, { passive: true });
+    }
 });
 
+// General navigation (burger menu)
 document.addEventListener('DOMContentLoaded', function() {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
 
     function toggleNav() {
-        // Toggle navigation
         nav.classList.toggle('nav-active');
-        
-        // Toggle burger animation
         burger.classList.toggle('toggle');
-        
-        // Toggle body overflow
-        document.body.style.overflow = nav.classList.contains('nav-active') ? 'hidden' : 'auto';
     }
 
-    function closeNav() {
-        nav.classList.remove('nav-active');
-        burger.classList.remove('toggle');
-        document.body.style.overflow = 'auto';
-    }
+    if(burger) burger.addEventListener('click', toggleNav);
 
-    // Burger click handler
-    burger.addEventListener('click', toggleNav);
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (nav.classList.contains('nav-active') && 
-            !nav.contains(e.target) && 
-            !burger.contains(e.target)) {
-            closeNav();
+    function closeNav(e) {
+        if (nav.classList.contains('nav-active') && !nav.contains(e.target) && !burger.contains(e.target)) {
+            toggleNav();
         }
-    });
-
-    // Close menu when clicking a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', closeNav);
-    });
+    }
+    document.addEventListener('click', closeNav);
 });
+
 // Image loading handler
 document.addEventListener('DOMContentLoaded', function() {
     // Lazy loading
