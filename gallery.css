@@ -355,6 +355,8 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
 }
 
 .card-content h4 {
