@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sample gallery items - Replace with your actual content
     const galleryItems = [
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Ancestors market.jpg',
+            image: '/assets/Galerie/compressed/Ready Paintings/Ancestors market 1.jpg',
             title: 'Ancestors market',
             description: 'Un retour à la tradition...',
             date: 'Mars 2024',
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Acrylique et pastel à l’huile'
         },
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Breathe better.jpg',
+            image: '/assets/Galerie/compressed/Ready Paintings/Breathe better 1.jpg',
             title: 'Breathe better',
             description: 'Un corps en pleine transcendance...',
             date: '2024',
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Acrylique et pastel à l’huile'
         },
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Closing windows.jpg',
+            image: '/assets/Galerie/compressed/Ready Paintings/Closing windows 1.jpg',
             title: 'Closing windows',
             description: '2 fenêtres sur des parties de mon corps revendiquées...',
             date: 'Mars 2024',
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Acrylique'
         },
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Golden ideas.jpg',
+            image: '/assets/Galerie/compressed/Ready Paintings/Golden ideas 1.jpg',
             title: 'Golden ideas',
             description: 'L’union fait la force.',
             date: 'Mars 2024',
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Acrylique sur toile'
         },
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Hold on.JPG',
+            image: '/assets/Galerie/compressed/Ready Paintings/Hold on 1.JPG',
             title: 'Hold on',
             description: 'Le pouvoir du mental sur la chaire en rémission.',
             date: '2024',
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Acrylique sur panneau mdf'
         },
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Hope.jpg',
+            image: '/assets/Galerie/compressed/Ready Paintings/Hope 1.jpg',
             title: 'Hope',
             description: 'Tableau "Hope"',
             date: 'Mars 2024',
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Acrylique'
         },
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Men.jpg',
+            image: '/assets/Galerie/compressed/Ready Paintings/Men 1.jpg',
             title: 'Men',
             description: 'L\'ancrage du noyau traditionnel familial',
             date: '2022',
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Acrylique'
         },
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Molding.jpg',
+            image: '/assets/Galerie/compressed/Ready Paintings/Molding 1.jpg',
             title: 'Molding Waters',
             description: 'Ce tableau par du désir de me construire...',
             date: 'Mars 2024',
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Acrylique'
         },
         {
-            image: '/assets/Galerie/compressed/Ready Paintings/Émergence.JPG',
+            image: '/assets/Galerie/compressed/Ready Paintings/Émergence 1.JPG',
             title: 'Émergence',
             description: 'Des ténèbres à la lumière...',
             date: 'Mars 2024',
@@ -251,30 +251,38 @@ document.addEventListener('DOMContentLoaded', function() {
         'Ancestors market': [
             '/assets/Galerie/compressed/Ready Paintings/Ancestors market 1.jpg',
             '/assets/Galerie/compressed/Ready Paintings/Ancestors market 2.jpg',
+            '/assets/Galerie/compressed/Ready Paintings/Ancestors market 3.jpg',
         ],
         'Breathe better': [
             '/assets/Galerie/compressed/Ready Paintings/Breathe better 1.jpg',
             '/assets/Galerie/compressed/Ready Paintings/Breathe better 2.jpg',
+            '/assets/Galerie/compressed/Ready Paintings/Breathe better 3.jpg',
         ],
         'Closing windows': [
             '/assets/Galerie/compressed/Ready Paintings/Closing windows 1.jpg',
+            '/assets/Galerie/compressed/Ready Paintings/Closing windows 2.jpg',
         ],
         'Golden ideas': [
             '/assets/Galerie/compressed/Ready Paintings/Golden ideas 1.jpg',
             '/assets/Galerie/compressed/Ready Paintings/Golden ideas 2.jpg',
+            '/assets/Galerie/compressed/Ready Paintings/Golden ideas 3.jpg',
         ],
         'Hold on': [
             '/assets/Galerie/compressed/Ready Paintings/Hold on 1.jpg',
+            '/assets/Galerie/compressed/Ready Paintings/Hold on 2.jpg',
         ],
         'Hope': [
             '/assets/Galerie/compressed/Ready Paintings/Hope 1.jpg',
             '/assets/Galerie/compressed/Ready Paintings/Hope 2.jpg',
+            '/assets/Galerie/compressed/Ready Paintings/Hope 3.jpg',
         ],
         'Men': [
             '/assets/Galerie/compressed/Ready Paintings/Men 1.jpg',
+            '/assets/Galerie/compressed/Ready Paintings/Men 2.jpg',
         ],
         'Molding Waters': [
             '/assets/Galerie/compressed/Ready Paintings/Molding 1.jpg',
+            '/assets/Galerie/compressed/Ready Paintings/Molding 2.jpg',
             '/assets/Galerie/compressed/Ready Paintings/Molding 3.jpg',
         ],
         'A throne\'s Spirit ': [
@@ -304,6 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Émergence': [
             '/assets/Galerie/compressed/Ready Paintings/Émergence 1.JPG',
             '/assets/Galerie/compressed/Ready Paintings/Émergence 2.JPG',
+            '/assets/Galerie/compressed/Ready Paintings/Émergence 3.JPG',
         ],
     };
 
