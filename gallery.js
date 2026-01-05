@@ -10,27 +10,30 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '/assets/Galerie/compressed/Ready Paintings/Ancestors market 1.jpg',
             title: 'Ancestors market',
             description: 'Un retour à la tradition...',
-            date: 'Mars 2024',
-            fullDescription: 'Un retour à la tradition, un aperçu d’un monde idyllique où les âmes de nos ancêtres supervisés par Simbi, récoltent les fruits de nos requêtes pour les laisser couler le long de ses courants. Une représentation de collectivité, d’unité et de cycle d’exploration entre l’homme et la nature.',
+            date: '2024',
+            status: 'available',
+            fullDescription: 'Un retour à la tradition, un aperçu d\'un monde idyllique où les âmes de nos ancêtres supervisés par Simbi, récoltent les fruits de nos requêtes pour les laisser couler le long de ses courants. Une représentation de collectivité, d\'unité et de cycle d\'exploration entre l\'homme et la nature.',
             price: '500$',
             size: '24 x 28 in',
-            material: 'Acrylique et pastel à l’huile'
+            material: 'Acrylique et pastel à l\'huile'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Breathe better 1.jpg',
             title: 'Breathe better',
             description: 'Un corps en pleine transcendance...',
             date: '2024',
-            fullDescription: 'Un corps en pleine transcendance. Établi dans un environnement complémentaire qui lui permet de dialoguer avec la conscience spirituelle qui la compose. La plante serpent reconnue pour son pouvoir de connexion et de purification et les pierres d’eau douce viennent compléter le balancement de la composition. Orné de quelques symboles inspirés de vêvê, un dialogue entre physique et spirituel se crée.',
+            status: 'available',
+            fullDescription: 'Un corps en pleine transcendance. Établi dans un environnement complémentaire qui lui permet de dialoguer avec la conscience spirituelle qui la compose. La plante serpent reconnue pour son pouvoir de connexion et de purification et les pierres d\'eau douce viennent compléter le balancement de la composition. Orné de quelques symboles inspirés de vêvê, un dialogue entre physique et spirituel se crée.',
             price: '525$',
             size: '24 x 36 in',
-            material: 'Acrylique et pastel à l’huile'
+            material: 'Acrylique et pastel à l\'huile'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Closing windows 1.jpg',
             title: 'Closing windows',
             description: '2 fenêtres sur des parties de mon corps revendiquées...',
-            date: 'Mars 2024',
+            date: '2023',
+            status: 'available',
             fullDescription: '2 fenêtres sur des parties de mon corps revendiquées par la culture du paraître et du devoir. 2 fenêtres sur des parties de mon être qui me classe dans des catégories indésirables puisque je ne [suis] pas la norme',
             price: '380$',
             size: '22 x 28 in',
@@ -39,9 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             image: '/assets/Galerie/compressed/Ready Paintings/Golden ideas 1.jpg',
             title: 'Golden ideas',
-            description: 'L’union fait la force.',
-            date: 'Mars 2024',
-            fullDescription: 'L’union fait la force.',
+            description: 'L\'union fait la force.',
+            date: '2020',
+            status: 'available',
+            fullDescription: 'L\'union fait la force.',
             price: '150$',
             size: '14 x 18 in',
             material: 'Acrylique sur toile'
@@ -51,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Hold on',
             description: 'Le pouvoir du mental sur la chaire en rémission.',
             date: '2024',
+            status: 'available',
             fullDescription: 'Le pouvoir du mental sur la chaire en rémission. Plus que la lumière au bout du tunnel, c\'est une projection vers le futur, le passé et le moment présent au carrefour des possibilités.',
             rice: '620$',
             size: '19.7 x 49.2 in',
@@ -61,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Hope',
             description: 'Tableau "Hope"',
             date: 'Mars 2024',
+            status: 'sold',
             fullDescription: 'Tableau "Hope"'
         },
         {
@@ -68,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Meditation',
             description: 'Une Vénus en méditation devant le mouvement des motif...',
             date: '2024',
+            status: 'available',
             fullDescription: 'Une Vénus en méditation devant le mouvement des motif construisant un labyrinthe de possibles itinéraire.Une Vénus en méditation devant le mouvement de son labyrinthe de possibilité',
             price: '220$',
             size: '22 x 28 in',
@@ -78,7 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Men',
             description: 'L\'ancrage du noyau traditionnel familial',
             date: '2022',
-            fullDescription: 'L’encrage du noyau traditionnel familiale.',
+            status: 'sold',
+            fullDescription: 'L\'encrage du noyau traditionnel familiale.',
             price: '150$',
             size: '22 x 28 in',
             material: 'Acrylique'
@@ -87,18 +95,20 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '/assets/Galerie/compressed/Ready Paintings/Molding 1.jpg',
             title: 'Molding Waters',
             description: 'Ce tableau par du désir de me construire...',
-            date: 'Mars 2024',
-            fullDescription: 'Ce tableau part du désir de me construire ou plutôt de renaître avec des concepts fluides et malléables. La femme noire, la femme forte qui construit sa personne en puisant dans les vallées des sommets de son héritage. La palette de couleur fait référence à la passion qui l’anime en parallèle à sa connexion au monde spirituel : ses ancêtres.',
+            date: '2024',
+            status: 'sold',
+            fullDescription: 'Ce tableau part du désir de me construire ou plutôt de renaître avec des concepts fluides et malléables. La femme noire, la femme forte qui construit sa personne en puisant dans les vallées des sommets de son héritage. La palette de couleur fait référence à la passion qui l\'anime en parallèle à sa connexion au monde spirituel : ses ancêtres.',
             price: '375$',
             size: '22 x 28 in',
-            material: 'Acrylique et pastel à l’huile'
+            material: 'Acrylique et pastel à l\'huile'
         },
         {
             image: '/assets/Galerie/compressed/Ready Paintings/My throne_s Spirit .JPG',
             title: 'A throne\'s Spirit ',
             description: 'Le bois, symbole de sagesse ancestrale...',
             date: 'Mars 2024',
-            fullDescription: 'Le bois, symbole de sagesse ancestrale et de force spirituelle, semble être le parfait matériel pour la construction du trône de notre esprit; inséminer par la stabilité. C’est cette recherche de tranquillité mais aussi cet espace de profondeur présent dans nos tripes qui explique le fond de la toile. On y retrouve aussi un concept développé par l’artiste comme dossier du trône : Les colored Queens. Finalement le une piscine pour siège pour permettre à l’esprit sirène de se ressourcer étant dans son élément intuitif.',
+            status: 'available',
+            fullDescription: 'Le bois, symbole de sagesse ancestrale et de force spirituelle, semble être le parfait matériel pour la construction du trône de notre esprit; inséminer par la stabilité. C\'est cette recherche de tranquillité mais aussi cet espace de profondeur présent dans nos tripes qui explique le fond de la toile. On y retrouve aussi un concept développé par l\'artiste comme dossier du trône : Les colored Queens. Finalement le une piscine pour siège pour permettre à l\'esprit sirène de se ressourcer étant dans son élément intuitif.',
             price: '500$',
             size: '24 x 30 in',
             material: 'Acrylique et pastel à l\'huile'
@@ -107,7 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '/assets/Galerie/compressed/Ready Paintings/Test subject.jpg',
             title: 'Test subject',
             description: 'Tableau "Test Subject"',
-            date: 'Mars 2024',
+            date: '2024',
+            status: 'available',
             fullDescription: '',
             price: '120$',
             size: '8.66 x 19.56 in',
@@ -118,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'L\'esprit à 7 cordes',
             description: 'La femme comme totem, et si les animaux nous utilisait comme source spirituelle ?',
             date: '2024',
+            status: 'sold',
             fullDescription: 'Femme à tout faire, Femme glorieuse.',
             price: '300$',
             size: '24 x 36 in',
@@ -128,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'The worker',
             description: 'Tableau "worker"',
             date: 'Mars 2024',
+            status: 'available',
             fullDescription: 'Tableau "worker"',
         },
         {
@@ -135,7 +148,8 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Under the bridge',
             description: 'Ce panneau est initialement initié par le désir de créer un genre...',
             date: '2024',
-            fullDescription: 'Ce panneau est initialement initié par le désir de créer un genre de casse-tête. Les plus petites plaques devraient être interchangeables mais faute de temps et de ressources j’ai préféré les collés à la planche. Chaque Vénus est dans la pause du mouvement. Savourer du moment présent pour cette seconde de réalisation… tout en regardant l’eau qui continue de suivre son cours symbolisant, le temps, la réalité la plus décisive qui nous échappera toujours.',
+            status: 'available',
+            fullDescription: 'Ce panneau est initialement initié par le désir de créer un genre de casse-tête. Les plus petites plaques devraient être interchangeables mais faute de temps et de ressources j\'ai préféré les collés à la planche. Chaque Vénus est dans la pause du mouvement. Savourer du moment présent pour cette seconde de réalisation… tout en regardant l\'eau qui continue de suivre son cours symbolisant, le temps, la réalité la plus décisive qui nous échappera toujours.',
             price: '510$',
             size: '24 x 24 in',
             material: 'Acrylique sur panneau de bois et MDF'
@@ -145,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Venus #7',
             description: 'Une femme battante sous toute réserve.',
             date: '2022',
+            status: 'available',
             fullDescription: 'Une femme battante sous toute réserve.',
             price: '135$',
             size: '12.8 x 25 in',
@@ -155,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Women',
             description: 'La matière du noyau traditionnel familiale.',
             date: 'Mars 2024',
+            status: 'sold',
             fullDescription: 'La matière du noyau traditionnel familiale.',
             price: '150$',
             size: '19.7 x 23.6 in',
@@ -164,8 +180,9 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '/assets/Galerie/compressed/Ready Paintings/Émergence 1.JPG',
             title: 'Émergence',
             description: 'Des ténèbres à la lumière...',
-            date: 'Mars 2024',
-            fullDescription: 'Des ténèbres à la lumière, on manifeste notre véritable nature. Les marques blanches de mes Vénus célébrant les blessures transformées en page blanche, l’opportunité de se redéfinir en suivant la moulure de notre corps, en les acceptant comme une orientation de l’avenir.',
+            date: '2024',
+            status: 'available',
+            fullDescription: 'Des ténèbres à la lumière, on manifeste notre véritable nature. Les marques blanches de mes Vénus célébrant les blessures transformées en page blanche, l\'opportunité de se redéfinir en suivant la moulure de notre corps, en les acceptant comme une orientation de l\'avenir.',
             price: '620$',
             size: '19.7 x 49.2 in',
             material: 'Acrylique sur panneau mdf'
@@ -174,24 +191,94 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let mainCarouselCurrentIndex = 0;
     let currentPortfolioCardIndex = -1;
+    let currentFilter = 'all';
+    let filteredItems = [];
+    let items = [];
 
-    // Create cards for the main carousel
-    galleryItems.forEach((item, index) => {
-        const cardDiv = document.createElement('div');
-        cardDiv.className = 'carousel-item';
-        cardDiv.dataset.portfolioIndex = index;
-        cardDiv.innerHTML = `
-            <div class="portfolio-card">
-                <div class="card-image">
-                    <img src="${item.image}" alt="${item.title}">
+    // Filter and render gallery items
+    function filterAndRenderGallery(filterType) {
+        currentFilter = filterType;
+        
+        // Filter items based on selected filter
+        if (filterType === 'sold') {
+            filteredItems = galleryItems.filter(item => item.status === 'sold');
+        } else {
+            // 'all' shows all paintings
+            filteredItems = galleryItems;
+        }
+
+        // Clear existing items
+        if (carouselItemsContainer) {
+            carouselItemsContainer.innerHTML = '';
+        }
+
+        // Create cards for filtered items
+        filteredItems.forEach((item, index) => {
+            const originalIndex = galleryItems.indexOf(item);
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'carousel-item';
+            cardDiv.dataset.portfolioIndex = originalIndex;
+            cardDiv.innerHTML = `
+                <div class="portfolio-card">
+                    <div class="card-image">
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <div class="card-content">
+                        <h4>${item.title}</h4>
+                        <p class="card-description">${item.description}</p>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h4>${item.title}</h4>
-                    <p class="card-description">${item.description}</p>
-                </div>
-            </div>
-        `;
-        if (carouselItemsContainer) carouselItemsContainer.appendChild(cardDiv);
+            `;
+            if (carouselItemsContainer) carouselItemsContainer.appendChild(cardDiv);
+        });
+
+        // Re-attach click event listeners
+        document.querySelectorAll('.carousel-item .portfolio-card').forEach(cardElement => {
+            cardElement.addEventListener('click', () => {
+                const portfolioIndex = parseInt(cardElement.closest('.carousel-item').dataset.portfolioIndex);
+                if (!isNaN(portfolioIndex)) {
+                    const popup = document.querySelector('.popup');
+                    if (popup) {
+                        displayPortfolioCardInPopup(portfolioIndex);
+                        popup.style.display = 'flex';
+                        popup.offsetHeight;
+                        popup.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                        updatePopupOverlayElements();
+                    }
+                }
+            });
+        });
+
+        // Update carousel dots
+        if (carouselContainer) {
+            const existingDots = carouselContainer.querySelector('.carousel-dots');
+            if (existingDots) {
+                existingDots.remove();
+            }
+            initializeCarousel();
+        }
+
+        // Reset carousel index
+        mainCarouselCurrentIndex = 0;
+    }
+
+    // Initialize with all paintings (default)
+    filterAndRenderGallery('all');
+
+    // Filter tab event listeners
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            filterTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            // Filter gallery
+            const filterType = tab.dataset.filter;
+            filterAndRenderGallery(filterType);
+        });
     });
 
     const popupHTML = `
@@ -480,15 +567,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     prevPortfolioCardButton.addEventListener('click', () => {
-        if (galleryItems.length === 0) return;
-        const newIndex = (currentPortfolioCardIndex - 1 + galleryItems.length) % galleryItems.length;
+        if (filteredItems.length === 0) return;
+        const currentIndexInFiltered = filteredItems.findIndex(item => 
+            galleryItems.indexOf(item) === currentPortfolioCardIndex
+        );
+        const newIndexInFiltered = (currentIndexInFiltered - 1 + filteredItems.length) % filteredItems.length;
+        const newIndex = galleryItems.indexOf(filteredItems[newIndexInFiltered]);
         displayPortfolioCardInPopup(newIndex);
         updatePopupOverlayElements();
     });
 
     nextPortfolioCardButton.addEventListener('click', () => {
-        if (galleryItems.length === 0) return;
-        const newIndex = (currentPortfolioCardIndex + 1) % galleryItems.length;
+        if (filteredItems.length === 0) return;
+        const currentIndexInFiltered = filteredItems.findIndex(item => 
+            galleryItems.indexOf(item) === currentPortfolioCardIndex
+        );
+        const newIndexInFiltered = (currentIndexInFiltered + 1) % filteredItems.length;
+        const newIndex = galleryItems.indexOf(filteredItems[newIndexInFiltered]);
         displayPortfolioCardInPopup(newIndex);
         updatePopupOverlayElements();
     });
@@ -567,8 +662,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    let items = [];
-
     function initializeCarousel() {
         const carouselElement = document.querySelector('.carousel-container .carousel-items');
         if (!carouselElement) return;
@@ -579,7 +672,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const dotsContainer = document.createElement('div');
         dotsContainer.className = 'carousel-dots';
         
-        galleryItems.forEach((_, index) => {
+        filteredItems.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.className = 'carousel-dot';
             dot.addEventListener('click', () => {
@@ -608,14 +701,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (prevButton) {
         prevButton.addEventListener('click', () => {
-            mainCarouselCurrentIndex = (mainCarouselCurrentIndex - 1 + galleryItems.length) % galleryItems.length;
+            mainCarouselCurrentIndex = (mainCarouselCurrentIndex - 1 + filteredItems.length) % filteredItems.length;
             updateMainCarousel();
         });
     }
 
     if (nextButton) {
         nextButton.addEventListener('click', () => {
-            mainCarouselCurrentIndex = (mainCarouselCurrentIndex + 1) % galleryItems.length;
+            mainCarouselCurrentIndex = (mainCarouselCurrentIndex + 1) % filteredItems.length;
             updateMainCarousel();
         });
     }
@@ -651,13 +744,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Check if it's a predominantly horizontal swipe and exceeds threshold
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
-            if (galleryItems.length === 0) return;
+            if (filteredItems.length === 0) return;
+            const currentIndexInFiltered = filteredItems.findIndex(item => 
+                galleryItems.indexOf(item) === currentPortfolioCardIndex
+            );
             if (deltaX > 0) { // Swipe Right (previous item)
-                const newIndex = (currentPortfolioCardIndex - 1 + galleryItems.length) % galleryItems.length;
+                const newIndexInFiltered = (currentIndexInFiltered - 1 + filteredItems.length) % filteredItems.length;
+                const newIndex = galleryItems.indexOf(filteredItems[newIndexInFiltered]);
                 displayPortfolioCardInPopup(newIndex);
                 if (typeof updatePopupOverlayElements === 'function') updatePopupOverlayElements();
             } else { // Swipe Left (next item)
-                const newIndex = (currentPortfolioCardIndex + 1) % galleryItems.length;
+                const newIndexInFiltered = (currentIndexInFiltered + 1) % filteredItems.length;
+                const newIndex = galleryItems.indexOf(filteredItems[newIndexInFiltered]);
                 displayPortfolioCardInPopup(newIndex);
                 if (typeof updatePopupOverlayElements === 'function') updatePopupOverlayElements();
             }

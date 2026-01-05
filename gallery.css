@@ -276,6 +276,94 @@ button {
     font-weight: normal;
     color: grey;
 }
+
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto 2.5rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+}
+
+.filter-segmented-control {
+    display: inline-flex;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 0;
+    box-shadow: none;
+    gap: 0;
+}
+
+.filter-tab {
+    position: relative;
+    padding: 0.625rem 1.75rem;
+    font-size: 0.95rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.filter-tab:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.filter-tab:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.filter-tab:only-child {
+    border-radius: 8px;
+}
+
+.filter-tab:hover:not(.active) {
+    color: #666;
+}
+
+.filter-tab.active {
+    background-color: transparent;
+    color: var(--black);
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    .gallery-filters {
+        margin: 1.5rem auto 2rem;
+    }
+    
+    .filter-tab {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gallery-filters {
+        margin: 1.25rem auto 1.75rem;
+        padding: 0 0.5rem;
+    }
+    
+    .filter-segmented-control {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .filter-tab {
+        flex: 1;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
 .carousel-container {
     position: relative;
     display: flex;

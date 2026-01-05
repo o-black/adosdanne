@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextButton = document.querySelector('.carousel-button.next');
     const dotsContainer = document.querySelector('.carousel-dots');
     
+    // Skip carousel initialization if elements don't exist (handled by gallery.js)
+    if (!carousel || !dotsContainer || items.length === 0) {
+        return;
+    }
+    
     let currentIndex = 0;
     const totalItems = items.length;
     let isAnimating = false;
