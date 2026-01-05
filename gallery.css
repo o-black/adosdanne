@@ -453,6 +453,19 @@ button {
     color: #333;
 }
 
+.order-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--green);
+    background-color: rgba(51, 102, 0, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
 .card-description {
     font-size: 0.9rem;
     line-height: 1.5;

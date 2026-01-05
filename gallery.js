@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Breathe better',
             description: 'Un corps en pleine transcendance...',
             date: '2024',
-            status: 'available',
+            status: 'available_on_order',
             fullDescription: 'Un corps en pleine transcendance. Établi dans un environnement complémentaire qui lui permet de dialoguer avec la conscience spirituelle qui la compose. La plante serpent reconnue pour son pouvoir de connexion et de purification et les pierres d\'eau douce viennent compléter le balancement de la composition. Orné de quelques symboles inspirés de vêvê, un dialogue entre physique et spirituel se crée.',
             price: '525$',
             size: '24 x 36 in',
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'A throne\'s Spirit ',
             description: 'Le bois, symbole de sagesse ancestrale...',
             date: 'Mars 2024',
-            status: 'available',
+            status: 'available_on_order',
             fullDescription: 'Le bois, symbole de sagesse ancestrale et de force spirituelle, semble être le parfait matériel pour la construction du trône de notre esprit; inséminer par la stabilité. C\'est cette recherche de tranquillité mais aussi cet espace de profondeur présent dans nos tripes qui explique le fond de la toile. On y retrouve aussi un concept développé par l\'artiste comme dossier du trône : Les colored Queens. Finalement le une piscine pour siège pour permettre à l\'esprit sirène de se ressourcer étant dans son élément intuitif.',
             price: '500$',
             size: '24 x 30 in',
@@ -218,6 +218,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const cardDiv = document.createElement('div');
             cardDiv.className = 'carousel-item';
             cardDiv.dataset.portfolioIndex = originalIndex;
+            const orderBadge = item.status === 'available_on_order' 
+                ? '<span class="order-badge">Disponible sur commande</span>' 
+                : '';
+            
             cardDiv.innerHTML = `
                 <div class="portfolio-card">
                     <div class="card-image">
@@ -225,6 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="card-content">
                         <h4>${item.title}</h4>
+                        ${orderBadge}
                         <p class="card-description">${item.description}</p>
                     </div>
                 </div>
@@ -413,7 +418,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
         popupTitleElement.textContent = item.title;
         popupDateElement.textContent = item.date || '';
+        
+        // Set price
         popupPriceStrongElement.textContent = item.price || (item.rice || 'Prix sur demande');
+        
+        // Add available on order indicator
+        const popupPriceElement = popupElement.querySelector('.popup-price');
+        if (item.status === 'available_on_order') {
+            const orderBadge = document.createElement('span');
+            orderBadge.className = 'order-badge';
+            orderBadge.textContent = 'Disponible sur commande';
+            popupPriceElement.appendChild(orderBadge);
+        } else {
+            // Remove any existing badge
+            const existingBadge = popupPriceElement.querySelector('.order-badge');
+            if (existingBadge) {
+                existingBadge.remove();
+            }
+        }
+        
         const specsText = item.material ? `<strong>${item.material}</strong>${item.size ? ` - ${item.size}` : ''}` : (item.size || '');
         popupSpecsElement.innerHTML = specsText;
         popupDescriptionElement.textContent = item.fullDescription || item.description || '';
